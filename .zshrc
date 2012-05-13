@@ -37,6 +37,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
+setopt hist_ignore_space    # start [space], no history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
