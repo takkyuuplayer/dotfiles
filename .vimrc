@@ -11,7 +11,29 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
+filetype on
 filetype plugin indent on     " required!
+
+" neocomplcache
+" -------------------------------------
+let g:neocomplcache_enable_at_startup = 1 
+" 大文字小文字区別の有効化
+let g:neocomplcache_smartcase = 1 
+" キャメルケース補完の有効化
+let g:neocomplcache_enablecamelcasecompletion = 1 
+" アンダーバー補完の有効化
+let g:neocomplcache_enableunderbarcompletion = 1 
+" 補完対象キーワードの最小長
+let g:neocomplcache_min_syntax_length = 3 
+" プラグイン毎の補完関数を呼び出す文字数
+let g:neocomplcache_plugincompletionlength = { 
+  \ 'keyword_complete' : 2,
+  \ 'syntax_complete' : 2 
+  \ }
+" ファイルタイプ毎の辞書ファイルの場所                                                                   
+let g:neocomplcache_dictionary_filetype_lists = { 
+  \ 'default' : '', 
+  \ }
 
 "-------------------------------------------------
 " setting
@@ -51,6 +73,8 @@ set tabstop=4
 set whichwrap=b,s,h,l,<,>,[,]
 "検索をファイルの先頭へループしない
 set nowrapscan
+"カーソルライン
+set cursorline
 
 "----------------------------------------------------
 " テンプレート補完
