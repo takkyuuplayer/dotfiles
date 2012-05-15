@@ -14,43 +14,49 @@ precmd () {
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
-RPROMPT="%1(v|%F{green}%1v%f|)"
 ## gitのブランチ名と変更状況をプロンプトに表示する 
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git svn hg bzr
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+zstyle ':vcs_info:bzr:*' use-simple true
+
 autoload -Uz is-at-least
 if is-at-least 4.3.10; then
-  # バージョン管理システムとの連携を有効にする 
-  autoload -Uz vcs_info
-  autoload -Uz add-zsh-hook
-
-  zstyle ':vcs_info:*' enable git
+  # この check-for-changes が今回の設定するところ
   zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "+"
-  zstyle ':vcs_info:git:*' unstagedstr "-"
-  zstyle ':vcs_info:git:*' formats '(%s)-[@%b%u%c]'
-  zstyle ':vcs_info:git:*' actionformats '(%s)-[@%b|%a%u%c]'
+  zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+  zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
+  zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
+  zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
+fi
 
-  # VCSの更新時にPROMPTを自動更新する
-  function _update_vcs_info_msg() {
+function _update_vcs_info_msg() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
     psvar[2]=$(_git_not_pushed)
-  }
-  function _git_not_pushed() {
-    if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-      head="$(git rev-parse HEAD)"
-      for x in $(git rev-parse --remotes)
-      do
-        if [ "$head" = "$x" ]; then
-          return 0
-        fi
-      done
-      echo "?"
-    fi
-    return 0
-  }
-  add-zsh-hook precmd _update_vcs_info_msg
-fi
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+
+function _git_not_pushed()
+{
+  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+    head="$(git rev-parse HEAD)"
+    for x in $(git rev-parse --remotes)
+    do
+      if [ "$head" = "$x" ]; then
+        return 0
+      fi
+    done
+    echo "?"
+  fi
+  return 0
+}
+RPROMPT="%1(v|%F{green}%1v%2v%f|)"
 
 # Prompt
 case ${UID} in
