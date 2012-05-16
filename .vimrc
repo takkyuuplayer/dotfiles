@@ -8,7 +8,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 filetype on
