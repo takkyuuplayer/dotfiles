@@ -37,24 +37,70 @@ fi
 function _update_vcs_info_msg() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    psvar[2]=$(_git_not_pushed)
+    psvar[2]=$(_git_untracked_or_not_pushed)
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-function _git_not_pushed()
-{
-  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-    head="$(git rev-parse HEAD)"
-    for x in $(git rev-parse --remotes)
-    do
-      if [ "$head" = "$x" ]; then
-        return 0
-      fi
-    done
-    echo "?"
-  fi
-  return 0
+#
+# Untrackedなファイルが存在するか未PUSHなら記号を出力
+#   Untracked: ?
+#   未PUSH: *
+#
+function _git_untracked_or_not_pushed() {
+    local git_status head remotes stagedstr
+    local  staged_unstaged=$1 not_pushed="*" untracked="?"
+    # カレントがgitレポジトリ下かどうか判定
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]; then
+        # statusをシンプル表示で取得
+        git_status=$(git status -s 2> /dev/null)
+        # git status -s の先頭が??で始まる行がない場合、Untrackedなファイルは存在しない
+        if ! echo "$git_status" | grep "^??" > /dev/null 2>&1; then
+            untracked=""
+        fi
+
+        # stagedstrを取得
+        zstyle -s ":vcs_info:git:*" stagedstr stagedstr
+        # git status -s の先頭がAで始まる行があればstagedと判断
+        if [ -n "$stagedstr" ] && ! printf "$staged_unstaged" | grep "$stagedstr" > /dev/null 2>&1 \
+            && echo "$git_status" | grep "^A" > /dev/null 2>&1; then
+            staged_unstaged=${staged_unstaged}${stagedstr}
+        fi
+
+        # HEADのハッシュ値を取得
+        #  --verify 有効なオブジェクト名として使用できるかを検証
+        #  --quiet  --verifyと共に使用し、無効なオブジェクトが指定された場合でもエラーメッセージを出さない
+        #           そのかわり終了ステータスを0以外にする
+        head=$(git rev-parse --verify -q HEAD 2> /dev/null)
+        if [ $? -eq 0 ]; then
+            # HEADのハッシュ値取得に成功
+            # リモートのハッシュ値を配列で取得
+            remotes=($(git rev-parse --remotes 2> /dev/null))
+            if [ "$remotes[*]" ]; then
+                # リモートのハッシュ値取得に成功(リモートが存在する)
+                for x in ${remotes[@]}; do
+                    # リモートとHEADのハッシュ値が一致するか判定
+                    if [ "$head" = "$x" ]; then
+                        # 一致した場合はPUSH済み
+                        not_pushed=""
+                        break
+                    fi
+                done
+            else
+                # リモートが存在しない場合
+                not_pushed=""
+            fi
+        else
+            # HEADが存在しない場合(init直後など)
+            not_pushed=""
+        fi
+
+        # Untrackedなファイルが存在するか未PUSHなら記号を出力
+        if [ -n "$staged_unstaged" -o -n "$untracked" -o -n "$not_pushed" ]; then
+            printf "${staged_unstaged}${untracked}${not_pushed}"
+        fi
+    fi
+    return 0
 }
 RPROMPT="%1(v|%F{green}%1v%2v%f|)"
 
