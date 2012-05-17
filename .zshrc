@@ -6,21 +6,13 @@ compinit
 export LANG=ja_JP.UTF-8
 
 # Version Systems
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
 ## gitのブランチ名と変更状況をプロンプトに表示する 
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git svn hg bzr
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:*' formats '%s,%u%c,%b'
+zstyle ':vcs_info:*' actionformats '%s,%u%c,%b|%a'
 zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
 zstyle ':vcs_info:bzr:*' use-simple true
 
@@ -28,17 +20,26 @@ autoload -Uz is-at-least
 if is-at-least 4.3.10; then
   # この check-for-changes が今回の設定するところ
   zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
-  zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
-  zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
-  zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
+  zstyle ':vcs_info:(git|git-svn):*' stagedstr "+"    # 適当な文字列に変更する
+  zstyle ':vcs_info:(git|git-svn):*' unstagedstr "-"  # 適当の文字列に変更する
+  zstyle ':vcs_info:git:*' formats '%s,%u%c,%b'
+  zstyle ':vcs_info:git:*' actionformats '%s,%u%c,%b|%a'
 fi
 
 function _update_vcs_info_msg() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    psvar[2]=$(_git_untracked_or_not_pushed)
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    local _vcs_name _status  _branch_action
+    if [ -n "$vcs_info_msg_0_" ]; then
+        _vcs_name=$(echo "$vcs_info_msg_0_" | cut -d , -f 1)
+        _status=$(_git_untracked_or_not_pushed $(echo "$vcs_info_msg_0_" | cut -d , -f 2))
+        _branch_action=$(echo "$vcs_info_msg_0_" | cut -d , -f 3)
+        psvar[1]="(${_vcs_name})-[${_status}${_branch_action}]"
+    fi
+#    psvar=()
+#    LANG=en_US.UTF-8 vcs_info
+#    psvar[2]=$(_git_untracked_or_not_pushed)
+#    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
@@ -103,7 +104,7 @@ function _git_untracked_or_not_pushed() {
     return 0
 }
 RPROMPT="%1(v|%F{green}%1v%2v%f|)"
-
+# RPROMPT="${RESET}%1(v|${RED}%1v|)${RESET}${BOLD_YELLOW}${VIRTUAL_ENV:+($(basename "$VIRTUAL_ENV"))}${RESET}[${MAGENTA}%D{%Y/%m/%d %H:%M:%S}${RESET}]${RESET}"
 # Prompt
 case ${UID} in
 0)
