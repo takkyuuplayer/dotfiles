@@ -4,13 +4,13 @@
 "-------------------------------------------------
 set nocompatible
 filetype off
- 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
+Bundle 'SuperTab'
 filetype on
 filetype plugin indent on     " required!
 
