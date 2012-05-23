@@ -132,8 +132,6 @@ kterm*|xterm)
 esac
 
 
-
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -148,7 +146,7 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 # vi like
-bindkey -v
+#bindkey -v
 
 # options
 setopt auto_cd          # auto cd
