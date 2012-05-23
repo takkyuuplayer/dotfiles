@@ -10,7 +10,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
-Bundle 'SuperTab'
+Bundle 'SuperTab'               " Tab補完
+Bundle 'sudo.vim"               " :w sudo:% 
 filetype on
 filetype plugin indent on     " required!
 
