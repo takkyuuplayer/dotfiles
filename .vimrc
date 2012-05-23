@@ -34,6 +34,11 @@ let g:neocomplcache_plugincompletionlength = {
 let g:neocomplcache_dictionary_filetype_lists = { 
   \ 'default' : '', 
   \ }
+" 補完候補が表示されている場合は確定。そうでない場合は改行
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
+" 補完をキャンセル
+inoremap <expr><C-e>  neocomplcache#close_popup()
+
 
 "-------------------------------------------------
 " setting
