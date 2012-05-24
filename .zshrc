@@ -177,8 +177,11 @@ plugins=(git osx ruby)
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
-alias vi='vim'
 #-------------------------------------
 # own setting
 #-------------------------------------
 #source ~/.zshrc.mine
+
+alias vi='vim'
+alias apt-get='sudo apt-get'
+alias yum='sudo yum'
