@@ -183,5 +183,3 @@ alias l='ls -CF'
 #source ~/.zshrc.mine
 
 alias vi='vim'
-alias apt-get='sudo apt-get'
-alias yum='sudo yum'
