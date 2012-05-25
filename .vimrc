@@ -14,6 +14,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'SuperTab'
 " :w sudo:%
 Bundle 'sudo.vim'
+Bundle 'mattn/zencoding-vim'
 filetype on
 filetype plugin indent on     " required!
 
