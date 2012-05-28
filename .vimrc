@@ -43,11 +43,22 @@ inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
 
+"-------------------------------------------------
+" quick run
+"-------------------------------------------------
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
+augroup END
+
+" 初期化
+let g:quickrun_config = {}
+" PHPUnit
+let g:quickrun_config['php.unit'] = {'command': 'phpunit --debug --colors'}
 
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
-
 "新しい行のインデントを現在行と同じにする
 "set autoindent
 "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
@@ -73,7 +84,7 @@ set showmatch
 "検索時に大文字を含んでいたら大/小を区別
 set smartcase
 "新しい行を作ったときに高度な自動インデントを行う
-"set smartindent
+set nosmartindent
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
 "ファイル内の <Tab> が対応する空白の数
