@@ -15,6 +15,7 @@ Bundle 'SuperTab'
 " :w sudo:%
 Bundle 'sudo.vim'
 Bundle 'mattn/zencoding-vim'
+Bundle 'tpope/vim-fugitive'
 filetype on
 filetype plugin indent on     " required!
 
