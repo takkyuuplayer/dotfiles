@@ -25,5 +25,8 @@ do
     fi
 done
 
+# git config 無視
+git update-index --assume-unchanged .gitconfig
+
 # zsh
 echo "zshのインストールよろしく"
