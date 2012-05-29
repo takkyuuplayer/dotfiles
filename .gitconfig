@@ -1,13 +1,3 @@
-[diff]
-	tool = vimdiff
-
-[difftool]
-	prompt = false
-
-[alias]
-    d = difftool
-
-
 [color]
   branch = auto
   diff = auto
@@ -29,3 +19,5 @@
   changed = green
   untracked = cyan
 
+[merge]
+	tool = vimdiff
