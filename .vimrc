@@ -55,7 +55,7 @@ augroup END
 " 初期化
 let g:quickrun_config = {}
 " PHPUnit
-let g:quickrun_config['php.unit'] = {'command': 'phpunit --debug --colors'}
+let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 
 "-------------------------------------------------
 " setting
