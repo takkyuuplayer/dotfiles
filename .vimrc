@@ -96,6 +96,8 @@ set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
 "カーソルライン
 set cursorline
+"検索ハイライト
+set hlsearch
 
 "----------------------------------------------------
 " テンプレート補完
