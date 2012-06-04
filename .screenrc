@@ -4,3 +4,4 @@ startup_message off
 bind , title
 hardstatus on
 hardstatus alwayslastline "screen |%c %m/%d | %w"
+vbell off
