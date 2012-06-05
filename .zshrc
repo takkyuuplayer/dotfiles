@@ -183,3 +183,4 @@ alias l='ls -CF'
 #source ~/.zshrc.mine
 
 alias vi='vim'
+alias screen='screen -U'

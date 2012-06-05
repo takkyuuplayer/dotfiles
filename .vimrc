@@ -75,11 +75,13 @@ set hidden
 "インクリメンタルサーチを行う
 set incsearch
 "listで表示される文字のフォーマットを指定する
+set list
+"set listchars=tab:>-,trail:^
 set listchars=eol:$,tab:>\ ,extends:<
 "行番号を表示する
 set number
 "シフト移動幅
-set shiftwidth=4
+set shiftwidth=2
 "閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
 "検索時に大文字を含んでいたら大/小を区別
@@ -89,7 +91,7 @@ set nosmartindent
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
 "ファイル内の <Tab> が対応する空白の数
-set tabstop=4
+set tabstop=2
 "カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 "検索をファイルの先頭へループしない
@@ -98,6 +100,12 @@ set nowrapscan
 set cursorline
 "検索ハイライト
 set hlsearch
+
+set wildmode=list:longest
+
+set nobackup
+set noswapfile
+set novisualbell
 
 "----------------------------------------------------
 " テンプレート補完
