@@ -1,6 +1,9 @@
+# auto complete functions
+fpath=(${ZDOTDIR}/function $HOME/.zsh/functions $fpath)
+
 # auto complete smartly
 autoload -U compinit
-compinit
+compinit -u
 
 # LANG
 export LANG=ja_JP.UTF-8
