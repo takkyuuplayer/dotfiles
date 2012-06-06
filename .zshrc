@@ -184,3 +184,5 @@ alias l='ls -CF'
 
 alias vi='vim'
 alias screen='screen -U'
+
+umask 0002

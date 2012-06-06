@@ -76,8 +76,8 @@ set hidden
 set incsearch
 "listで表示される文字のフォーマットを指定する
 set list
-"set listchars=tab:>-,trail:^
-set listchars=eol:$,tab:>\ ,extends:<
+set listchars=tab:>-,trail:^
+"set listchars=eol:$,tab:>\ ,extends:<
 "行番号を表示する
 set number
 "シフト移動幅
