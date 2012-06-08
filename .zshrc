@@ -111,18 +111,18 @@ RPROMPT="%1(v|%F{green}%1v%2v%f|)"
 # Prompt
 case ${UID} in
 0)
-    PROMPT="%B%{[31m%}%/#%{[m%}%b "
-    PROMPT2="%B%{[31m%}%_#%{[m%}%b "
-    SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+    PROMPT="%B%F{red}$PWD#%f%b "
+    PROMPT2="%B%F{red}%_#%f%b "
+    SPROMPT="%B%F{red}%r is correct? [n,y,a,e]:%f%b "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+        PROMPT="%F{white}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="%{[31m%}%/%%%{[m%} "
-    PROMPT2="%{[31m%}%_%%%{[m%} "
-    SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
+    PROMPT="%F{blue}$PWD$%f "
+    PROMPT2="%F{blue}%_$%f "
+    SPROMPT="%F{blue}%r is correct? [n,y,a,e]:%f "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+        PROMPT="%F{white}${HOST%%.*} ${PROMPT}"
     ;;
 esac
 # Terminal
