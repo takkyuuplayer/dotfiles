@@ -112,4 +112,4 @@ MY_REPO=https://takkyuuplayer@bitbucket.org/takkyuuplayer
 #My alias
 alias c='clear'
 
-export PATH=$HOME/lib/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
