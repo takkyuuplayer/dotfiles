@@ -183,7 +183,7 @@ alias l='ls -CF'
 #-------------------------------------
 # own setting
 #-------------------------------------
-#source ~/.zshrc.mine
+[ -f ~/.zshrc.mine ] && source ~/.zshrc_mine
 
 alias vi='vim'
 alias screen='screen -U'
