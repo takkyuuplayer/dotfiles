@@ -1,15 +1,5 @@
 #! /bin/sh
 
-########################################
-# Name:
-#
-# about: https://github.com/suzuken/dotfiles/blob/master/install.sh
-#	dotfilesをそろそろgithubで管理しとこう | のぶろぐ http://nob-log.info/2012/01/20/dotfilesgithub/
-# Usage:
-#
-# Author:
-# Date:
-########################################
 
 cd $(dirname $0)
 
@@ -25,8 +15,8 @@ do
     fi
 done
 
-# git config 無視
+# git config ignore
 git update-index --assume-unchanged .gitconfig
 
 # zsh
-echo "zshのインストールよろしく"
+echo "you should install zsh"
