@@ -48,15 +48,15 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 "-------------------------------------------------
 " quick run
 "-------------------------------------------------
-augroup QuickRunPHPUnit
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
-augroup END
+"augroup QuickRunPHPUnit
+"  autocmd!
+"  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
+"augroup END
 
 " 初期化
-let g:quickrun_config = {}
+"let g:quickrun_config = {}
 " PHPUnit
-let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+"let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 
 "-------------------------------------------------
 " setting
@@ -101,6 +101,9 @@ set nowrapscan
 set cursorline
 "検索ハイライト
 set hlsearch
+set laststatus=2
+"set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
 set wildmode=list:longest
 
