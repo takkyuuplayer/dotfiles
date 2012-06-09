@@ -22,21 +22,21 @@ filetype plugin indent on     " required!
 
 " neocomplcache
 " -------------------------------------
-let g:neocomplcache_enable_at_startup = 1 
+let g:neocomplcache_enable_at_startup = 1
 " 大文字小文字区別の有効化
-let g:neocomplcache_smartcase = 1 
+let g:neocomplcache_smartcase = 1
 " キャメルケース補完の有効化
-let g:neocomplcache_enablecamelcasecompletion = 1 
+let g:neocomplcache_enablecamelcasecompletion = 1
 " アンダーバー補完の有効化
-let g:neocomplcache_enableunderbarcompletion = 1 
+let g:neocomplcache_enableunderbarcompletion = 1
 " 補完対象キーワードの最小長
-let g:neocomplcache_min_syntax_length = 3 
+let g:neocomplcache_min_syntax_length = 3
 " プラグイン毎の補完関数を呼び出す文字数
-let g:neocomplcache_plugincompletionlength = { 
+let g:neocomplcache_plugincompletionlength = {
   \ 'keyword_complete' : 2,
-  \ 'syntax_complete' : 2 
+  \ 'syntax_complete' : 2
   \ }
-" ファイルタイプ毎の辞書ファイルの場所                                                                   
+" ファイルタイプ毎の辞書ファイルの場所
 let g:neocomplcache_dictionary_filetype_lists = { 
   \ 'default' : '', 
   \ }
@@ -61,8 +61,9 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
-"新しい行のインデントを現在行と同じにする
-"set autoindent
+"indent
+set autoindent
+"set nosmartindent
 "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
 set browsedir=buffer 
 "クリップボードをWindowsと連携
@@ -87,8 +88,6 @@ set shiftwidth=4
 set showmatch
 "検索時に大文字を含んでいたら大/小を区別
 set smartcase
-"新しい行を作ったときに高度な自動インデントを行う
-set nosmartindent
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
 "ファイル内の <Tab> が対応する空白の数
@@ -99,16 +98,17 @@ set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
 "カーソルライン
 set cursorline
-"検索ハイライト
+"highlight search
 set hlsearch
+"Status Line
 set laststatus=2
-"set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-
+"tanew, sp autocomplete
 set wildmode=list:longest
-
+"backup files"
 set nobackup
 set noswapfile
+"alert
 set novisualbell
 
 "----------------------------------------------------
