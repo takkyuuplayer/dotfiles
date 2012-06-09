@@ -111,14 +111,14 @@ RPROMPT="%1(v|%F{green}%1v%2v%f|)"
 # Prompt
 case ${UID} in
 0)
-    PROMPT="%B%F{red}$PWD#%f%b "
+    PROMPT="%B%F{red}%/D#%f%b "
     PROMPT2="%B%F{red}%_#%f%b "
     SPROMPT="%B%F{red}%r is correct? [n,y,a,e]:%f%b "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
         PROMPT="%F{white}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="%F{blue}$PWD$%f "
+    PROMPT="%F{blue}%/$%f "
     PROMPT2="%F{blue}%_$%f "
     SPROMPT="%F{blue}%r is correct? [n,y,a,e]:%f "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
