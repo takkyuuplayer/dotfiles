@@ -12,6 +12,9 @@ if has('vim_starting')
 endif
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 " Tab補完
@@ -20,6 +23,7 @@ NeoBundle 'SuperTab'
 NeoBundle 'sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'soh335/vim-symfony'
 filetype on
 filetype plugin indent on     " required!
 
