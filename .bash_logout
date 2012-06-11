@@ -1,3 +1,5 @@
 # ~/.bash_logout
 
-eval `ssh-agent -k`
+if [ $? -eq 9 ]; then
+    eval `ssh-agent -k`
+fi

@@ -4,7 +4,7 @@
 cd $(dirname $0)
 
 # install vundle.git
-git submodule add http://github.com/gmarik/vundle.git ./.vim/bundle/vundle
+git submodule add https://github.com/Shougo/neobundle.vim ./.vim/bundle/neobundle.vim
 
 # create symbolic link
 for dotfile in .?*

@@ -41,3 +41,9 @@ else
 ssh-add
 
 fi
+
+if [ $? -eq 9 ]; then
+        screen
+else
+        screen -x
+fi

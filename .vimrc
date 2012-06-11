@@ -1,22 +1,25 @@
 syntax on
+"-------------------------------------------------
+" NeoBundle
+"-------------------------------------------------
+set nocompatible               " be iMproved
+filetype off                   " required!
+filetype plugin indent off     " required!
 
-"-------------------------------------------------
-" vundur
-"-------------------------------------------------
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
 " Tab補完
-Bundle 'SuperTab'
+NeoBundle 'SuperTab'
 " :w sudo:%
-Bundle 'sudo.vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'tpope/vim-fugitive'
+NeoBundle 'sudo.vim'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'tpope/vim-fugitive'
 filetype on
 filetype plugin indent on     " required!
 
@@ -45,7 +48,6 @@ inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
 
-"-------------------------------------------------
 " quick run
 "-------------------------------------------------
 "augroup QuickRunPHPUnit
@@ -110,7 +112,16 @@ set nobackup
 set noswapfile
 "alert
 set novisualbell
+"backspace
+set backspace=indent,eol,start
 
+"----------------------------------------------------
+" key mapping
+"----------------------------------------------------
+noremap  
+noremap!  
+noremap <BS> 
+noremap! <BS> 
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
