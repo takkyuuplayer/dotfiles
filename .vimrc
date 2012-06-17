@@ -1,4 +1,21 @@
 syntax on
+
+"-------------------------------------------------
+" Auto Reload
+"-------------------------------------------------
+" Set augroup.
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+if !has('gui_running') && !(has('win32') || has('win64'))
+    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+                \if has('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
+
 "-------------------------------------------------
 " NeoBundle
 "-------------------------------------------------
@@ -68,6 +85,7 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 "-------------------------------------------------
 call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> <C-O><C-O> :<C-U>Unite -buffer-name=files file<CR>
+nnoremap <silent> <C-O><C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
 
 "-------------------------------------------------
 " setting
@@ -98,6 +116,7 @@ set shiftwidth=4
 "閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
 "検索時に大文字を含んでいたら大/小を区別
+set ignorecase
 set smartcase
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
@@ -131,6 +150,8 @@ noremap  
 noremap!  
 noremap <BS> 
 noremap! <BS> 
+nmap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
