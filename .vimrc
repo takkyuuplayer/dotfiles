@@ -12,9 +12,9 @@ if has('vim_starting')
 endif
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 " Tab補完
@@ -64,6 +64,11 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 " PHPUnit
 "let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 
+" unite.vim
+"-------------------------------------------------
+call unite#custom_default_action('file', 'tabopen')
+nnoremap <silent> <C-O><C-O> :<C-U>Unite -buffer-name=files file<CR>
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
@@ -77,7 +82,7 @@ set clipboard=unnamed
 "Vi互換をオフ
 set nocompatible
 "タブの代わりに空白文字を挿入する
-set expandtab
+"set expandtab
 "変更中のファイルでも、保存しないで他のファイルを表示
 set hidden
 "インクリメンタルサーチを行う
