@@ -83,9 +83,11 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 
 " unite.vim
 "-------------------------------------------------
-call unite#custom_default_action('file', 'tabopen')
+"call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> <C-O><C-O> :<C-U>Unite -buffer-name=files file<CR>
 nnoremap <silent> <C-O><C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-O><C-N> :<C-U>Unite file/new<CR>
+nnoremap <silent> <C-O><C-H>:<C-U>Unite -buffer-name=files file_mru<CR>
 
 "-------------------------------------------------
 " setting
@@ -100,7 +102,7 @@ set clipboard=unnamed
 "Vi互換をオフ
 set nocompatible
 "タブの代わりに空白文字を挿入する
-"set expandtab
+set expandtab
 "変更中のファイルでも、保存しないで他のファイルを表示
 set hidden
 "インクリメンタルサーチを行う
