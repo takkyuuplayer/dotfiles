@@ -1,5 +1,6 @@
 syntax on
-
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 "-------------------------------------------------
 " Auto Reload
 "-------------------------------------------------
@@ -86,8 +87,9 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 "call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> <C-O><C-O> :<C-U>Unite -buffer-name=files file<CR>
 nnoremap <silent> <C-O><C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <C-O><C-N> :<C-U>Unite file/new<CR>
-nnoremap <silent> <C-O><C-H>:<C-U>Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> <C-O><C-N> :<C-U>Unite -buffer-name=files file/new<CR>
+nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 
 "-------------------------------------------------
 " setting
@@ -144,6 +146,8 @@ set noswapfile
 set novisualbell
 "backspace
 set backspace=indent,eol,start
+"Windows <CR>
+set ffs=unix
 
 "----------------------------------------------------
 " key mapping
