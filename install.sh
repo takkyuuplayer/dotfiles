@@ -10,14 +10,14 @@ git submodule update
 # create symbolic link
 for dotfile in .?*
 do
-    if [ $dotfile != '..' ] && [ $dotfile != '.git' ] && [ $dotfile != '.gitignore' ]
+    if [ $dotfile = '.gitconfig' ]
+    then
+        cp $dotfile $HOME
+    elif [ $dotfile != '..' ] && [ $dotfile != '.git' ] && [ $dotfile != '.gitignore' ] && [ $dotfile != '.gitmodules' ]
     then
         ln -Fis "$PWD/$dotfile" $HOME
     fi
 done
-
-# git config ignore
-git update-index --assume-unchanged .gitconfig
 
 # zsh
 echo "you should install zsh"
