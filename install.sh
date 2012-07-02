@@ -12,7 +12,7 @@ for dotfile in .?*
 do
     if [ $dotfile = '.gitconfig' ]
     then
-        cp $dotfile $HOME
+        cp -u $dotfile $HOME
     elif [ $dotfile != '..' ] && [ $dotfile != '.git' ] && [ $dotfile != '.gitignore' ] && [ $dotfile != '.gitmodules' ]
     then
         ln -Fis "$PWD/$dotfile" $HOME
