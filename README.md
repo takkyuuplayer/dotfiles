@@ -2,8 +2,8 @@ dotfiles
 ========
 
 [How to use]
-execute install.sh
-install zsh-devel
+execute install.bash
+install zsh-devel if not installed
 
 [References]
 https://github.com/suzuken/dotfiles/blob/master/install.sh
