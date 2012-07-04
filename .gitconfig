@@ -19,3 +19,4 @@
 	tool = vimdiff
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = vim
