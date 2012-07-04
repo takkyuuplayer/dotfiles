@@ -23,7 +23,6 @@ cd $(dirname $0)
 git submodule init
 git submodule update
 
-in_array '..' "${ignore[@]}"
 #create symbolic link
 for dotfile in .?*
 do
