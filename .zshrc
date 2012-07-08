@@ -201,5 +201,6 @@ alias l='ls -CF'
 
 alias vi='vim'
 alias screen='screen -U'
+alias sudo="sudo env PATH=$PATH"
 
 umask 0002
