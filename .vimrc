@@ -149,6 +149,8 @@ set novisualbell
 set backspace=indent,eol,start
 "Windows <CR>
 set ffs=unix
+" <F2> to paste mode.
+set pastetoggle=<F2>
 
 "----------------------------------------------------
 " key mapping
@@ -159,6 +161,7 @@ noremap <BS> 
 noremap! <BS> 
 nmap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
+
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
