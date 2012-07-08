@@ -43,6 +43,8 @@ NeoBundle 'sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'soh335/vim-symfony'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'vim-scripts/autodate.vim'
 filetype on
 filetype plugin indent on     " required!
 
@@ -165,4 +167,4 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
-autocmd BufNewFile * silent! 0r $HOME/.vim/template/%:e.txt
+autocmd BufNewFile *.sh silent! 0r $HOME/.vim/templates/sh.txt
