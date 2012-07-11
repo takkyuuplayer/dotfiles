@@ -106,10 +106,4 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#My Constant
-MY_REPO=https://takkyuuplayer@bitbucket.org/takkyuuplayer
-
-#My alias
-alias c='clear'
-
 export PATH=$HOME/local/bin:$PATH
