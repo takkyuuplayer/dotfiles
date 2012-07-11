@@ -98,7 +98,7 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 " setting
 "-------------------------------------------------
 "indent
-set autoindent
+"set autoindent
 "set nosmartindent
 "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
 set browsedir=buffer 
@@ -163,6 +163,8 @@ noremap <BS> 
 noremap! <BS> 
 nmap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
+" in normal mode, ; -> :
+nnoremap ; :
 
 "----------------------------------------------------
 " テンプレート補完
