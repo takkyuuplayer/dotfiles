@@ -33,6 +33,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -76,15 +77,25 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 
 " quick run
 "-------------------------------------------------
-"augroup QuickRunPHPUnit
-"  autocmd!
-"  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
-"augroup END
+"初期化
+let g:quickrun_config = {}
 
-" 初期化
-"let g:quickrun_config = {}
-" PHPUnit
-"let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+"vimproc
+let g:quickrun_config['_'] = {}
+let g:quickrun_config['_']['runner'] = 'vimproc'
+let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
+
+"phpunit
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
+augroup END
+let g:quickrun_config['php.unit'] = {}
+let g:quickrun_config['php.unit']['outputter/buffer/split'] = 'vertical 35'
+let g:quickrun_config['php.unit']['command'] = 'phpunit'
+let g:quickrun_config['php.unit']['cmdopt'] = ''
+let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
+
 
 " unite.vim
 "-------------------------------------------------
