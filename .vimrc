@@ -41,6 +41,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'SuperTab'
 " :w sudo:%
 NeoBundle 'sudo.vim'
+NeoBundle 'YankRing.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'soh335/vim-symfony'
