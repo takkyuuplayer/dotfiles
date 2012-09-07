@@ -20,6 +20,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+	autocrlf = input
 [alias]
 	co = checkout
 	ci = commit
