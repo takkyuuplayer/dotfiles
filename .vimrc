@@ -191,7 +191,8 @@ nnoremap ; :
 " テンプレート補完
 "----------------------------------------------------
 autocmd BufNewFile *.sh silent! 0r $HOME/.vim/templates/sh.txt
-
+autocmd BufReadPost Makefile silent! set noexpandtab
+"autocmd BufNewFile * silent! 0r $HOME/.vim/template/%:e.txt
 
 "----------------------------------------------------
 " Additional Functions
