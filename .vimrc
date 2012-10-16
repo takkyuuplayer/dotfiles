@@ -50,7 +50,8 @@ NeoBundle 'vim-scripts/autodate.vim'
 NeoBundle 'Source-Explorer-srcexpl.vim'
 " Syntax datas
 NeoBundle 'groenewege/vim-less'
-NeoBundle 'html5'
+NeoBundle 'html5.vim'
+NeoBundle 'JSON.vim'
 filetype on
 filetype plugin indent on     " required!
 
