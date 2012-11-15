@@ -170,7 +170,7 @@ set novisualbell
 "backspace
 set backspace=indent,eol,start
 "Windows <CR>
-set ffs=unix
+"set ffs=unix
 " <F2> to paste mode.
 set pastetoggle=<F2>
 " perl like express
@@ -193,6 +193,8 @@ nnoremap ; :
 "----------------------------------------------------
 autocmd BufReadPost Makefile silent! set noexpandtab
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
+autocmd BufReadPost *.html silent! set shiftwidth=2
+autocmd BufReadPost *.html silent! set tabstop=2
 
 "----------------------------------------------------
 " Additional Functions
