@@ -101,6 +101,16 @@ let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
 "let g:quickrun_config['php.unit']['cmdopt'] = ''
 "let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
 
+"prove
+augroup QuickRunProve
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *.t set filetype=perl.unit
+augroup END
+let g:quickrun_config['perl.unit'] = {}
+let g:quickrun_config['perl.unit']['command'] = 'prove'
+let g:quickrun_config['perl.unit']['cmdopt'] = '--verbose -I ./pl/lib'
+let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
+
 
 " unite.vim
 "-------------------------------------------------
