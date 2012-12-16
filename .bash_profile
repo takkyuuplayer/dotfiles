@@ -14,5 +14,5 @@ export PATH
 if [ $? -eq 9 ]; then
         screen
 else
-        screen -x
+        screen -ls
 fi
