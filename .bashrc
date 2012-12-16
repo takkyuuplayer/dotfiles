@@ -129,3 +129,5 @@ echo -ne   '\e]4;6;#afd7d7\a' # Cyan
 echo -ne  '\e]4;14;#afdfdf\a' # BoldCyan
 echo -ne   '\e]4;7;#e6e6e6\a' # White
 echo -ne  '\e]4;15;#eeeeee\a' # BoldWhite
+
+umask 0002
