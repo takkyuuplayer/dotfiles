@@ -191,10 +191,11 @@ nnoremap ; :
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
-autocmd BufReadPost Makefile silent! set noexpandtab
+autocmd BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
-autocmd BufReadPost *.html silent! set shiftwidth=2
-autocmd BufReadPost *.html silent! set tabstop=2
+autocmd BufReadPost *.html silent! setl shiftwidth=2 tabstop=2
+autocmd BufReadPost *.rb silent! setl shiftwidth=2 tabstop=2
+autocmd BufReadPost *.js silent! setl ft=html
 
 "----------------------------------------------------
 " Additional Functions
