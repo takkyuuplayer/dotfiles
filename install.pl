@@ -15,4 +15,12 @@ my @files = grep {
     not grep { $_  eq $file } @ignore
     } glob ".*";
 
-print join("\n", @files);
+
+for (@files) {
+    if($_ eq '.gitconfig') {
+    }
+    else {
+        `ln -Fis $Bin/$_ $ENV{'HOME'}`
+            if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
+    }
+}
