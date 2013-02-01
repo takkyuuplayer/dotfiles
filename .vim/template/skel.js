@@ -1,5 +1,5 @@
 //<script language="text/javascript">
-var exports = this
+var exports = this;
 (function() {
 
 })();
