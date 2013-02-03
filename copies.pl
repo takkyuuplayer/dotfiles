@@ -25,7 +25,7 @@ for (@files) {
             chomp($line);
             if( $line eq '[user]') {
                 $flag = 1;
-            } elsif ( $line =~ m/~\[.+\]$/ ) {
+            } elsif ( $line =~ m/^\[.+\]$/ ) {
                 $flag = 0;
             }
             push(@userline, $line) if $flag;
