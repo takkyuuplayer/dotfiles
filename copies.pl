@@ -38,7 +38,7 @@ for (@files) {
         close(FH);
     }
     else {
-        `ln -Fis $Bin/$_ $ENV{'HOME'}`
+        `ln -is $Bin/$_ $ENV{'HOME'}`
             if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
     }
 }

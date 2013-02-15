@@ -52,6 +52,7 @@ NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'html5.vim'
 NeoBundle 'JSON.vim'
+NeoBundle 'kchmck/vim-coffee-script'
 filetype on
 filetype plugin indent on     " required!
 
@@ -180,7 +181,7 @@ set novisualbell
 "backspace
 set backspace=indent,eol,start
 "Windows <CR>
-"set ffs=unix
+set ffs=unix
 " <F2> to paste mode.
 set pastetoggle=<F2>
 " perl like express
@@ -205,7 +206,7 @@ autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufReadPost *.rb silent! setl shiftwidth=2 tabstop=2
-autocmd BufNewFile,BufReadPost *.js silent! setl ft=html
+autocmd BufNewFile,BufReadPost *.js silent! setl ft=html shiftwidth=2 tabstop=2
 
 "----------------------------------------------------
 " Additional Functions
