@@ -38,7 +38,7 @@ for (@files) {
         close(FH);
     }
     else {
-        `ln -is $Bin/$_ $ENV{'HOME'}`
+        `mkdir -p $Bin/backup && mv $ENV{'HOME'}/$_ $Bin/backup/ && ln -is $Bin/$_ $ENV{'HOME'}`
             if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
     }
 }
