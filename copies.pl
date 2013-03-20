@@ -17,28 +17,32 @@ my @files = grep {
 
 
 for (@files) {
-    if($_ eq '.gitconfig' && -e "$ENV{'HOME'}/$_") {
-        open(FH, "<$ENV{'HOME'}/$_");
+    if(-e "$ENV{'HOME'}/$_" && readlink("$ENV{'HOME'}/$_") ne "$Bin/$_" ) {
+        `mkdir -p $Bin/backup && cp -rp $ENV{'HOME'}/$_ $Bin/backup/`
+    }
+
+    if($_ eq '.gitconfig') {
         my @userline = ();
-        my $flag = 0;
-        while (my $line = <FH>) {
-            chomp($line);
-            if( $line eq '[user]') {
-                $flag = 1;
-            } elsif ( $line =~ m/^\[.+\]$/ ) {
-                $flag = 0;
+        if(-e "$ENV{'HOME'}/.gitconfig") {
+            open(FH, "<$ENV{'HOME'}/$_");
+            my $flag = 0;
+            while (my $line = <FH>) {
+                chomp($line);
+                if( $line eq '[user]') {
+                    $flag = 1;
+                } elsif ( $line =~ m/^\[.+\]$/ ) {
+                    $flag = 0;
+                }
+                push(@userline, $line) if $flag;
             }
-            push(@userline, $line) if $flag;
+            close(FH);
         }
-        close(FH);
 
         `cp $_ $ENV{'HOME'}`;
         open (FH, ">> $ENV{'HOME'}/$_");
         print FH join("\n", @userline);
         close(FH);
-    }
-    else {
-        `mkdir -p $Bin/backup && mv $ENV{'HOME'}/$_ $Bin/backup/ && ln -is $Bin/$_ $ENV{'HOME'}`
-            if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
+    } else {
+        `ln -is $Bin/$_ $ENV{'HOME'}` if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
     }
 }
