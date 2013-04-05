@@ -52,6 +52,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'html5.vim'
 NeoBundle 'JSON.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'h1mesuke/vim-alignta'
 filetype on
 filetype plugin indent on     " required!
 
