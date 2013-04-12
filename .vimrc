@@ -53,6 +53,7 @@ NeoBundle 'html5.vim'
 NeoBundle 'JSON.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'php-doc.vim'
 filetype on
 filetype plugin indent on     " required!
 
@@ -137,6 +138,13 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 " Source-Explorer-srcexpl.vim
 "-------------------------------------------------
 let g:SrcExpl_UpdateTags = 1
+
+" source $HOME/.vim/plugins/php-doc.vim
+"-------------------------------------------------
+source $HOME/.vim/bundle/PDV--phpDocumentor-for-Vim/plugin/php-doc.vim
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
+nnoremap <C-P> :call PhpDocSingle()<CR>
+vnoremap <C-P> :call PhpDocRange()<CR>-
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
