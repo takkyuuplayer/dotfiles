@@ -106,8 +106,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=$HOME/local/bin:$PATH
-
 # Color
 echo -ne    '\e]10;#d0d0d0\a' # ForegroundColour
 echo -ne    '\e]11;#1c1c1c\a' # BackgroundColour

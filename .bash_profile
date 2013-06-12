@@ -12,3 +12,14 @@ if [ $? -eq 9 ]; then
 else
         screen -ls
 fi
+
+
+xenv=$HOME/.plenv/bin:$HOME/.rbenv/bin
+export PATH=$xenv:$HOME/local/bin:$PATH
+
+if [ -d $HOME/.rbenv/bin ]; then
+    eval "$(rbenv init -)"
+fi
+if [ -d $HOME/.plenv/bin ]; then
+    eval "$(plenv init -)"
+fi
