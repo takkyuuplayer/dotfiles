@@ -138,6 +138,13 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 "-------------------------------------------------
 let g:SrcExpl_UpdateTags = 1
 
+" source $HOME/.vim/plugins/php-doc.vim
+"-------------------------------------------------
+source $HOME/.vim/bundle/PDV--phpDocumentor-for-Vim/plugin/php-doc.vim
+inoremap ,php <ESC>:call PhpDocSingle()<CR>i
+nnoremap ,php :call PhpDocSingle()<CR>
+vnoremap ,php :call PhpDocRange()<CR>-
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
@@ -197,12 +204,21 @@ set backspace=indent,eol,start
 set ffs=unix
 " <F2> to paste mode.
 set pastetoggle=<F2>
+
+""-------------------------------------------------------------------------------
+" Mapping <jump-tag>
+"-------------------------------------------------------------------------------
+" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
+" map/noremap           @            -              -                  @
+" nmap/nnoremap         @            -              -                  -
+" imap/inoremap         -            @              -                  -
+" cmap/cnoremap         -            -              @                  -
+" vmap/vnoremap         -            -              -                  @
+" map!/noremap!         -            @              @                  -
+"-------------------------------------------------------------------------------
 " perl like express
 nnoremap / /\v
 vnoremap / /\v
-"----------------------------------------------------
-" key mapping
-"----------------------------------------------------
 noremap  
 noremap!  
 noremap <BS> 
@@ -234,3 +250,4 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
+set ts=4
