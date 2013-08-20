@@ -29,12 +29,9 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'SuperTab'
@@ -46,7 +43,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'soh335/vim-symfony'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-scripts/autodate.vim'
-NeoBundle 'Source-Explorer-srcexpl.vim'
 " Syntax datas
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'html5.vim'
@@ -137,13 +133,6 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 " Source-Explorer-srcexpl.vim
 "-------------------------------------------------
 let g:SrcExpl_UpdateTags = 1
-
-" source $HOME/.vim/plugins/php-doc.vim
-"-------------------------------------------------
-source $HOME/.vim/bundle/PDV--phpDocumentor-for-Vim/plugin/php-doc.vim
-inoremap ,php <ESC>:call PhpDocSingle()<CR>i
-nnoremap ,php :call PhpDocSingle()<CR>
-vnoremap ,php :call PhpDocRange()<CR>-
 
 "-------------------------------------------------
 " setting
