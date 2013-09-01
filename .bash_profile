@@ -2,16 +2,15 @@
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
 
 # User specific environment and startup programs
 
-if [ $? -eq 9 ]; then
-        screen
-else
-        screen -ls
+if type screen >/dev/null 2>&1; then
+    screen -ls
 fi
+alias tmux='tmux -u'
 
 
 xenv=$HOME/.plenv/bin:$HOME/.rbenv/bin:$HOME/.pyenv/bin
@@ -26,3 +25,6 @@ fi
 if [ -d $HOME/.pyenv/bin ]; then
     eval "$(pyenv init -)"
 fi
+# DO NOT EDIT THE FOLLOWING TWO LINES
+#### LPM(/home/takkyuuplayer/lcl)
+source /home/takkyuuplayer/lcl/.bash_profile
