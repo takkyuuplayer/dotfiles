@@ -129,6 +129,3 @@ echo -ne   '\e]4;7;#e6e6e6\a' # White
 echo -ne  '\e]4;15;#eeeeee\a' # BoldWhite
 
 umask 0002
-# DO NOT EDIT THE FOLLOWING TWO LINES
-#### LPM(/home/takkyuuplayer/lcl)
-source /home/takkyuuplayer/lcl/.bashrc
