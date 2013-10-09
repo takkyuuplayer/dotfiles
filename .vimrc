@@ -116,8 +116,8 @@ augroup QuickRunProve
   autocmd BufWinEnter,BufNewFile *.t set filetype=perl.unit
 augroup END
 let g:quickrun_config['perl.unit'] = {}
-let g:quickrun_config['perl.unit']['command'] = 'prove'
-let g:quickrun_config['perl.unit']['cmdopt'] = '--verbose -I ./pl/lib'
+let g:quickrun_config['perl.unit']['command'] = 'carton'
+let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- prove --verbose -Ilib'
 let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
 
 
@@ -224,6 +224,7 @@ autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.js silent! setl ft=html
+autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 
 "----------------------------------------------------
 " Additional Functions
