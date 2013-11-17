@@ -34,7 +34,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'SuperTab'
 " :w sudo:%
 NeoBundle 'sudo.vim'
 NeoBundle 'YankRing.vim'

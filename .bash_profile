@@ -26,3 +26,6 @@ fi
 if [ -d $HOME/.pyenv/bin ]; then
     eval "$(pyenv init -)"
 fi
+# DO NOT EDIT THE FOLLOWING TWO LINES
+#### LPM(/$HOME/lcl)
+source $HOME/lcl/.bash_profile
