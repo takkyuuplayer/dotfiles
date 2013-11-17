@@ -206,6 +206,3 @@ alias chef-solo="chef-solo -c ./solo.rb -j ./chef.json"
 alias bundle-install='bundle install --path vendor/bundle'
 zstyle ':completion:*:sudo:*' command-path $PATH
 umask 0002
-# DO NOT EDIT THE FOLLOWING TWO LINES
-#### LPM($HOME/lcl)
-source $HOME/lcl/.zshrc
