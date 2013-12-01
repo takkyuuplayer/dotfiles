@@ -45,7 +45,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'soh335/vim-symfony'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-scripts/autodate.vim'
-NeoBundle 'Source-Explorer-srcexpl.vim'
 " Syntax datas
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'html5.vim'
@@ -132,17 +131,6 @@ nnoremap <silent> <C-O><C-F> :<C-U>UniteWithBufferDir -buffer-name=files file bo
 nnoremap <silent> <C-O><C-N> :<C-U>Unite -buffer-name=files file/new<CR>
 nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
-
-" Source-Explorer-srcexpl.vim
-"-------------------------------------------------
-let g:SrcExpl_UpdateTags = 1
-
-" source $HOME/.vim/plugins/php-doc.vim
-"-------------------------------------------------
-source $HOME/.vim/bundle/PDV--phpDocumentor-for-Vim/plugin/php-doc.vim
-inoremap ,php <ESC>:call PhpDocSingle()<CR>i
-nnoremap ,php :call PhpDocSingle()<CR>
-vnoremap ,php :call PhpDocRange()<CR>-
 
 "-------------------------------------------------
 " setting
