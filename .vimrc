@@ -119,6 +119,12 @@ let g:quickrun_config['perl.unit']['command'] = 'carton'
 let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- prove --verbose -Ilib'
 let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
 
+"gosh
+let g:quickrun_config['scm'] = {}
+let g:quickrun_config['scm']['command'] = 'gosh'
+let g:quickrun_config['scm']['cmdopt'] = ''
+let g:quickrun_config['scm']['exec'] = '%c %o %s'
+
 
 " unite.vim
 "-------------------------------------------------
