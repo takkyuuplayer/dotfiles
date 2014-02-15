@@ -141,6 +141,7 @@ nnoremap <silent> <C-O><C-O> :<C-U>Unite -buffer-name=files file bookmark file/n
 nnoremap <silent> <C-O><C-F> :<C-U>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
 nnoremap <silent> <C-O><C-N> :<C-U>Unite -buffer-name=files file/new<CR>
 nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> <C-O> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 
 "-------------------------------------------------
