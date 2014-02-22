@@ -5,15 +5,6 @@ install:
 	git submodule update
 	perl ./copies.pl
 
-lpm:
-	curl -O http://www.kasahara.ws/lpm/lpm
-	chmod +x lpm
-	./lpm initlocaldir
-	./lpm install compiler-env
-	rm ./lpm
-	cd
-	git clone git@github.com:takkyuuplayer/lpm.git
-
 plenv:
 	git clone git://github.com/tokuhirom/plenv.git ~/.plenv/
 	git clone git://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
