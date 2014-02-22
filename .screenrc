@@ -1,5 +1,4 @@
 escape ^B^B
-shell zsh
 startup_message off
 bind , title
 hardstatus on
