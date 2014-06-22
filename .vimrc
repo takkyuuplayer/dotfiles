@@ -35,28 +35,28 @@ else
     NeoBundle 'Shougo/neocomplcache'
 endif
 
+NeoBundle 'amdt/vim-niji'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'html5.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'soh335/vim-symfony'
+NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
-" :w sudo:%
-NeoBundle 'sudo.vim'
-NeoBundle 'YankRing.vim'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'soh335/vim-symfony'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-scripts/autodate.vim'
-" Syntax datas
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'html5.vim'
+NeoBundle 'YankRing.vim'
 NeoBundle 'JSON.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'h1mesuke/vim-alignta'
+
 filetype on
 filetype plugin indent on     " required!
 
