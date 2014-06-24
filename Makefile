@@ -14,4 +14,7 @@ pyenv:
 rbenv:
 	git clone git://github.com/sstephenson/rbenv.git ~/.rbenv/
 	git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build/
+ndenv:
+	git clone git://github.com/riywo/ndenv.git ~/.ndenv/
+	git clone git://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build/
 
