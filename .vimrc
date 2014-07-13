@@ -236,7 +236,6 @@ nnoremap ; :
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js silent! setl shiftwidth=2 tabstop=2
-autocmd BufNewFile *.js silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 
 "----------------------------------------------------
