@@ -5,15 +5,6 @@ install:
 	git submodule update
 	perl ./copies.pl
 
-lpm:
-	curl -O http://www.kasahara.ws/lpm/lpm
-	chmod +x lpm
-	./lpm initlocaldir
-	./lpm install compiler-env
-	rm ./lpm
-	cd
-	git clone git@github.com:takkyuuplayer/lpm.git
-
 plenv:
 	git clone git://github.com/tokuhirom/plenv.git ~/.plenv/
 	git clone git://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
@@ -23,4 +14,7 @@ pyenv:
 rbenv:
 	git clone git://github.com/sstephenson/rbenv.git ~/.rbenv/
 	git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build/
+ndenv:
+	git clone git://github.com/riywo/ndenv.git ~/.ndenv/
+	git clone git://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build/
 

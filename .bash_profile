@@ -14,7 +14,7 @@ else
 fi
 
 
-xenv=$HOME/.plenv/bin:$HOME/.rbenv/bin:$HOME/.pyenv/bin
+xenv=$HOME/.plenv/bin:$HOME/.rbenv/bin:$HOME/.pyenv/bin:$HOME/.ndenv/bin
 export PATH=$xenv:$HOME/local/bin:$PATH
 
 if [ -d $HOME/.rbenv/bin ]; then
@@ -25,4 +25,7 @@ if [ -d $HOME/.plenv/bin ]; then
 fi
 if [ -d $HOME/.pyenv/bin ]; then
     eval "$(pyenv init -)"
+fi
+if [ -d $HOME/.ndenv/bin ]; then
+    eval "$(ndenv init -)"
 fi

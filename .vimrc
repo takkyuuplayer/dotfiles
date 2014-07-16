@@ -35,27 +35,28 @@ else
     NeoBundle 'Shougo/neocomplcache'
 endif
 
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'amdt/vim-niji'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'html5.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'soh335/vim-symfony'
+NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
-" :w sudo:%
-NeoBundle 'sudo.vim'
-NeoBundle 'YankRing.vim'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'soh335/vim-symfony'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-scripts/autodate.vim'
-" Syntax datas
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'html5.vim'
+NeoBundle 'YankRing.vim'
 NeoBundle 'JSON.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'h1mesuke/vim-alignta'
+
 filetype on
 filetype plugin indent on     " required!
 
@@ -233,7 +234,6 @@ nnoremap ; :
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js,*.tx silent! setl shiftwidth=2 tabstop=2
-autocmd BufNewFile *.js silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
 
