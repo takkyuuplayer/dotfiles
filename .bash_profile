@@ -13,19 +13,8 @@ else
         screen -ls
 fi
 
+export PATH=$HOME/.anyenv/bin:$HOME/local/bin:$PATH
 
-xenv=$HOME/.plenv/bin:$HOME/.rbenv/bin:$HOME/.pyenv/bin:$HOME/.ndenv/bin
-export PATH=$xenv:$HOME/local/bin:$PATH
-
-if [ -d $HOME/.rbenv/bin ]; then
-    eval "$(rbenv init -)"
-fi
-if [ -d $HOME/.plenv/bin ]; then
-    eval "$(plenv init -)"
-fi
-if [ -d $HOME/.pyenv/bin ]; then
-    eval "$(pyenv init -)"
-fi
-if [ -d $HOME/.ndenv/bin ]; then
-    eval "$(ndenv init -)"
+if [ -d $HOME/.anyenv/bin ]; then
+    eval "$(anyenv init -)"
 fi
