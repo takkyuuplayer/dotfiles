@@ -199,10 +199,6 @@ alias l='ls -CF'
 ###################################################
 [ -f $HOME/.zshrc_mine ] && source $HOME/.zshrc_mine
 
-alias vi='vim'
 alias screen='screen -U'
-alias sudo="sudo env PATH=$PATH"
-alias chef-solo="chef-solo -c ./solo.rb -j ./chef.json"
-alias bundle-install='bundle install --path vendor/bundle'
 zstyle ':completion:*:sudo:*' command-path $PATH
 umask 0002
