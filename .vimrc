@@ -38,7 +38,6 @@ endif
 NeoBundle 'amdt/vim-niji'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'html5.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
