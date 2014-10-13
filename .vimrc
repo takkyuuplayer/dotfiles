@@ -133,6 +133,12 @@ let g:quickrun_config['scm']['command'] = 'gosh'
 let g:quickrun_config['scm']['cmdopt'] = ''
 let g:quickrun_config['scm']['exec'] = '%c %o %s'
 
+"coffee
+let g:quickrun_config['coffee'] = {}
+let g:quickrun_config['coffee']['command'] = 'coffee'
+let g:quickrun_config['coffee']['cmdopt'] = ''
+let g:quickrun_config['coffee']['exec'] = '%c %o %s'
+
 
 " unite.vim
 "-------------------------------------------------
