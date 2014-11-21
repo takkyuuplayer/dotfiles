@@ -36,6 +36,7 @@ else
 endif
 
 NeoBundle 'amdt/vim-niji'
+NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kchmck/vim-coffee-script'
