@@ -3,6 +3,10 @@ export GREP_OPTIONS="--exclude=\*.svn\* "
 export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
 export EDITOR="vim"
 
+if [ -d $LPM_LIB/slib ]; then
+    export SCHEME_LIBRARY_PATH=$LPM_LIB/slib/
+fi
+
 # Color
 echo -ne    '\e]10;#d0d0d0\a' # ForegroundColour
 echo -ne    '\e]11;#1c1c1c\a' # BackgroundColour
