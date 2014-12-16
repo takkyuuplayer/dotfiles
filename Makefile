@@ -6,5 +6,5 @@ install:
 	perl ./copies.pl
 
 anyenv:
-	git clone https://github.com/riywo/anyenv ~/.anyenv
+	git clone https://github.com/takkyuuplayer/anyenv ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update

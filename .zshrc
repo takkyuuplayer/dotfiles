@@ -103,7 +103,7 @@ function _git_untracked_or_not_pushed() {
     return 0
 }
 # Display VCS info on the right
-RPROMPT="%1(v|%F{green}%1v%2v%f|)"
+RPROMPT="(%D{%Y/%m/%d %T}) %1(v|%F{green}%1v%2v%f|)"
 
 ###################################################
 # Prompt
