@@ -7,3 +7,4 @@ vbell off
 encoding utf8
 defencoding utf8 utf8
 defscrollback 10000
+shelltitle "$ |bash"

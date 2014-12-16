@@ -36,11 +36,13 @@ else
 endif
 
 NeoBundle 'amdt/vim-niji'
+NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
@@ -126,11 +128,23 @@ let g:quickrun_config['perl.unit']['command'] = 'carton'
 let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- prove --verbose -Ilib'
 let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
 
+"perl debug
+let g:quickrun_config['perl'] = {}
+let g:quickrun_config['perl']['command'] = 'carton'
+let g:quickrun_config['perl']['cmdopt'] = 'exec -- perl -d ./local/bin/morbo index.pl'
+let g:quickrun_config['perl']['exec'] = '%c %o %s'
+
 "gosh
 let g:quickrun_config['scm'] = {}
 let g:quickrun_config['scm']['command'] = 'gosh'
 let g:quickrun_config['scm']['cmdopt'] = ''
 let g:quickrun_config['scm']['exec'] = '%c %o %s'
+
+"coffee
+let g:quickrun_config['coffee'] = {}
+let g:quickrun_config['coffee']['command'] = 'coffee'
+let g:quickrun_config['coffee']['cmdopt'] = ''
+let g:quickrun_config['coffee']['exec'] = '%c %o %s'
 
 
 " unite.vim
@@ -226,14 +240,21 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 " in normal mode, ; -> :
 nnoremap ; :
 
+map ,pt <Esc>:%! perltidy -se<CR>
+map ,ptv <Esc>:'<,'>! perltidy -se<CR>
+
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js,*.tx silent! setl shiftwidth=2 tabstop=2
+autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
+
+autocmd BufNewFile *.pm call s:pm_template()
+au! BufWritePost *.pm call s:check_package_name()
 
 "----------------------------------------------------
 " Additional Functions
@@ -250,3 +271,41 @@ augroup vimrc-auto-mkdir  " {{{
   endfunction  " }}}
 augroup END  " }}}
 set ts=4
+
+" perl package name
+function! s:pm_template()
+    let path = substitute(expand('%'), '.*lib/', '', 'g')
+    let path = substitute(path, '[\\/]', '::', 'g')
+    let path = substitute(path, '\.pm$', '', 'g')
+
+    call append(0, 'package ' . path . ';')
+    call append(1, 'use common::sense;')
+    call append(2, '')
+    call append(3, '')
+    call append(4, '')
+    call append(5, '1;')
+    call cursor(6, 0)
+    " echomsg path
+endfunction
+
+function! s:get_package_name()
+    let mx = '^\s*package\s\+\([^ ;]\+\)'
+    for line in getline(1, 5)
+        if line =~ mx
+        return substitute(matchstr(line, mx), mx, '\1', '')
+        endif
+    endfor
+    return ""
+endfunction
+
+function! s:check_package_name()
+    let path = substitute(expand('%:p'), '\\', '/', 'g')
+    let name = substitute(s:get_package_name(), '::', '/', 'g') . '.pm'
+    if path[-len(name):] != name
+        echohl WarningMsg
+        echomsg "ぱっけーじめいと、ほぞんされているぱすが、ちがうきがします！"
+        echomsg "ちゃんとなおしてください＞＜"
+        echohl None
+    endif
+endfunction
+
