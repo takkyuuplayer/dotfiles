@@ -29,11 +29,6 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-if has('lua')
-    NeoBundle 'Shougo/neocomplete'
-else
-    NeoBundle 'Shougo/neocomplcache'
-endif
 
 NeoBundle 'amdt/vim-niji'
 NeoBundle 'evidens/vim-twig'
@@ -42,7 +37,11 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/neocomplete'
+if has('lua')
+    NeoBundle 'Shougo/neocomplete'
+else
+    NeoBundle 'Shougo/neocomplcache'
+endif
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
@@ -160,62 +159,34 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
-"indent
-"set autoindent
-"set nosmartindent
-"ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
-set browsedir=buffer 
-"クリップボードをWindowsと連携
+set backspace=indent,eol,start
+set browsedir=buffer
 set clipboard=unnamed
-"Vi互換をオフ
-set nocompatible
-"タブの代わりに空白文字を挿入する
+set cursorline
 set expandtab
-"変更中のファイルでも、保存しないで他のファイルを表示
+set ffs=unix
 set hidden
-"インクリメンタルサーチを行う
+set hlsearch
+set ignorecase
 set incsearch
-"listで表示される文字のフォーマットを指定する
+set laststatus=2
 set list
 set listchars=tab:>-,trail:^
-"set listchars=eol:$,tab:>\ ,extends:<
-"行番号を表示する
-set number
-"シフト移動幅
-set shiftwidth=4
-"閉じ括弧が入力されたとき、対応する括弧を表示する
-set showmatch
-"検索時に大文字を含んでいたら大/小を区別
-set ignorecase
-set smartcase
-"行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
-set smarttab
-"ファイル内の <Tab> が対応する空白の数
-set tabstop=4
-"カーソルを行頭、行末で止まらないようにする
-set whichwrap=b,s,h,l,<,>,[,]
-"検索をファイルの先頭へループしない
-set nowrapscan
-"カーソルライン
-set cursorline
-"highlight search
-set hlsearch
-"Status Line
-set laststatus=2
-set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-"tanew, sp autocomplete
-set wildmode=list:longest
-"backup files"
 set nobackup
+set nocompatible
 set noswapfile
-"alert
 set novisualbell
-"backspace
-set backspace=indent,eol,start
-"Windows <CR>
-set ffs=unix
-" <F2> to paste mode.
+set nowrapscan
+set number
 set pastetoggle=<F2>
+set shiftwidth=4
+set showmatch
+set smartcase
+set smarttab
+set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set tabstop=4
+set wildmode=list:longest
+set whichwrap=b,s,h,l,<,>,[,]
 
 ""-------------------------------------------------------------------------------
 " Mapping <jump-tag>
@@ -308,4 +279,3 @@ function! s:check_package_name()
         echohl None
     endif
 endfunction
-
