@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "${BASH_SOURCE:-$0}")"; cd ../../
+trap "rm -f .git/tags.$$" EXIT
+ctags --tag-relative -R -f .git/tags.$$ --exclude=.git
+mv .git/tags.$$ .git/tags
