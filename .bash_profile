@@ -13,7 +13,7 @@ else
         screen -ls
 fi
 
-export PATH=$HOME/.anyenv/bin:$HOME/local/bin:$PATH
+export PATH=$HOME/.anyenv/bin:$HOME/local/bin:$PATH:$HOME/.composer/vendor/bin
 
 if [ -d $HOME/.anyenv/bin ]; then
     eval "$(anyenv init -)"
