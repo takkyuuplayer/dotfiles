@@ -199,6 +199,14 @@ alias l='ls -CF'
 ###################################################
 [ -f $HOME/.zshrc_mine ] && source $HOME/.zshrc_mine
 
+if [ -d $HOME/.anyenv/bin ]; then
+    eval "$(anyenv init -)"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
+
 alias screen='screen -U'
 zstyle ':completion:*:sudo:*' command-path $PATH
 umask 0002
