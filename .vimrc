@@ -171,7 +171,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:>-,trail:^
+set listchars=tab:>_,trail:^
 set nobackup
 set nocompatible
 set noswapfile
@@ -218,7 +218,7 @@ map ,ptv <Esc>:'<,'>! perltidy -se<CR>
 " テンプレート補完
 "----------------------------------------------------
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
-autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
+autocmd BufNewFile,BufReadPost Makefile,*.snip silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js,*.tx silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
@@ -279,3 +279,7 @@ function! s:check_package_name()
         echohl None
     endif
 endfunction
+
+let s:my_snippet = '~/.snippet_mine/'
+let g:neosnippet#snippets_directory = s:my_snippet
+
