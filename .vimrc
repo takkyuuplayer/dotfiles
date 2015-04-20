@@ -171,7 +171,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:>-,trail:^
+set listchars=tab:>_,trail:^
 set nobackup
 set nocompatible
 set noswapfile
@@ -220,7 +220,7 @@ map ,phfv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
 " テンプレート補完
 "----------------------------------------------------
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
-autocmd BufNewFile,BufReadPost Makefile silent! setl noexpandtab
+autocmd BufNewFile,BufReadPost Makefile,*.snip silent! setl noexpandtab
 autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js,*.tx silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
@@ -282,7 +282,7 @@ function! s:check_package_name()
     endif
 endfunction
 
-" for syntastic  -----------------------
+" syntastic
 let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "active_filetypes": ["php"]
@@ -290,3 +290,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_php_checkers = ["phpcs"]
 let g:syntastic_php_phpcs_args="--standard=psr2"
+
+" neosnippet
+let s:my_snippet = '~/.snippet_mine/'
+let g:neosnippet#snippets_directory = s:my_snippet

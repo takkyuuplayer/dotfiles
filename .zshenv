@@ -28,3 +28,8 @@ echo -ne   '\e]4;6;#afd7d7\a' # Cyan
 echo -ne  '\e]4;14;#afdfdf\a' # BoldCyan
 echo -ne   '\e]4;7;#e6e6e6\a' # White
 echo -ne  '\e]4;15;#eeeeee\a' # BoldWhite
+
+alias perltidy-all="git diff --name-status origin/master... | awk '{print \$2}' | grep \"\\\\.pm\$\" | xargs perltidy -b;
+git diff --name-status origin/master... | awk '{print \$2}' | grep \"\\\\.t\$\" | xargs perltidy -b;
+find ./ -name '*.bak'  | xargs rm;
+"
