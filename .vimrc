@@ -213,6 +213,8 @@ nnoremap ; :
 
 map ,pt <Esc>:%! perltidy -se<CR>
 map ,ptv <Esc>:'<,'>! perltidy -se<CR>
+map ,phf <Esc>:%! phpcbf --standard=psr2<CR>
+map ,phfv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
 
 "----------------------------------------------------
 " テンプレート補完
