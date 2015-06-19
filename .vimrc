@@ -31,10 +31,12 @@ if has('vim_starting')
 endif
 
 NeoBundle 'amdt/vim-niji'
+NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'maksimr/vim-jsbeautify'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
 if has('lua')
@@ -215,6 +217,9 @@ map ,pt <Esc>:%! perltidy -se<CR>
 map ,ptv <Esc>:'<,'>! perltidy -se<CR>
 map ,phf <Esc>:%! phpcbf --standard=psr2<CR>
 map ,phfv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType html,php vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 "----------------------------------------------------
 " テンプレート補完
@@ -283,10 +288,6 @@ function! s:check_package_name()
 endfunction
 
 " syntastic
-let g:syntastic_mode_map = {
-  \ "mode": "active",
-  \ "active_filetypes": ["php"]
-  \}
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_php_checkers = ["phpcs"]
 let g:syntastic_php_phpcs_args="--standard=psr2"
