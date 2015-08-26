@@ -4,6 +4,7 @@ brew 'openssl'
 brew 'libevent'
 brew 'tmux'
 brew 'vim'
+brew 'colordiff'
 
 cask 'atom'
 cask 'filezilla'
