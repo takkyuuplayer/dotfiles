@@ -8,6 +8,7 @@ brew 'colordiff'
 
 cask 'atom'
 cask 'filezilla'
+cask 'google-japanese-ime'
 cask 'sublime-text'
 cask 'virtualbox'
 cask 'vagrant'
