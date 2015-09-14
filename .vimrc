@@ -288,10 +288,8 @@ function! s:check_package_name()
 endfunction
 
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_php_checkers = ["phpcs"]
-let g:syntastic_php_phpcs_args="--standard=psr2"
 
 " neosnippet
 let s:my_snippet = '~/.snippet_mine/'
