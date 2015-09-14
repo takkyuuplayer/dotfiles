@@ -8,6 +8,8 @@
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 	delete-merged-remote-branches = !git branch -a --merged | grep -v master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%
 	ctags = !.git/hooks/ctags
+	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
 [color]
 	branch = auto
 	diff = auto
