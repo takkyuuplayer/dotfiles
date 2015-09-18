@@ -132,7 +132,7 @@ let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
 "perl debug
 let g:quickrun_config['perl'] = {}
 let g:quickrun_config['perl']['command'] = 'carton'
-let g:quickrun_config['perl']['cmdopt'] = 'exec -- perl -d ./local/bin/morbo index.pl'
+let g:quickrun_config['perl']['cmdopt'] = 'exec -- perl -Ilib'
 let g:quickrun_config['perl']['exec'] = '%c %o %s'
 
 "gosh
