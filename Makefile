@@ -14,3 +14,7 @@ mac:
 	#ruby -e ${HOMEBREW}
 	brew tap Homebrew/brewdler
 	brew bundle
+
+brew_dump:
+	rm Brewfile
+	brew brewdler dump
