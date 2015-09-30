@@ -11,7 +11,7 @@ anyenv:
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 
 mac:
-	#ruby -e ${HOMEBREW}
+	which brew || ruby -e ${HOMEBREW}
 	brew tap Homebrew/brewdler
 	brew bundle
 
