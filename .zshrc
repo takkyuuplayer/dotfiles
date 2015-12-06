@@ -8,7 +8,7 @@ plugins=(git svn vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%F %T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
-%{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
+%{$fg[blue]%}->%{$fg_bold[blue]%} $%{$reset_color%} '
 
 ###################################################
 # history
@@ -52,12 +52,14 @@ alias screen='screen -U'
 ###################################################
 [ -f $HOME/.zshrc_mine ] && source $HOME/.zshrc_mine
 
-if [ -d $HOME/.anyenv/bin ]; then
+if [ -d ${HOME}/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
     eval "$(anyenv init -)"
     for D in `ls $HOME/.anyenv/envs`
     do
         export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
+
 fi
 
 umask 0002
