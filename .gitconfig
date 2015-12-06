@@ -1,4 +1,5 @@
 [alias]
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	co = checkout
 	ci = commit
 	st = status
