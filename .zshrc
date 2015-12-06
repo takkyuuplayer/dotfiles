@@ -1,9 +1,9 @@
 ###################################################
-# oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###################################################
-
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="candy"
+CASE_SENSITIVE="true"
 plugins=(git svn vi-mode)
 source $ZSH/oh-my-zsh.sh
 
