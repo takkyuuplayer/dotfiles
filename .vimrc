@@ -21,16 +21,27 @@ endif
 "-------------------------------------------------
 " NeoBundle
 "-------------------------------------------------
-set nocompatible               " be iMproved
-filetype off                   " required!
-filetype plugin indent off     " required!
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
 if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundle 'amdt/vim-niji'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
 NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
@@ -61,12 +72,23 @@ NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'travisjeffery/vim-auto-mkdir'
 NeoBundle 'vim-scripts/autodate.vim'
 NeoBundle 'YankRing.vim'
 NeoBundle 'JSON.vim'
 
-filetype on
-filetype plugin indent on     " required!
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+"-------------------------------------------------
+" plugin
+"-------------------------------------------------
 
 " neocomplcache
 " -------------------------------------
@@ -165,6 +187,17 @@ nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 
+" syntastic
+"-------------------------------------------------
+let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_auto_loc_list = 1
+
+" neosnippet
+"-------------------------------------------------
+let s:my_snippet = '~/.snippet_mine/'
+let g:neosnippet#snippets_directory = s:my_snippet
+
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
@@ -244,18 +277,6 @@ au! BufWritePost *.pm call s:check_package_name()
 "----------------------------------------------------
 " Additional Functions
 "----------------------------------------------------
-" Directory creation
-augroup vimrc-auto-mkdir  " {{{
-  autocmd!
-  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-  function! s:auto_mkdir(dir, force)  " {{{
-    if !isdirectory(a:dir) && (a:force ||
-    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
-  endfunction  " }}}
-augroup END  " }}}
-set ts=4
 
 " perl package name
 function! s:pm_template()
@@ -294,10 +315,3 @@ function! s:check_package_name()
     endif
 endfunction
 
-" syntastic
-let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_auto_loc_list = 1
-
-" neosnippet
-let s:my_snippet = '~/.snippet_mine/'
-let g:neosnippet#snippets_directory = s:my_snippet
