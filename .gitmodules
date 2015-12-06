@@ -3,4 +3,4 @@
 	url = https://github.com/Shougo/neobundle.vim
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
