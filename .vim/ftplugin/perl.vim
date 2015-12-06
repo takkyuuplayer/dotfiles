@@ -1,3 +1,3 @@
-map ,st <Esc>:%! perltidy -se<CR>
-map ,stv <Esc>:'<,'>! perltidy -se<CR>
+map ,ct <Esc>:%! perltidy -se<CR>
+map ,ctv <Esc>:'<,'>! perltidy -se<CR>
 

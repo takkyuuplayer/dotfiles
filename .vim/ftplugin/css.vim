@@ -1,4 +1,4 @@
-map ,st  :call CSSBeautify()<cr>
-map <buffer> ,stv :call RangeCSSBeautify()<cr>
+map ,ct  :call CSSBeautify()<cr>
+map <buffer> ,ctv :call RangeCSSBeautify()<cr>
 
 

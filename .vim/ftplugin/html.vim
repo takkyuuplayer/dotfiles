@@ -1,4 +1,5 @@
-map ,st  :call HtmlBeautify()<cr>
-map <buffer> ,stv :call RangeHtmlBeautify()<cr>
+setl shiftwidth=2
+setl tabstop=2
 
-
+map ,ct  :call HtmlBeautify()<cr>
+map <buffer> ,ctv :call RangeHtmlBeautify()<cr>
