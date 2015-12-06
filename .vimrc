@@ -81,6 +81,7 @@ call neobundle#end()
 
 " Required:
 filetype plugin indent on
+filetype plugin on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
@@ -253,10 +254,6 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 " in normal mode, ; -> :
 nnoremap ; :
 
-map ,pt <Esc>:%! perltidy -se<CR>
-map ,ptv <Esc>:'<,'>! perltidy -se<CR>
-map ,phf <Esc>:%! phpcbf --standard=psr2<CR>
-map ,phfv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
 autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
 autocmd FileType html,php vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
