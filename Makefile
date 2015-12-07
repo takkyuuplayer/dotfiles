@@ -1,4 +1,5 @@
 HOMEBREW=$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)
+
 all: install
 
 install:
@@ -7,10 +8,17 @@ install:
 	perl ./copies.pl
 
 anyenv:
-	git clone https://github.com/takkyuuplayer/anyenv ~/.anyenv
+	git clone https://github.com/riywo/anyenv.git ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 
+help:
+	cat Makefile
+
 mac:
-	#ruby -e ${HOMEBREW}
+	which brew || ruby -e ${HOMEBREW}
 	brew tap Homebrew/brewdler
 	brew bundle
+
+brew_dump:
+	rm Brewfile
+	brew brewdler dump

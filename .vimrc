@@ -21,16 +21,27 @@ endif
 "-------------------------------------------------
 " NeoBundle
 "-------------------------------------------------
-set nocompatible               " be iMproved
-filetype off                   " required!
-filetype plugin indent off     " required!
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
 if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundle 'amdt/vim-niji'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
 NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
@@ -48,18 +59,37 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 NeoBundle 'soh335/vim-symfony'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'travisjeffery/vim-auto-mkdir'
 NeoBundle 'vim-scripts/autodate.vim'
 NeoBundle 'YankRing.vim'
 NeoBundle 'JSON.vim'
 
-filetype on
-filetype plugin indent on     " required!
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+filetype plugin on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+"-------------------------------------------------
+" plugin
+"-------------------------------------------------
 
 " neocomplcache
 " -------------------------------------
@@ -158,6 +188,17 @@ nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 
+" syntastic
+"-------------------------------------------------
+let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_auto_loc_list = 1
+
+" neosnippet
+"-------------------------------------------------
+let s:my_snippet = '~/.snippet_mine/'
+let g:neosnippet#snippets_directory = s:my_snippet
+
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
@@ -213,20 +254,11 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 " in normal mode, ; -> :
 nnoremap ; :
 
-map ,pt <Esc>:%! perltidy -se<CR>
-map ,ptv <Esc>:'<,'>! perltidy -se<CR>
-map ,phf <Esc>:%! phpcbf --standard=psr2<CR>
-map ,phfv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType html,php vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
 autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
-autocmd BufNewFile,BufReadPost Makefile,*.snip silent! setl noexpandtab
-autocmd BufNewFile,BufReadPost *.html,*.rb,*.coffee,*.js,*.tx silent! setl shiftwidth=2 tabstop=2
+autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
@@ -237,18 +269,6 @@ au! BufWritePost *.pm call s:check_package_name()
 "----------------------------------------------------
 " Additional Functions
 "----------------------------------------------------
-" Directory creation
-augroup vimrc-auto-mkdir  " {{{
-  autocmd!
-  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-  function! s:auto_mkdir(dir, force)  " {{{
-    if !isdirectory(a:dir) && (a:force ||
-    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
-  endfunction  " }}}
-augroup END  " }}}
-set ts=4
 
 " perl package name
 function! s:pm_template()
@@ -287,10 +307,3 @@ function! s:check_package_name()
     endif
 endfunction
 
-" syntastic
-let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_auto_loc_list = 1
-
-" neosnippet
-let s:my_snippet = '~/.snippet_mine/'
-let g:neosnippet#snippets_directory = s:my_snippet
