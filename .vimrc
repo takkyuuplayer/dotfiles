@@ -42,6 +42,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
+NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
@@ -90,6 +91,10 @@ NeoBundleCheck
 "-------------------------------------------------
 " plugin
 "-------------------------------------------------
+
+" autoformat
+" -------------------------------------
+au BufWrite * :Autoformat
 
 " neocomplcache
 " -------------------------------------
