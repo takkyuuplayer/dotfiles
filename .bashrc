@@ -129,3 +129,8 @@ echo -ne   '\e]4;7;#e6e6e6\a' # White
 echo -ne  '\e]4;15;#eeeeee\a' # BoldWhite
 
 umask 0002
+
+# http://www.kasahara.ws/lpm/introduction.html
+if [ -d $HOME/lcl ]; then
+    source $HOME/lcl/.bashrc
+fi

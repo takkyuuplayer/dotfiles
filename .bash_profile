@@ -22,3 +22,8 @@ if [ -d $HOME/.anyenv/bin ]; then
         export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
 fi
+
+# http://www.kasahara.ws/lpm/introduction.html
+if [ -d $HOME/lcl ]; then
+    source $HOME/lcl/.bash_profile
+fi

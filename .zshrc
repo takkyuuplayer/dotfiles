@@ -63,3 +63,9 @@ if [ -d ${HOME}/.anyenv ] ; then
 fi
 
 umask 0002
+
+# http://www.kasahara.ws/lpm/introduction.html
+source /Users/takafumi.sekiguchi/lcl/.zshrc
+if [ -d $HOME/lcl ]; then
+    source $HOME/lcl/.zshrc
+fi
