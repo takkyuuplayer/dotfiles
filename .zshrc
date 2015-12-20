@@ -8,7 +8,7 @@ plugins=(git svn vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%F %T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
-%{$fg[blue]%}->%{$fg_bold[blue]%} $%{$reset_color%} '
+    %{$fg[blue]%}->%{$fg_bold[blue]%} $%{$reset_color%} '
 
 ###################################################
 # history
@@ -65,7 +65,7 @@ fi
 umask 0002
 
 # http://www.kasahara.ws/lpm/introduction.html
-source /Users/takafumi.sekiguchi/lcl/.zshrc
+source $HOME/lcl/.zshrc
 if [ -d $HOME/lcl ]; then
     source $HOME/lcl/.zshrc
 fi
