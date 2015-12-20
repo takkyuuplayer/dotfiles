@@ -26,12 +26,12 @@ endif
 if 0 | endif
 
 if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
+    if &compatible
+        set nocompatible               " Be iMproved
+    endif
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+    " Required:
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
@@ -42,7 +42,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
@@ -61,13 +60,13 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 NeoBundle 'soh335/vim-symfony'
 NeoBundle 'sudo.vim'
 NeoBundle 'thinca/vim-ref'
@@ -92,10 +91,6 @@ NeoBundleCheck
 " plugin
 "-------------------------------------------------
 
-" autoformat
-" -------------------------------------
-au BufWrite * :Autoformat
-
 " neocomplcache
 " -------------------------------------
 let g:neocomplcache_enable_at_startup = 1
@@ -109,13 +104,13 @@ let g:neocomplcache_enableunderbarcompletion = 1
 let g:neocomplcache_min_syntax_length = 3
 " プラグイン毎の補完関数を呼び出す文字数
 let g:neocomplcache_plugincompletionlength = {
-  \ 'keyword_complete' : 2,
-  \ 'syntax_complete' : 2
-  \ }
+            \ 'keyword_complete' : 2,
+            \ 'syntax_complete' : 2
+            \ }
 " ファイルタイプ毎の辞書ファイルの場所
 let g:neocomplcache_dictionary_filetype_lists = { 
-  \ 'default' : '', 
-  \ }
+            \ 'default' : '', 
+            \ }
 " 補完候補が表示されている場合は確定。そうでない場合は改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 " 補完をキャンセル
@@ -129,7 +124,7 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+    set conceallevel=2 concealcursor=i
 endif
 
 
@@ -156,8 +151,8 @@ let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
 
 "prove
 augroup QuickRunProve
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *.t set filetype=perl.unit
+    autocmd!
+    autocmd BufWinEnter,BufNewFile *.t set filetype=perl.unit
 augroup END
 let g:quickrun_config['perl.unit'] = {}
 let g:quickrun_config['perl.unit']['command'] = 'carton'
@@ -295,7 +290,7 @@ function! s:get_package_name()
     let mx = '^\s*package\s\+\([^ ;]\+\)'
     for line in getline(1, 5)
         if line =~ mx
-        return substitute(matchstr(line, mx), mx, '\1', '')
+            return substitute(matchstr(line, mx), mx, '\1', '')
         endif
     endfor
     return ""
