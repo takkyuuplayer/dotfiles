@@ -22,3 +22,8 @@ mac:
 brew_dump:
 	rm Brewfile
 	brew brewdler dump
+
+ssh_authorized_keys:
+	touch ~/.ssh/authorized_keys
+	chmod 600 ~/.ssh/authorized_keys
+	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
