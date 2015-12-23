@@ -65,7 +65,6 @@ fi
 umask 0002
 
 # http://www.kasahara.ws/lpm/introduction.html
-source $HOME/lcl/.zshrc
 if [ -d $HOME/lcl ]; then
     source $HOME/lcl/.zshrc
 fi
