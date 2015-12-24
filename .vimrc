@@ -42,6 +42,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
+NeoBundle 'dericofilho/vim-phpfmt'
 NeoBundle 'einars/js-beautify'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'groenewege/vim-less'
