@@ -7,6 +7,7 @@
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 	delete-merged-remote-branches = !git branch -a --merged | grep -v master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+	heroku = "!f () { git remote add heroku git@heroku.com:$1.git; }; f"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
 	push-branches-except-master = !git branch | sed -e 's/^*/ /' | grep -v \"^  master$\" | xargs -I% git push origin %

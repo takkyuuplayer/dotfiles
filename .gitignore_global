@@ -1,7 +1,9 @@
 *.swp
 *.swo
 *~
+*.bak
 tags
 .DS_Store
 .sass-cache
 cache
+._.DS_Store
