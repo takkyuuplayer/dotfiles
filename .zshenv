@@ -6,6 +6,10 @@ if [ -d $LPM_LIB/slib ]; then
     export SCHEME_LIBRARY_PATH=$LPM_LIB/slib/
 fi
 
+if [ -d $HOME/.composer ]; then
+    export PATH=$HOME/.composer/vendor/bin:$PATH
+fi
+
 alias perltidy-all="git diff --name-status origin/master... | awk '{print \$2}' | grep -v 'perl5' | grep \"\\\\.pm\$\" | xargs perltidy -b;
 git diff --name-status origin/master... | awk '{print \$2}' | grep \"\\\\.t\$\" | xargs perltidy -b;
 find ./ -name '*.bak'  | xargs rm;
