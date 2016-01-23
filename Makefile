@@ -13,26 +13,6 @@ install:
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
-plenv:
-	which plenv || anyenv install plenv
-	plenv install 5.20.3
-	plenv global 5.20.3
-	plenv install-cpanm
-	cpanm install Carton
-	cpanm install Perl::Tidy
-rbenv:
-	which rbenv || anyenv install rbenv
-	rbenv install 2.2.3
-	rbenv global 2.2.3
-	gem install bundler
-ndenv:
-	which ndenv || anyenv install ndenv
-	ndenv install v5.3.0
-phpenv:
-	which phpenv || anyenv install phpenv
-	phpenv install 7.0.1
-	phpenv install 5.4.45
-
 ndenv:
 	ndenv install v5.4.1
 	ndenv global v5.4.1
