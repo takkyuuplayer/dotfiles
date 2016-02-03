@@ -8,6 +8,7 @@ my @ignore = qw (
     .git
     .gitignore
     .gitmodules
+    .DS_Store
 );
 
 my @files = grep {
