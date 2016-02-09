@@ -14,6 +14,7 @@ brew 'readline'
 brew 'rlwrap'
 brew 'tmux'
 brew 'vim'
+brew 'wget'
 brew 'zsh', args: ['without-etcdir']
 brew 'caskroom/cask/brew-cask'
 cask 'adobe-reader'
