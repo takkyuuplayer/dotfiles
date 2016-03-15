@@ -19,73 +19,56 @@ else
 endif
 
 "-------------------------------------------------
-" NeoBundle
+" dein.vim
 "-------------------------------------------------
 
-" Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
-
-if has('vim_starting')
-    if &compatible
-        set nocompatible               " Be iMproved
-    endif
-
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+	set nocompatible
 endif
+set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim/
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call dein#begin(expand('~/.cache/dein'))
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-NeoBundle 'einars/js-beautify'
-NeoBundle 'evidens/vim-twig'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'maksimr/vim-jsbeautify'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'scrooloose/syntastic'
+call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim/')
+call dein#add('einars/js-beautify')
+call dein#add('evidens/vim-twig')
+call dein#add('groenewege/vim-less')
+call dein#add('h1mesuke/vim-alignta')
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('maksimr/vim-jsbeautify')
+call dein#add('mattn/emmet-vim')
+call dein#add('scrooloose/syntastic')
 if has('lua')
-    NeoBundle 'Shougo/neocomplete'
+    call dein#add('Shougo/neocomplete')
 else
-    NeoBundle 'Shougo/neocomplcache'
+    call dein#add('Shougo/neocomplcache')
 endif
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', {
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimproc', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw.mak',
             \     'cygwin' : 'make -f make_cygwin.mak',
             \     'mac' : 'make -f make_mac.mak',
             \     'unix' : 'make -f make_unix.mak',
             \    },
-            \ }
-NeoBundle 'soh335/vim-symfony'
-NeoBundle 'sudo.vim'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'travisjeffery/vim-auto-mkdir'
-NeoBundle 'vim-scripts/autodate.vim'
-NeoBundle 'YankRing.vim'
-NeoBundle 'JSON.vim'
+            \ })
+call dein#add('soh335/vim-symfony')
+call dein#add('sudo.vim')
+call dein#add('thinca/vim-ref')
+call dein#add('thinca/vim-quickrun')
+call dein#add('tpope/vim-fugitive')
+call dein#add('travisjeffery/vim-auto-mkdir')
+call dein#add('vim-scripts/autodate.vim')
+call dein#add('YankRing.vim')
+call dein#add('JSON.vim')
 
-call neobundle#end()
 
-" Required:
+call dein#end()
+
 filetype plugin indent on
-filetype plugin on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 "-------------------------------------------------
 " plugin

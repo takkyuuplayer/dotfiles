@@ -6,10 +6,16 @@ dotfiles
 * dotfiles
 
 ```bash
-$ make install
+$ make
 ```
 
-* others
+### vim
+
+```
+call dein#install()
+```
+
+## others
 
 ```
 $ make help
