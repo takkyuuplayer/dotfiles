@@ -25,11 +25,11 @@ endif
 if &compatible
 	set nocompatible
 endif
-set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim/
+set runtimepath^=~/.dein/repos/github.com/Shougo/dein.vim/
 
 call dein#begin(expand('~/.cache/dein'))
 
-call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim/')
+call dein#add('~/.dein/repos/github.com/Shougo/dein.vim/')
 call dein#add('einars/js-beautify')
 call dein#add('evidens/vim-twig')
 call dein#add('groenewege/vim-less')

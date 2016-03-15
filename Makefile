@@ -5,10 +5,15 @@ help:
 	cat Makefile
 
 
-install:
+install: install-dein
 	git submodule init
 	git submodule update
 	perl ./copies.pl
+
+install-dein:
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+	sh ./installer.sh ~/.dein/
+	rm installer.sh
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
