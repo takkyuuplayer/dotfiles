@@ -22,51 +22,33 @@ endif
 " dein.vim
 "-------------------------------------------------
 
-if &compatible
-	set nocompatible
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-set runtimepath^=~/.dein/repos/github.com/Shougo/dein.vim/
 
-call dein#begin(expand('~/.cache/dein'))
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-call dein#add('~/.dein/repos/github.com/Shougo/dein.vim/')
-call dein#add('einars/js-beautify')
-call dein#add('evidens/vim-twig')
-call dein#add('groenewege/vim-less')
-call dein#add('h1mesuke/vim-alignta')
-call dein#add('kchmck/vim-coffee-script')
-call dein#add('maksimr/vim-jsbeautify')
-call dein#add('mattn/emmet-vim')
-call dein#add('scrooloose/syntastic')
-if has('lua')
-    call dein#add('Shougo/neocomplete')
-else
-    call dein#add('Shougo/neocomplcache')
+  call dein#load_toml(expand('~/.vim/dein.toml'), {'lazy': 0})
+
+  " 設定終了
+  call dein#end()
+  call dein#save_state()
 endif
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimproc', {
-            \ 'build' : {
-            \     'windows' : 'make -f make_mingw.mak',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
-            \ })
-call dein#add('soh335/vim-symfony')
-call dein#add('sudo.vim')
-call dein#add('thinca/vim-ref')
-call dein#add('thinca/vim-quickrun')
-call dein#add('tpope/vim-fugitive')
-call dein#add('travisjeffery/vim-auto-mkdir')
-call dein#add('vim-scripts/autodate.vim')
-call dein#add('YankRing.vim')
-call dein#add('JSON.vim')
 
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
 
-call dein#end()
 
 filetype plugin indent on
 
@@ -128,8 +110,8 @@ augroup QuickRunPHPUnit
 augroup END
 let g:quickrun_config['php.unit'] = {}
 "let g:quickrun_config['php.unit']['outputter/buffer/split'] = 'vertical 35'
-let g:quickrun_config['php.unit']['command'] = './vendor/bin/phpunit'
-let g:quickrun_config['php.unit']['cmdopt'] = '--bootstrap ./tests/bootstrap.php'
+let g:quickrun_config['php.unit']['command'] = 'phpunit'
+let g:quickrun_config['php.unit']['cmdopt'] = '-c app'
 let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
 
 "prove

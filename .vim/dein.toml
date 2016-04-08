@@ -1,0 +1,82 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'einars/js-beautify'
+
+[[plugins]]
+repo = 'evidens/vim-twig'
+
+[[pulgins]]
+repo = 'groenewege/vim-less'
+
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'maksimr/vim-jsbeautify'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+if   = '''has('lua')'''
+
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+if   = '''! has('lua')'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+#  [plugins.build]
+#  windows = 'make -f make_mingw.mak'
+#  cygwin  = 'make -f make_cygwin.mak'
+#  mac     = 'make -f make_mac.mak'
+#  unix    = 'make -f make_unix.mak'
+
+[[plugins]]
+repo = 'soh335/vim-symfony'
+
+[[plugins]]
+repo = 'sudo.vim'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'travisjeffery/vim-auto-mkdir'
+
+[[plugins]]
+repo = 'vim-scripts/autodate.vim'
+
+[[plugins]]
+repo = 'YankRing.vim'
+
+[[plugins]]
+repo = 'JSON.vim'
