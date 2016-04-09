@@ -1,4 +1,3 @@
-tap 'caskroom/cask'
 tap 'homebrew/brewdler'
 tap 'homebrew/bundle'
 brew 'libyaml'

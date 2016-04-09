@@ -35,10 +35,20 @@ rbenv:
 	rbenv rehash
 	gem install bundler
 
-mac:
+mac: brew_install mas_install
+
+mas_dump:
+	mas list > Masfile
+
+mas_install:
+	cat Masfile | awk '{print $$1}' | xargs -n 1 mas install
+	mas upgrade
+
+brew_install:
 	which brew || ruby -e ${HOMEBREW}
 	brew tap Homebrew/brewdler
 	brew bundle
+	brew upgrade
 
 brew_dump:
 	rm Brewfile
