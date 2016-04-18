@@ -121,7 +121,7 @@ augroup QuickRunProve
 augroup END
 let g:quickrun_config['perl.unit'] = {}
 let g:quickrun_config['perl.unit']['command'] = 'carton'
-let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- prove --verbose -Ilib'
+let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- perl -Ilib'
 let g:quickrun_config['perl.unit']['exec'] = '%c %o %s'
 
 "perl debug
