@@ -17,6 +17,9 @@ repo = 'h1mesuke/vim-alignta'
 repo = 'kchmck/vim-coffee-script'
 
 [[plugins]]
+repo = 'kylef/apiblueprint.vim'
+
+[[plugins]]
 repo = 'maksimr/vim-jsbeautify'
 
 [[plugins]]
