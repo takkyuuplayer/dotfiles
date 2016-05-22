@@ -29,6 +29,13 @@ repo = 'mattn/emmet-vim'
 repo = 'scrooloose/syntastic'
 
 [[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete'
 if   = '''has('lua')'''
 
@@ -44,18 +51,6 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-
-#  [plugins.build]
-#  windows = 'make -f make_mingw.mak'
-#  cygwin  = 'make -f make_cygwin.mak'
-#  mac     = 'make -f make_mac.mak'
-#  unix    = 'make -f make_unix.mak'
 
 [[plugins]]
 repo = 'soh335/vim-symfony'
