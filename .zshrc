@@ -2,6 +2,7 @@
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###################################################
 export ZSH=$HOME/.oh-my-zsh
+DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="candy"
 CASE_SENSITIVE="true"
 plugins=(git svn vi-mode)
