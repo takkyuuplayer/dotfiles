@@ -48,7 +48,7 @@ brew_install:
 	which brew || ruby -e ${HOMEBREW}
 	brew tap Homebrew/brewdler
 	brew bundle
-	brew upgrade
+	brew update
 
 brew_dump:
 	rm Brewfile
