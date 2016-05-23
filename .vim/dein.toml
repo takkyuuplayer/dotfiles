@@ -33,26 +33,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/neocomplete'
-if   = '''has('lua')'''
-
-[[plugins]]
-repo = 'Shougo/neocomplcache'
-if   = '''! has('lua')'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
 repo = 'soh335/vim-symfony'
 
 [[plugins]]

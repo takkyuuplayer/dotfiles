@@ -38,6 +38,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#load_toml(expand('~/.vim/dein.toml'), {'lazy': 0})
+  call dein#load_toml(expand('~/.vim/dein_lazy.toml'), {'lazy': 1})
 
   " 設定終了
   call dein#end()
