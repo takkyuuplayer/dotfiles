@@ -48,3 +48,6 @@ for (@files) {
         `ln -is $Bin/$_ $ENV{'HOME'}` if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
     }
 }
+
+`ln -is $Bin/.config/nvim $ENV{'HOME'}/.vim` if readlink("$ENV{'HOME'}/.vim") ne "$Bin/.config/nvim";
+`ln -is $Bin/.config/nvim/init.vim $ENV{'HOME'}/.vimrc` if readlink("$ENV{'HOME'}/.vimrc") ne "$Bin/.config/nvim/init.vim";
