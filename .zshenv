@@ -18,3 +18,4 @@ alias perltidy-all="git diff --name-status origin/master... | awk '{print \$2}' 
 git diff --name-status origin/master... | awk '{print \$2}' | grep \"\\\\.t\$\" | xargs perltidy -b;
 find ./ -name '*.bak'  | xargs rm;
 "
+alias mocha='mocha --require intelli-espower-loader'

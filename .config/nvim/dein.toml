@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'einars/js-beautify'
-
-[[plugins]]
 repo = 'evidens/vim-twig'
 
 [[pulgins]]
@@ -20,9 +17,6 @@ repo = 'kchmck/vim-coffee-script'
 repo = 'kylef/apiblueprint.vim'
 
 [[plugins]]
-repo = 'maksimr/vim-jsbeautify'
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 
 [[plugins]]
@@ -31,6 +25,26 @@ repo = 'scrooloose/syntastic'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+if   = '''has('lua')'''
+
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+if   = '''! has('lua')'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'soh335/vim-symfony'
@@ -58,3 +72,6 @@ repo = 'YankRing.vim'
 
 [[plugins]]
 repo = 'JSON.vim'
+
+[[plugins]]
+repo = 'millermedeiros/vim-esformatter'

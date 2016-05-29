@@ -38,7 +38,6 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#load_toml(expand('~/.vim/dein.toml'), {'lazy': 0})
-  call dein#load_toml(expand('~/.vim/dein_lazy.toml'), {'lazy': 1})
 
   " 設定終了
   call dein#end()
@@ -142,6 +141,16 @@ let g:quickrun_config['coffee'] = {}
 let g:quickrun_config['coffee']['command'] = 'coffee'
 let g:quickrun_config['coffee']['cmdopt'] = ''
 let g:quickrun_config['coffee']['exec'] = '%c %o %s'
+
+"mocha
+augroup QuickRunMocha
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.js set filetype=javascript.unit
+augroup END
+let g:quickrun_config['javascript.unit'] = {}
+let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/mocha'
+let g:quickrun_config['javascript.unit']['cmdopt'] = '--require intelli-espower-loader'
+let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
 
 
 " unite.vim
