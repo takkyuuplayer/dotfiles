@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'einars/js-beautify'
-
-[[plugins]]
 repo = 'evidens/vim-twig'
 
 [[pulgins]]
@@ -18,9 +15,6 @@ repo = 'kchmck/vim-coffee-script'
 
 [[plugins]]
 repo = 'kylef/apiblueprint.vim'
-
-[[plugins]]
-repo = 'maksimr/vim-jsbeautify'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -78,3 +72,6 @@ repo = 'YankRing.vim'
 
 [[plugins]]
 repo = 'JSON.vim'
+
+[[plugins]]
+repo = 'millermedeiros/vim-esformatter'

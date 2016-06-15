@@ -142,6 +142,16 @@ let g:quickrun_config['coffee']['command'] = 'coffee'
 let g:quickrun_config['coffee']['cmdopt'] = ''
 let g:quickrun_config['coffee']['exec'] = '%c %o %s'
 
+"mocha
+augroup QuickRunMocha
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.js set filetype=javascript.unit
+augroup END
+let g:quickrun_config['javascript.unit'] = {}
+let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/mocha'
+let g:quickrun_config['javascript.unit']['cmdopt'] = '--require intelli-espower-loader'
+let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
+
 
 " unite.vim
 "-------------------------------------------------
@@ -195,7 +205,6 @@ set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set tabstop=4
 set wildmode=list:longest
 set whichwrap=b,s,h,l,<,>,[,]
-set clipboard-=unnamed
 
 ""-------------------------------------------------------------------------------
 " Mapping <jump-tag>
