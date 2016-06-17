@@ -49,5 +49,6 @@ for (@files) {
     }
 }
 
+`mkdir -p $ENV{'HOME'}/.config`;
 `ln -is $Bin/.config/nvim $ENV{'HOME'}/.vim` if readlink("$ENV{'HOME'}/.vim") ne "$Bin/.config/nvim";
 `ln -is $Bin/.config/nvim/init.vim $ENV{'HOME'}/.vimrc` if readlink("$ENV{'HOME'}/.vimrc") ne "$Bin/.config/nvim/init.vim";
