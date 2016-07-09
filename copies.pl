@@ -22,33 +22,27 @@ for (@files) {
     }
 
     if ($_ eq '.gitconfig') {
-        my @userline = ();
-        if (-e "$ENV{'HOME'}/.gitconfig") {
-            open(FH, "<$ENV{'HOME'}/$_");
-            my $flag = 0;
-            while (my $line = <FH>) {
-                chomp($line);
-                if ($line eq '[user]') {
-                    $flag = 1;
-                }
-                elsif ($line =~ m/^\[.+\]$/) {
-                    $flag = 0;
-                }
-                push(@userline, $line) if $flag;
-            }
-            close(FH);
-        }
-
+        my @userline = split "\n", `git config --list --global | grep user | sed 's/=/ /g'`;
         `cp $_ $ENV{'HOME'}`;
-        open(FH, ">> $ENV{'HOME'}/$_");
-        print FH join("\n", @userline);
-        close(FH);
+        map { `git config --global $_`; } @userline;
+    }
+    elsif ($_ eq '.config') {
+        `mkdir -p $ENV{'HOME'}/.config`;
+        map { symbolic_link("$Bin/$_", "$ENV{'HOME'}/$_"); }
+            grep {
+            my $file = $_;
+            not grep { $_ eq $file } @ignore
+            } glob ".config/*";
     }
     else {
-        `ln -is $Bin/$_ $ENV{'HOME'}` if (readlink("$ENV{'HOME'}/$_") ne "$Bin/$_");
+        symbolic_link("$Bin/$_", "$ENV{'HOME'}/$_");
     }
 }
 
-`mkdir -p $ENV{'HOME'}/.config`;
-`ln -is $Bin/.config/nvim $ENV{'HOME'}/.vim` if readlink("$ENV{'HOME'}/.vim") ne "$Bin/.config/nvim";
-`ln -is $Bin/.config/nvim/init.vim $ENV{'HOME'}/.vimrc` if readlink("$ENV{'HOME'}/.vimrc") ne "$Bin/.config/nvim/init.vim";
+symbolic_link("$Bin/.config/nvim/init.vim", "$ENV{'HOME'}/.vimrc");
+symbolic_link("$Bin/.config/nvim",          "$ENV{'HOME'}/.vim");
+
+sub symbolic_link {
+    my ($src, $dest) = @_;
+    `ln -is $src $dest` if readlink($dest) ne $src;
+}
