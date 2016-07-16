@@ -14,8 +14,6 @@ if [ -d $HOME/.composer ]; then
     export PATH=$HOME/.composer/vendor/bin:$PATH
 fi
 
-alias perltidy-all="git diff --name-status origin/master... | awk '{print \$2}' | grep -v 'perl5' | grep \"\\\\.pm\$\" | xargs perltidy -b;
-git diff --name-status origin/master... | awk '{print \$2}' | grep \"\\\\.t\$\" | xargs perltidy -b;
-find ./ -name '*.bak'  | xargs rm;
-"
+alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b;
+find ./ -name '*.bak'  | xargs rm;"
 alias mocha='mocha --require intelli-espower-loader'
