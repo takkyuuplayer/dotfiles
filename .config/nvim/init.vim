@@ -144,11 +144,17 @@ let g:quickrun_config['coffee']['exec'] = '%c %o %s'
 augroup QuickRunMocha
   autocmd!
   autocmd BufWinEnter,BufNewFile *Test.js set filetype=javascript.unit
+  let g:quickrun_config['javascript.unit'] = {}
+  let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/mocha'
+  let g:quickrun_config['javascript.unit']['cmdopt'] = '--require intelli-espower-loader'
+  let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
+
+  autocmd BufWinEnter,BufNewFile *Test.ts set filetype=typescript.unit
+  let g:quickrun_config['typescript.unit'] = {}
+  let g:quickrun_config['typescript.unit']['command'] = './node_modules/.bin/mocha'
+  let g:quickrun_config['typescript.unit']['cmdopt'] = '--compilers ts:espower-typescript/guess'
+  let g:quickrun_config['typescript.unit']['exec'] = '%c %o %s'
 augroup END
-let g:quickrun_config['javascript.unit'] = {}
-let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/mocha'
-let g:quickrun_config['javascript.unit']['cmdopt'] = '--require intelli-espower-loader'
-let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
 
 
 " unite.vim
