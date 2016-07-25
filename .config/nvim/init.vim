@@ -149,7 +149,7 @@ augroup QuickRunMocha
   let g:quickrun_config['javascript.unit']['cmdopt'] = '--require intelli-espower-loader'
   let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
 
-  autocmd BufWinEnter,BufNewFile *Test.ts set filetype=typescript.unit
+  autocmd BufWinEnter,BufNewFile *.spec.ts set filetype=typescript.unit
   let g:quickrun_config['typescript.unit'] = {}
   let g:quickrun_config['typescript.unit']['command'] = './node_modules/.bin/mocha'
   let g:quickrun_config['typescript.unit']['cmdopt'] = '--compilers ts:espower-typescript/guess'
