@@ -75,3 +75,15 @@ repo = 'JSON.vim'
 
 [[plugins]]
 repo = 'millermedeiros/vim-esformatter'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'jason0x43/vim-js-indent'
+
+[[pulgins]]
+repo = "pangloss/vim-javascript"
+
+[[pulgins]]
+repo = "mxw/vim-jsx"
