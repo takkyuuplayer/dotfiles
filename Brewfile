@@ -4,20 +4,28 @@ tap 'homebrew/brewdler'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'neovim/neovim'
+brew 'pkg-config'
 brew 'libyaml'
 brew 'openssl'
 brew 'ansible'
 brew 'autoconf'
 brew 'automake'
+brew 'boost'
 brew 'clipper'
 brew 'cmake'
+brew 'cocoapods'
 brew 'colordiff'
+brew 'libev'
+brew 'libevent'
+brew 'jansson'
+brew 'libtool'
+brew 'libxml2'
+brew 'spdylay'
+brew 'nghttp2'
+brew 'curl', args: ['with-nghttp2']
 brew 'gdbm'
 brew 'gettext'
 brew 'gibo'
-brew 'pkg-config'
-brew 'libevent'
-brew 'libtool'
 brew 'mysql'
 brew 'ocaml'
 brew 'pcre'
@@ -28,8 +36,8 @@ brew 'vim'
 brew 'wget'
 brew 'zsh', args: ['without-etcdir']
 brew 'argon/mas/mas'
-brew 'caskroom/cask/brew-cask'
 cask 'adobe-reader'
+cask 'android-studio'
 cask 'anki'
 cask 'atom'
 cask 'chefdk'
@@ -58,3 +66,11 @@ cask 'trello-x'
 cask 'vagrant'
 cask 'vagrant-manager'
 cask 'virtualbox'
+mas 'GarageBand', id: 682658836
+mas 'iMovie', id: 408981434
+mas 'Pages', id: 409201541
+mas 'WeChat', id: 836500024
+mas 'LINE', id: 539883307
+mas 'Keynote', id: 409183694
+mas 'Xcode', id: 497799835
+mas 'Numbers', id: 409203825
