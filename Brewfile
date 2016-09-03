@@ -66,11 +66,3 @@ cask 'trello-x'
 cask 'vagrant'
 cask 'vagrant-manager'
 cask 'virtualbox'
-mas 'GarageBand', id: 682658836
-mas 'iMovie', id: 408981434
-mas 'Pages', id: 409201541
-mas 'WeChat', id: 836500024
-mas 'LINE', id: 539883307
-mas 'Keynote', id: 409183694
-mas 'Xcode', id: 497799835
-mas 'Numbers', id: 409203825
