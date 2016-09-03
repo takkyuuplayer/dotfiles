@@ -1,6 +1,4 @@
 tap 'argon/mas'
-tap 'caskroom/cask'
-tap 'homebrew/brewdler'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'neovim/neovim'
