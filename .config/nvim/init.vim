@@ -154,6 +154,13 @@ augroup QuickRunMocha
   let g:quickrun_config['typescript.unit']['command'] = './node_modules/.bin/mocha'
   let g:quickrun_config['typescript.unit']['cmdopt'] = '--compilers ts:espower-typescript/guess'
   let g:quickrun_config['typescript.unit']['exec'] = '%c %o %s'
+
+  autocmd BufWinEnter,BufNewFile *.es6 set filetype=javascript.es6
+  autocmd BufWinEnter,BufNewFile *.spec.es6 set filetype=javascript.es6.unit
+  let g:quickrun_config['javascript.es6.unit'] = {}
+  let g:quickrun_config['javascript.es6.unit']['command'] = './node_modules/.bin/mocha'
+  let g:quickrun_config['javascript.es6.unit']['cmdopt'] = '--compilers js:espower-babel/guess'
+  let g:quickrun_config['javascript.es6.unit']['exec'] = '%c %o %s'
 augroup END
 
 
