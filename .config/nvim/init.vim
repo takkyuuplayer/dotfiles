@@ -181,7 +181,7 @@ let g:syntastic_auto_loc_list = 1
 
 " neosnippet
 "-------------------------------------------------
-let s:my_snippet = '~/.snippet_mine/'
+let s:my_snippet = "~/.vim/snippets"
 let g:neosnippet#snippets_directory = s:my_snippet
 
 
@@ -243,7 +243,6 @@ nnoremap ; :
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
-autocmd BufNewFile * silent! 0r $HOME/.vim/template/skel.%:e
 autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
