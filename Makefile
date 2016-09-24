@@ -39,13 +39,13 @@ mac: brew_install
 
 brew_install:
 	which brew || ruby -e ${HOMEBREW}
-	brew tap Homebrew/brewdler
+	brew tap homebrew/bundle
 	brew bundle
 	brew update
 
 brew_dump:
-	rm Brewfile
-	brew brewdler dump
+	rm -rf Brewfile
+	brew bundle dump
 
 ssh_authorized_keys:
 	touch ~/.ssh/authorized_keys
