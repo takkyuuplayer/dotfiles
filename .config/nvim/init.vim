@@ -84,6 +84,7 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
 " For snippet_complete marker.
 if has('conceal')
@@ -178,12 +179,6 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 "-------------------------------------------------
 let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_auto_loc_list = 1
-
-" neosnippet
-"-------------------------------------------------
-let s:my_snippet = "~/.vim/snippets"
-let g:neosnippet#snippets_directory = s:my_snippet
-
 
 "-------------------------------------------------
 " setting
