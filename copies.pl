@@ -22,6 +22,8 @@ for (@files) {
     }
 
     if ($_ eq '.gitconfig') {
+        `cp $_ $ENV{'HOME'}` and next if not -f "$ENV{'HOME'}/.gitconfig";
+
         my @userline = split "\n", `git config --list --global | grep user | sed 's/=/ /g'`;
         `cp $_ $ENV{'HOME'}`;
         map { `git config --global $_`; } @userline;
