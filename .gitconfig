@@ -4,7 +4,7 @@
 	ci = commit
 	co = checkout
 	ctags = !.git/hooks/ctags
-	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -D %
 	delete-merged-remote-branches = !git branch -a --merged | grep -v master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	heroku = "!f () { git remote add heroku git@heroku.com:$1.git; }; f"
