@@ -87,3 +87,6 @@ repo = "pangloss/vim-javascript"
 
 [[pulgins]]
 repo = "mxw/vim-jsx"
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
