@@ -206,8 +206,8 @@ set smartcase
 set smarttab
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set tabstop=4
-set wildmode=list:longest
 set whichwrap=b,s,h,l,<,>,[,]
+set wildmode=list:longest
 
 ""-------------------------------------------------------------------------------
 " Mapping <jump-tag>
@@ -239,6 +239,7 @@ autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
+au BufNewFile,BufRead cpanfile set filetype=perl
 
 autocmd BufNewFile *.pm call s:pm_template()
 au! BufWritePost *.pm call s:check_package_name()
