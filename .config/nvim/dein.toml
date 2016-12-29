@@ -90,3 +90,9 @@ repo = "mxw/vim-jsx"
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'neomake/neomake'
+
+[[plugins]]
+repo = 'benjie/neomake-local-eslint.vim'

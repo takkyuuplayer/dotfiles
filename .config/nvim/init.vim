@@ -177,6 +177,12 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_auto_loc_list = 1
 
+" neomake
+"-------------------------------------------------
+autocmd! BufWritePost * Neomake
+let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
+let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
