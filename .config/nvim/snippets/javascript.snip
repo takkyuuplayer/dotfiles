@@ -1,6 +1,50 @@
-snippet init
-    'use strict';
+snippet init_test
+    import assert from 'power-assert';
 
-    (function() {
-      ${0:TARGET}
-    })();
+    describe('${1:TARGET}', () => {
+      ${2:TARGET}
+    });
+
+snippet describe
+    describe('${1:TARGET}', () => {
+      ${2:TARGET}
+    });
+
+snippet it
+    it('${1:TARGET}', () => {
+      ${2:TARGET}
+    });
+
+snippet webpack
+    const path = require('path');
+
+    const outputDir = path.join(__dirname, '${1:PATH}');
+
+    module.exports = {
+      entry: {
+        ${2:NAME}: path.join(__dirname, '${3:PATH}'),
+      },
+      output: {
+        path: outputDir,
+        filename: '[name].bundle.js',
+      },
+      resolve: {
+        extensions: ['', '.js', '.jsx'],
+      },
+      module: {
+        loaders: [
+          {
+            test: /\.jsx?/,
+            loader: 'babel-loader',
+            presets: ['es2015', 'react'],
+          },
+        ],
+      },
+      devtool: 'source-map',
+      externals: [
+        {
+          window: 'window',
+          document: 'document',
+        },
+      ],
+    };
