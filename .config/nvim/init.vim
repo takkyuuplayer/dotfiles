@@ -182,6 +182,13 @@ let g:syntastic_auto_loc_list = 1
 autocmd! BufWritePost * Neomake
 let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
+let g:neomake_perl_envperl_maker = {
+\   'args'          : ['carton exec -- perl', '-wc'],
+\   'errorformat'   : '%E%m at %f line %l%s',
+\   'postprocess'   : function('neomake#makers#ft#perl#PerlEntryProcess'),
+\   'buffer_output' : 1,
+\ }
+let g:neomake_perl_enabled_makers = ['envperl']
 
 "-------------------------------------------------
 " setting
@@ -245,7 +252,7 @@ autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
-au BufNewFile,BufRead cpanfile set filetype=perl
+au BufNewFile,BufRead cpanfile,*.psgi set filetype=perl
 
 autocmd BufNewFile *.pm call s:pm_template()
 au! BufWritePost *.pm call s:check_package_name()
