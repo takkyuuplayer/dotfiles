@@ -13,7 +13,10 @@ else
         screen -ls
 fi
 
-export PATH=$HOME/.anyenv/bin:$HOME/local/bin:$PATH:$HOME/.composer/vendor/bin
+export PATH="$HOME/.linuxbrew/bin:$HOME/.anyenv/bin:$HOME/.composer/vendor/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 
 if [ -d $HOME/.anyenv/bin ]; then
     eval "$(anyenv init -)"
