@@ -172,23 +172,11 @@ nnoremap <silent> <C-O><C-H> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O> :<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 
-" syntastic
+" ale
 "-------------------------------------------------
-let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_auto_loc_list = 1
-
-" neomake
-"-------------------------------------------------
-autocmd! BufWritePost * Neomake
-let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
-let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
-let g:neomake_perl_envperl_maker = {
-\   'args'          : ['carton exec -- perl', '-wc'],
-\   'errorformat'   : '%E%m at %f line %l%s',
-\   'postprocess'   : function('neomake#makers#ft#perl#PerlEntryProcess'),
-\   'buffer_output' : 1,
-\ }
-let g:neomake_perl_enabled_makers = ['envperl']
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
 
 "-------------------------------------------------
 " setting

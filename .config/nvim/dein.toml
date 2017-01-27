@@ -20,9 +20,6 @@ repo = 'kylef/apiblueprint.vim'
 repo = 'mattn/emmet-vim'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
-
-[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -92,7 +89,4 @@ repo = "mxw/vim-jsx"
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'neomake/neomake'
-
-[[plugins]]
-repo = 'benjie/neomake-local-eslint.vim'
+repo = 'w0rp/ale'
