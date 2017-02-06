@@ -90,3 +90,6 @@ repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
