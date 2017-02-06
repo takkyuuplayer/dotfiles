@@ -56,3 +56,63 @@ snippet assert_equal
 
 snippet assert_deep
     assert.deepStrictEqual(${1:TARGET}, ${2:TARGET});
+
+snippet reducer
+    export const ${1:TARGET} = (state = ${2:TARGET}, action) => {
+      switch (action.type) {
+        case ${2:TARGET}:
+            ${3:TARGET}
+        default:
+          return state;
+      }
+    };
+snippet actionType
+    export const ${1:TARGET} = '$1';
+
+snippet container
+    import React, { PropTypes } from 'react';
+    import { connect } from 'react-redux';
+
+    const ${1:TARGET} = (${2:TARGET}) => (
+      ${3:TARGET}
+    );
+
+    $1.propTypes = {
+    };
+
+    const mapStateToProps = state => ({
+    });
+
+    const mapDispatchToProps => ({
+    });
+
+    export default connect(mapStateToProps, mapDispatchToProps)($1);
+
+snippet component
+    const ${1:TARGET} = (${2:TARGET}) => (
+      ${3:TARGET}
+    );
+
+    $1.propTypes = {
+    };
+
+snippet reduxForm
+    import React from 'react'
+    import { Field, reduxForm } from 'redux-form'
+
+    const ${1:TARGET} = (${2:TARGET}) => (
+      ${3:TARGET}
+    );
+
+    $1.propTypes = {
+    };
+
+    export default reduxForm({
+      form: '${4:TARGET}'
+    })($1)
+
+snippet formReducer
+    import { reducer as formReducer } from 'redux-form';
+
+snippet combineReducers
+    import { combineReducers } from 'redux';
