@@ -57,11 +57,11 @@ snippet assert_equal
 snippet assert_deep
     assert.deepStrictEqual(${1:TARGET}, ${2:TARGET});
 
-snippet reducer
+snippet reduxReducer
     export const ${1:TARGET} = (state = ${2:TARGET}, action) => {
       switch (action.type) {
-        case ${2:TARGET}:
-            ${3:TARGET}
+        case ${3:TARGET}:
+            ${4:TARGET}
         default:
           return state;
       }
@@ -83,7 +83,7 @@ snippet container
     const mapStateToProps = state => ({
     });
 
-    const mapDispatchToProps => ({
+    const mapDispatchToProps = dispatch => ({
     });
 
     export default connect(mapStateToProps, mapDispatchToProps)($1);
@@ -116,3 +116,13 @@ snippet formReducer
 
 snippet combineReducers
     import { combineReducers } from 'redux';
+
+snippet ReactComponent
+    class ${1:TARGET} extends React.Component {
+      static propTypes = {
+      }
+      render() {
+        return (
+        );
+      }
+    }
