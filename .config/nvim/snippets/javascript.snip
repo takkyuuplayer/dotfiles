@@ -69,7 +69,7 @@ snippet reduxReducer
 snippet actionType
     export const ${1:TARGET} = '$1';
 
-snippet container
+snippet reduxContainer
     import React, { PropTypes } from 'react';
     import { connect } from 'react-redux';
 
@@ -88,7 +88,7 @@ snippet container
 
     export default connect(mapStateToProps, mapDispatchToProps)($1);
 
-snippet component
+snippet reduxComponent
     const ${1:TARGET} = (${2:TARGET}) => (
       ${3:TARGET}
     );
@@ -126,3 +126,26 @@ snippet ReactComponent
         );
       }
     }
+snippet thunkTest
+    import fetchMock from 'fetch-mock';
+    import thunk from 'redux-thunk';
+    import configMockStore from 'redux-mock-store';
+
+    const middlewares = [thunk];
+    const mockStore = configMockStore(middlewares);
+
+snippet testComponent
+    import React from 'react';
+    import { shallow } from 'enzyme';
+
+snippet reactLocalState
+    constructor() {
+      super();
+    }
+    state = {
+      ${1:TARGET}: ${2:TARGET}
+    }
+
+snippet bindThis
+    this.${1:FUNCTION_NAME} = this.$1.bind(this);
+
