@@ -15,13 +15,14 @@ snippet it
       ${2:TARGET}
     });
 
-snippet storeDump
+snippet dumpStore
     store.subscribe(() => console.log(store.getState()));
 
 snippet webpack
     const path = require('path');
 
     const outputDir = path.join(__dirname, '${1:PATH}');
+    const isProduction = process.env.NODE_ENV === 'production';
 
     module.exports = {
       entry: {
@@ -32,17 +33,17 @@ snippet webpack
         filename: '[name].bundle.js',
       },
       resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.jsx?/,
-            loader: 'babel',
+            use: 'babel-loader',
           },
         ],
       },
-      devtool: 'source-map',
+      devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
       externals: [
         {
           window: 'window',
