@@ -1,3 +1,4 @@
---exclude=.git,*.js
 --recurse=yes
+--exclude=*.json
 --tag-relative=yes
+
