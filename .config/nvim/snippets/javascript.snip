@@ -52,11 +52,17 @@ snippet webpack
       ],
     };
 
-snippet assert_equal
+snippet assertOk
+    assert(${1:TARGET});
+
+snippet assertEqual
     assert.strictEqual(${1:TARGET}, ${2:TARGET});
 
-snippet assert_deep
+snippet assertDeep
     assert.deepStrictEqual(${1:TARGET}, ${2:TARGET});
+
+snippet     assertThrow
+    assert.throws(() => { ${1:TARGET} });
 
 snippet reduxReducer
     export const ${1:TARGET} = (state = ${2:TARGET}, action) => {
