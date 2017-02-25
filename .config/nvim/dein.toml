@@ -93,3 +93,6 @@ repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'direnv/direnv.vim'
