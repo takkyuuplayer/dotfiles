@@ -70,6 +70,10 @@ fi
 
 umask 0002
 
+if [[ -x `which direnv` ]]; then
+    eval "$(direnv hook zsh)"
+fi
+
 # http://www.kasahara.ws/lpm/introduction.html
 if [ -d $HOME/lcl ]; then
     source $HOME/lcl/.zshrc
