@@ -178,12 +178,16 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 
+" NERDTree
+"-------------------------------------------------
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 "-------------------------------------------------
 " setting
 "-------------------------------------------------
 set backspace=indent,eol,start
 set browsedir=buffer
-set clipboard=unnamed
+set clipboard-=autoselect
 set cursorline
 set expandtab
 set ffs=unix
@@ -232,6 +236,8 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 " in normal mode, ; -> :
 nnoremap ; :
+map ,pb <Esc>:%! pbcopy;pbpaste<CR>
+map ,pbv <Esc>:'<,'>! pbcopy;pbpaste<CR>
 
 "----------------------------------------------------
 " テンプレート補完

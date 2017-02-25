@@ -47,6 +47,11 @@ alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alFh'
 alias screen='screen -U'
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
 
 ###################################################
 # own setting

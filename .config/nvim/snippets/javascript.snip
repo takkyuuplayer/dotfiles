@@ -15,13 +15,14 @@ snippet it
       ${2:TARGET}
     });
 
-snippet storeDump
+snippet dumpStore
     store.subscribe(() => console.log(store.getState()));
 
 snippet webpack
     const path = require('path');
 
     const outputDir = path.join(__dirname, '${1:PATH}');
+    const isProduction = process.env.NODE_ENV === 'production';
 
     module.exports = {
       entry: {
@@ -32,17 +33,17 @@ snippet webpack
         filename: '[name].bundle.js',
       },
       resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.jsx?/,
-            loader: 'babel',
+            use: 'babel-loader',
           },
         ],
       },
-      devtool: 'source-map',
+      devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
       externals: [
         {
           window: 'window',
@@ -57,11 +58,11 @@ snippet assert_equal
 snippet assert_deep
     assert.deepStrictEqual(${1:TARGET}, ${2:TARGET});
 
-snippet reducer
+snippet reduxReducer
     export const ${1:TARGET} = (state = ${2:TARGET}, action) => {
       switch (action.type) {
-        case ${2:TARGET}:
-            ${3:TARGET}
+        case ${3:TARGET}:
+            ${4:TARGET}
         default:
           return state;
       }
@@ -69,7 +70,7 @@ snippet reducer
 snippet actionType
     export const ${1:TARGET} = '$1';
 
-snippet container
+snippet reduxContainer
     import React, { PropTypes } from 'react';
     import { connect } from 'react-redux';
 
@@ -83,12 +84,12 @@ snippet container
     const mapStateToProps = state => ({
     });
 
-    const mapDispatchToProps => ({
+    const mapDispatchToProps = dispatch => ({
     });
 
     export default connect(mapStateToProps, mapDispatchToProps)($1);
 
-snippet component
+snippet reduxComponent
     const ${1:TARGET} = (${2:TARGET}) => (
       ${3:TARGET}
     );
@@ -116,3 +117,36 @@ snippet formReducer
 
 snippet combineReducers
     import { combineReducers } from 'redux';
+
+snippet ReactComponent
+    class ${1:TARGET} extends React.Component {
+      static propTypes = {
+      }
+      render() {
+        return (
+        );
+      }
+    }
+snippet thunkTest
+    import fetchMock from 'fetch-mock';
+    import thunk from 'redux-thunk';
+    import configMockStore from 'redux-mock-store';
+
+    const middlewares = [thunk];
+    const mockStore = configMockStore(middlewares);
+
+snippet testComponent
+    import React from 'react';
+    import { shallow } from 'enzyme';
+
+snippet reactLocalState
+    constructor() {
+      super();
+    }
+    state = {
+      ${1:TARGET}: ${2:TARGET}
+    }
+
+snippet bindThis
+    this.${1:FUNCTION_NAME} = this.$1.bind(this);
+
