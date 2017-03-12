@@ -142,6 +142,12 @@ let g:quickrun_config['coffee']['command'] = 'coffee'
 let g:quickrun_config['coffee']['cmdopt'] = ''
 let g:quickrun_config['coffee']['exec'] = '%c %o %s'
 
+"javascript
+let g:quickrun_config['javascript'] = {}
+let g:quickrun_config['javascript']['command'] = './node_modules/.bin/babel-node'
+let g:quickrun_config['javascript']['cmdopt'] = ''
+let g:quickrun_config['javascript']['exec'] = '%c %o %s'
+
 "mocha
 augroup QuickRunMocha
   autocmd!
