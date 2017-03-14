@@ -156,3 +156,11 @@ snippet reactLocalState
 snippet bindThis
     this.${1:FUNCTION_NAME} = this.$1.bind(this);
 
+snippet esLintDisable
+    /* eslint-disable ${1: TARGET} */
+    /* eslint-enable $1 */
+
+snippet testReducerInitial
+    it('should return initial state', () => {
+      assert.strictEqual(reducer${1:TARGET}(undefined, {}), ${2:TARGET});
+    });
