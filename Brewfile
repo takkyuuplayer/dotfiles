@@ -87,4 +87,6 @@ cask 'slack'
 cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'toggldesktop'
+cask 'vagrant'
+cask 'virtualbox'
 mas 'installed apps found', id: No
