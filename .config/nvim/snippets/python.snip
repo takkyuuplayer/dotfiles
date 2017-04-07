@@ -1,0 +1,10 @@
+snippet     init_test
+    import unittest
+
+    class TestBasicFunctions(unittest.TestCase):
+
+        def test_${1:TARGET}(self):
+            ${2:TARGET}
+
+    if __name__ == '__main__':
+        unittest.main()
