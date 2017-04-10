@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'evidens/vim-twig'
 
-[[pulgins]]
+[[plugins]]
 repo = 'groenewege/vim-less'
 
 [[plugins]]
@@ -79,10 +79,10 @@ repo = 'leafgarland/typescript-vim'
 [[plugins]]
 repo = 'jason0x43/vim-js-indent'
 
-[[pulgins]]
+[[plugins]]
 repo = "pangloss/vim-javascript"
 
-[[pulgins]]
+[[plugins]]
 repo = "mxw/vim-jsx"
 
 [[plugins]]
@@ -96,3 +96,6 @@ repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'direnv/direnv.vim'
+
+[[plugins]]
+repo = 'thinca/vim-localrc'
