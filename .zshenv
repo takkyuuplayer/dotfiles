@@ -27,3 +27,4 @@ alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU |
 alias mocha='mocha --require intelli-espower-loader'
 alias vimtutor="vimtutor ja"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
+alias mkdir="mkdir -p"
