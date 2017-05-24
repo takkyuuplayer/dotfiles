@@ -47,7 +47,7 @@ repo = 'Shougo/neomru.vim'
 repo = 'soh335/vim-symfony'
 
 [[plugins]]
-repo = 'sudo.vim'
+repo = 'vim-scripts/sudo.vim'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
@@ -65,10 +65,10 @@ repo = 'travisjeffery/vim-auto-mkdir'
 repo = 'vim-scripts/autodate.vim'
 
 [[plugins]]
-repo = 'YankRing.vim'
+repo = 'vim-scripts/YankRing.vim'
 
 [[plugins]]
-repo = 'JSON.vim'
+repo = 'vim-scripts/JSON.vim'
 
 [[plugins]]
 repo = 'millermedeiros/vim-esformatter'
