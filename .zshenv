@@ -1,4 +1,3 @@
-export GREP_OPTIONS="--exclude=\*.svn\* "
 export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
 export EDITOR="vim"
 export LESS="-giMRW -z-4"
@@ -28,3 +27,4 @@ alias mocha='mocha --require intelli-espower-loader'
 alias vimtutor="vimtutor ja"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
 alias mkdir="mkdir -p"
+alias exit-code="echo $?"
