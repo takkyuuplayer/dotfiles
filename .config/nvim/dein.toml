@@ -2,19 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'evidens/vim-twig'
-
-[[plugins]]
-repo = 'groenewege/vim-less'
-
-[[plugins]]
 repo = 'h1mesuke/vim-alignta'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
-repo = 'kylef/apiblueprint.vim'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -44,9 +35,6 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
-repo = 'soh335/vim-symfony'
-
-[[plugins]]
 repo = 'vim-scripts/sudo.vim'
 
 [[plugins]]
@@ -56,13 +44,7 @@ repo = 'thinca/vim-ref'
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'travisjeffery/vim-auto-mkdir'
-
-[[plugins]]
-repo = 'vim-scripts/autodate.vim'
 
 [[plugins]]
 repo = 'vim-scripts/YankRing.vim'
@@ -72,9 +54,6 @@ repo = 'vim-scripts/JSON.vim'
 
 [[plugins]]
 repo = 'millermedeiros/vim-esformatter'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'jason0x43/vim-js-indent'
@@ -99,3 +78,9 @@ repo = 'direnv/direnv.vim'
 
 [[plugins]]
 repo = 'thinca/vim-localrc'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
