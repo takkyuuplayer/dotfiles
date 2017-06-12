@@ -250,7 +250,6 @@ map ,pbv <Esc>:'<,'>! pbcopy;pbpaste<CR>
 "----------------------------------------------------
 autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
-autocmd BufNewFile,BufReadPost *.yml,*.yaml silent! setl ft=txt
 au BufNewFile,BufRead *.tx set filetype=html
 au BufNewFile,BufRead cpanfile,*.psgi set filetype=perl
 
