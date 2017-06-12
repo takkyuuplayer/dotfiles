@@ -82,7 +82,8 @@ snippet actionType
     export const ${1:TARGET} = '$1';
 
 snippet reduxContainer
-    import React, { PropTypes } from 'react';
+    import React from 'react';
+    import PropTypes from 'prop-types'
     import { connect } from 'react-redux';
 
     const ${1:TARGET} = (${2:TARGET}) => (
