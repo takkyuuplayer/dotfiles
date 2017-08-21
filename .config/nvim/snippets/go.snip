@@ -1,0 +1,4 @@
+snippet     assert
+	if ${1:TARGET} != ${2:EXPECTED} {
+		t.Fatal("${3:MESSAGE}: " + fmt.Sprintf("%T(%v)", $1, $1))
+	}

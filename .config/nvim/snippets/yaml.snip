@@ -1,0 +1,13 @@
+snippet     docker-compose
+	version: '3'
+	services:
+	  app:
+	    container_name: ${1:SERVICE_NAME}
+	    image: ${2:IMAGE}
+	    volumes:
+	      - $PWD:/srv/
+	    environment:
+	      - TZ=Asia/Tokyo
+	    tty: true
+	    command: bash
+	    working_dir: /srv
