@@ -74,6 +74,20 @@ if [[ -x `which direnv` ]]; then
     eval "$(direnv hook zsh)"
 fi
 
+function ghq-fzf() {
+  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+
+  zle reset-prompt
+}
+
+zle -N ghq-fzf
+bindkey "" ghq-fzf
+
 # http://www.kasahara.ws/lpm/introduction.html
 if [ -d $HOME/lcl ]; then
     source $HOME/lcl/.zshrc
