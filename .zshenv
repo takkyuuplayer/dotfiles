@@ -22,9 +22,16 @@ if [ -d $HOME/.composer ]; then
     export PATH=$HOME/.composer/vendor/bin:$PATH
 fi
 
+if [ -x "`which go`" ]; then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
+fi
+
 alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
 alias mocha='mocha --require intelli-espower-loader'
 alias vimtutor="vimtutor ja"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
 alias mkdir="mkdir -p"
 alias exit-code="echo $?"
+
+

@@ -40,3 +40,5 @@
 	tool = vimdiff
 [init]
 	templatedir = ~/.git_template
+[ghq]
+	root = ~/go/src
