@@ -1,7 +1,14 @@
-snippet     assert
-	if ${1:TARGET} != ${2:EXPECTED} {
+snippet     assertEqual
+	if ${1:EXPECTED} != ${2:TARGET} {
 		t.Fatal(fmt.Sprintf(\`$1 should be
 			%#v
 			but got
-			%#v\`, $2, $1))
+			%#v\`, $1, $2))
+	}
+snippet     assertDeep
+	if !reflect.DeepEqual(${1:EXPECTED}, ${2:TARGET}) {
+		t.Fatal(fmt.Sprintf(\`$1 should be
+			%#v
+			but got
+			%#v\`, $1, $2))
 	}
