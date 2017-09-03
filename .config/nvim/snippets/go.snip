@@ -1,4 +1,7 @@
 snippet     assert
 	if ${1:TARGET} != ${2:EXPECTED} {
-		t.Fatal("${3:MESSAGE}: " + fmt.Sprintf("%T(%v)", $1, $1))
+		t.Fatal(fmt.Sprintf(\`$1 should be
+			%#v
+			but got
+			%#v\`, $2, $1))
 	}
