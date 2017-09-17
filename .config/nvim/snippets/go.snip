@@ -1,3 +1,8 @@
+snippet     assert
+	if !${1:TARGET} {
+		t.Errorf(\`$1 = %#v, want true value\`, $1)
+	}
+
 snippet     assertEqual
 	if ${1:TARGET} != ${2:EXPECTED} {
 		t.Errorf(\`$1 = %#v, want %#v\`, $1, $2)
@@ -7,3 +12,6 @@ snippet     assertDeep
 	if !reflect.DeepEqual(${1:TARGET}, ${2:EXPECTED}) {
 		t.Errorf(\`$1 = %#v, want %#v\`, $1, $2)
 	}
+
+snippet     dump
+	fmt.Printf("${1:TARGET} = %#v\\n", $1)
