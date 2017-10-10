@@ -1,4 +1,3 @@
-HOMEBREW=$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)
 all: install
 
 help:
@@ -16,8 +15,7 @@ anyenv:
 mac: brew_install
 
 brew_install:
-	which brew || ruby -e ${HOMEBREW}
-	brew tap homebrew/bundle
+	which brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew bundle
 	brew update
 
