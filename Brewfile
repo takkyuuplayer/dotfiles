@@ -13,6 +13,7 @@ brew "vim"
 brew "zsh", args: ["without-etcdir"]
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "anki"
+cask "avg-antivirus"
 cask "docker"
 cask "google-backup-and-sync"
 cask "google-chrome"
@@ -30,3 +31,4 @@ mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Xcode", id: 497799835
