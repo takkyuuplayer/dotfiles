@@ -5,14 +5,6 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-# User specific environment and startup programs
-
-if [ $? -eq 9 ]; then
-        screen
-else
-        screen -ls
-fi
-
 export PATH="$HOME/.linuxbrew/bin:$HOME/.anyenv/bin:$HOME/.composer/vendor/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
