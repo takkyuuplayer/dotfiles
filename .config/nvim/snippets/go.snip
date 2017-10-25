@@ -13,5 +13,10 @@ snippet     assertDeep
 		t.Errorf(\`$1 = %#v, want %#v\`, $1, $2)
 	}
 
+snippet     assertAsString
+	if fmt.Sprintf("%s", ${1:TARGET}) == "${2:EXPECTED}" {
+		t.Errorf(\`$1 = %#v, do NOT want %#v\`, fmt.Sprintf("%s", $1), "$2")
+	}
+
 snippet     dump
 	fmt.Printf("${1:TARGET} = %#v\\n", $1)
