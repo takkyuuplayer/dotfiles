@@ -17,11 +17,11 @@ brew "vim"
 brew "zsh", args: ["without-etcdir"]
 brew "eddieantonio/eddieantonio/imgcat"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+cask "adobe-acrobat-reader"
 cask "anki"
 cask "atom"
 cask "avg-antivirus"
 cask "docker"
-cask "ethereum-wallet"
 cask "firefox"
 cask "google-backup-and-sync"
 cask "google-chrome"
