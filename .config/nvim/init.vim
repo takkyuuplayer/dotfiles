@@ -300,4 +300,3 @@ function! s:check_package_name()
         echohl None
     endif
 endfunction
-
