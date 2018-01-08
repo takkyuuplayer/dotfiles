@@ -1,3 +1,5 @@
+*.mwb.bak
+*.mwb.beforefix
 .local.vimrc
 
 # Created by https://www.gitignore.io/api/linux,osx,windwos,vim
