@@ -85,3 +85,6 @@ build = 'vim +GoInstallBinaries +q +q'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'honza/vim-snippets'

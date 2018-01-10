@@ -3,3 +3,4 @@ setl tabstop=4
 map ,ct <Esc>:%! phpcbf --standard=psr2<CR>
 map ,ctv <Esc>:'<,'>! phpcbf --standard=psr2<CR>
 
+:NeoSnippetSource ~/.cache/dein/repos/github.com/honza/vim-snippets/snippets/codeigniter.snippets

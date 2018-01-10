@@ -85,7 +85,8 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-let g:neosnippet#snippets_directory='~/.vim/snippets/'
+let g:neosnippet#enable_snipmate_compatibility = 1
+let s:vim_snippets_dir = s:dein_dir . '/repos/github.com/honza/vim-snippets/snippets'
 
 " For snippet_complete marker.
 if has('conceal')
@@ -300,4 +301,3 @@ function! s:check_package_name()
         echohl None
     endif
 endfunction
-
