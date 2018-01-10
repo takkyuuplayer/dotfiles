@@ -85,3 +85,6 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'joonty/vdebug'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
