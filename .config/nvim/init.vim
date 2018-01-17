@@ -183,9 +183,8 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 "-------------------------------------------------
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'php': [],
 \}
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 
 " NERDTree
 "-------------------------------------------------
