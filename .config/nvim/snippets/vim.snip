@@ -10,3 +10,8 @@ snippet     quickrun
 	let g:quickrun_config['$1']['exec'] = '%c %o SRC=@%'
 	let g:quickrun_config['$1']['hook/cd/enable'] = 1
 	let g:quickrun_config['$1']['hook/cd/directory'] = '$PWD'
+
+snippet     src_dir
+	let s:src_dir = expand('%:p:h')
+snippet     src_path
+	let s:src_path = expand('%:p')

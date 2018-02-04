@@ -184,6 +184,7 @@ nnoremap <silent> <C-O><C-G> :<C-U>Unite -buffer-name=files buffer<CR>
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
+let g:ale_set_highlights = 1
 
 " NERDTree
 "-------------------------------------------------

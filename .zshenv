@@ -33,4 +33,4 @@ alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repo
 alias mkdir="mkdir -p"
 alias exit-code="echo $?"
 
-
+alias memo='(){ vim `date +"~/.memo/%Y%m%d.md"` }'

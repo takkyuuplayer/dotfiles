@@ -74,17 +74,19 @@ repo = 'w0rp/ale'
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'direnv/direnv.vim'
-
-[[plugins]]
 repo = 'thinca/vim-localrc'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-build = 'vim +GoInstallBinaries +q +q'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
 
 [[plugins]]
+repo = 'joonty/vdebug'
+
+[[plugins]]
 repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'tobyS/vmustache'
+
+[[plugins]]
+repo = 'tobyS/pdv'
