@@ -90,3 +90,6 @@ repo = 'tobyS/vmustache'
 
 [[plugins]]
 repo = 'tobyS/pdv'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
