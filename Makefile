@@ -15,6 +15,12 @@ vscode:
 	ln -nfs ~/vscode/setting.json ~/Library/Application\ Support/Code/User/settings.json
 	ln -nfs ~/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
 
+vscode/dump:
+	code --list-extensions > ./vscode/extensions.txt
+
+vscode/extensions:
+	cat ./vscode/extensions.txt | xargs code --install-extension
+
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update

@@ -1,0 +1,6 @@
+dbaeumer.vscode-eslint
+joaoacdias.golang-tdd
+lukehoban.Go
+ms-vscode.node-debug2
+vscodevim.vim
+vsmobile.vscode-react-native
