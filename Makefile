@@ -1,3 +1,5 @@
+.PHONY: vscode
+
 all: install
 
 help:
@@ -7,6 +9,11 @@ install:
 	git submodule init
 	git submodule update
 	perl ./copies.pl
+
+vscode:
+	rm -rf ~/Library/Application\ Support/Code/User/{settings.json,snippets}
+	ln -nfs ~/vscode/setting.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -nfs ~/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv

@@ -1,0 +1,11 @@
+{
+    "eslint.autoFixOnSave": true,
+    "eslint.packageManager": "yarn",
+    "git.autofetch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["C-]"],
+            "after": ["<Esc>"]
+        }
+    ],
+}
