@@ -19,7 +19,7 @@ vscode/dump:
 	code --list-extensions > ./vscode/extensions.txt
 
 vscode/extensions:
-	cat ./vscode/extensions.txt | xargs code --install-extension
+	cat ./vscode/extensions.txt | while read line; do code --install-extension $$line; done
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
