@@ -10,7 +10,7 @@ install:
 	git submodule update
 	perl ./copies.pl
 
-vscode:
+vscode: vscode/extensions
 	rm -rf ~/Library/Application\ Support/Code/User/{settings.json,snippets}
 	ln -nfs ~/vscode/setting.json ~/Library/Application\ Support/Code/User/settings.json
 	ln -nfs ~/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
@@ -19,7 +19,10 @@ vscode/dump:
 	code --list-extensions > ./vscode/extensions.txt
 
 vscode/extensions:
-	cat ./vscode/extensions.txt | while read line; do code --install-extension $$line; done
+	@cat ./vscode/extensions.txt | while read line; \
+	do \
+		code --install-extension $$line; \
+	done
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
