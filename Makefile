@@ -1,5 +1,7 @@
 .PHONY: vscode
 
+DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+
 all: install
 
 help:
@@ -12,8 +14,8 @@ install:
 
 vscode: vscode/extensions
 	rm -rf ~/Library/Application\ Support/Code/User/{settings.json,snippets}
-	ln -nfs ~/vscode/setting.json ~/Library/Application\ Support/Code/User/settings.json
-	ln -nfs ~/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
+	ln -nfs ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -nfs ${DIR}/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
 
 vscode/dump:
 	code --list-extensions > ./vscode/extensions.txt

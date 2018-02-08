@@ -87,6 +87,7 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 let g:neosnippet#enable_snipmate_compatibility = 1
 let s:vim_snippets_dir = s:dein_dir . '/repos/github.com/honza/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
