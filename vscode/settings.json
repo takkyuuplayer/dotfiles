@@ -8,4 +8,5 @@
             "after": ["<Esc>"]
         }
     ],
+    "vim.hlsearch": true
 }
