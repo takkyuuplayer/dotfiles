@@ -105,10 +105,3 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-umask 0002
-
-# http://www.kasahara.ws/lpm/introduction.html
-if [ -d $HOME/lcl ]; then
-    source $HOME/lcl/.bashrc
-fi
