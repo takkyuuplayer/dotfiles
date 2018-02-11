@@ -5,7 +5,7 @@ DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 BREW=/usr/local/bin/brew
 VSCODE=/usr/local/bin/code
 
-all: link ${HOME}/.config/zsh/oh-my-zsh
+all: link ${HOME}/.anyenv
 
 help:
 	cat Makefile
@@ -13,7 +13,7 @@ help:
 link:
 	perl ./copies.pl
 
-anyenv:
+${HOME}/.anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 
