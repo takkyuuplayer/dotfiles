@@ -5,13 +5,13 @@ DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 BREW=$(shell which brew)
 VSCODE=$(shell which code)
 
-all:
-	git submodule init
-	git submodule update
-	perl ./copies.pl
+all: link ${HOME}/.config/zsh/oh-my-zsh
 
 help:
 	cat Makefile
+
+link:
+	perl ./copies.pl
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
@@ -21,6 +21,9 @@ ssh_authorized_keys:
 	touch ~/.ssh/authorized_keys
 	chmod 600 ~/.ssh/authorized_keys
 	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
+
+${HOME}/.config/zsh/oh-my-zsh:
+	git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.config/zsh/oh-my-zsh
 
 vscode: $(VSCODE) vscode/extensions
 	rm -rf ${HOME}/Library/Application\ Support/Code/User/{settings.json,snippets}
@@ -37,7 +40,7 @@ vscode/extensions: $(VSCODE)
 	done
 
 $(BREW):
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew/install: $(BREW)
 	$(BREW) bundle
