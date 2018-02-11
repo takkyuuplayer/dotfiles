@@ -1,5 +1,6 @@
 .netrwhist
 backup
 .vim/bundle/*
-.config/fish/*
+.config/*
 !.config/fish/config.fish
+!.config/nvim

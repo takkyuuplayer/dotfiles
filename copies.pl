@@ -28,14 +28,6 @@ for (@files) {
         `cp $_ $ENV{'HOME'}`;
         map { `git config --global $_`; } @userline;
     }
-    elsif ($_ eq '.config') {
-        `mkdir -p $ENV{'HOME'}/.config`;
-        map { symbolic_link("$Bin/$_", "$ENV{'HOME'}/$_"); }
-            grep {
-            my $file = $_;
-            not grep { $_ eq $file } @ignore
-            } glob ".config/*";
-    }
     else {
         symbolic_link("$Bin/$_", "$ENV{'HOME'}/$_");
     }
