@@ -1,7 +1,13 @@
+export ZSH=$HOME/.config/zsh/oh-my-zsh
+
+if [ ! -d $ZSH ] ; then
+    echo "==> oh-my-zsh not found. Installing."
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+fi
+
 ###################################################
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###################################################
-export ZSH=$HOME/.config/zsh/oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="candy"
 CASE_SENSITIVE="true"
