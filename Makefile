@@ -2,46 +2,47 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-all: install
+BREW=$(shell which brew)
+VSCODE=$(shell which code)
 
-help:
-	cat Makefile
-
-install:
+all:
 	git submodule init
 	git submodule update
 	perl ./copies.pl
 
-vscode: vscode/extensions
-	rm -rf ~/Library/Application\ Support/Code/User/{settings.json,snippets}
-	ln -nfs ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-	ln -nfs ${DIR}/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
-
-vscode/dump:
-	code --list-extensions > ./vscode/extensions.txt
-
-vscode/extensions:
-	@cat ./vscode/extensions.txt | while read line; \
-	do \
-		code --install-extension $$line; \
-	done
+help:
+	cat Makefile
 
 anyenv:
 	git clone https://github.com/riywo/anyenv.git ~/.anyenv
 	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
 
-mac: brew_install
-
-brew_install:
-	which brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew bundle
-	brew update
-
-brew_dump:
-	rm -rf Brewfile
-	brew bundle dump
-
 ssh_authorized_keys:
 	touch ~/.ssh/authorized_keys
 	chmod 600 ~/.ssh/authorized_keys
 	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
+
+vscode: $(VSCODE) vscode/extensions
+	rm -rf ${HOME}/Library/Application\ Support/Code/User/{settings.json,snippets}
+	ln -nfs ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -nfs ${DIR}/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
+
+vscode/dump: $(VSCODE)
+	$(VSCODE) --list-extensions > ./vscode/extensions.txt
+
+vscode/extensions: $(VSCODE)
+	@cat ./vscode/extensions.txt | while read line; \
+	do \
+		$(VSCODE) --install-extension $$line; \
+	done
+
+$(BREW):
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew/install: $(BREW)
+	$(BREW) bundle
+	$(BREW) update
+
+brew/dump: $(BREW)
+	rm -rf Brewfile
+	$(BREW) bundle dump
