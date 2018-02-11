@@ -2,8 +2,8 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-BREW=$(shell which brew)
-VSCODE=$(shell which code)
+BREW=/usr/local/bin/brew
+VSCODE=/usr/local/bin/code
 
 all: link ${HOME}/.config/zsh/oh-my-zsh
 
@@ -42,7 +42,7 @@ vscode/extensions: $(VSCODE)
 $(BREW):
 	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew/install: $(BREW)
+brew: $(BREW)
 	$(BREW) bundle
 	$(BREW) update
 
