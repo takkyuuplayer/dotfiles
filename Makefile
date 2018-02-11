@@ -22,6 +22,11 @@ ssh_authorized_keys:
 	chmod 600 ~/.ssh/authorized_keys
 	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
 
+fish:
+	fish -c "fisher"
+
+fish/dump:
+	fish -c "fisher ls > .config/fish/fishfile"
 
 vscode: $(VSCODE) vscode/extensions
 	rm -rf ${HOME}/Library/Application\ Support/Code/User/{settings.json,snippets}
