@@ -8,5 +8,7 @@
             "after": ["<Esc>"]
         }
     ],
-    "vim.hlsearch": true
+    "vim.hlsearch": true,
+    "workbench.statusBar.visible": true,
+    "files.autoSave": "afterDelay"
 }
