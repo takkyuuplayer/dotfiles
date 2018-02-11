@@ -27,3 +27,5 @@ function fish_prompt
 
   set_color normal
 end
+
+[ -f ~/.fishrc_mine ]; and source ~/.fishrc_mine
