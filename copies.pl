@@ -38,5 +38,5 @@ symbolic_link("$Bin/.config/nvim",          "$ENV{'HOME'}/.vim");
 
 sub symbolic_link {
     my ($src, $dest) = @_;
-    `ln -is $src $dest` if readlink($dest) ne $src;
+    `ln -ins $src $dest` if readlink($dest) ne $src;
 }
