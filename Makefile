@@ -28,10 +28,12 @@ fish:
 fish/dump:
 	fish -c "fisher ls > .config/fish/fishfile"
 
+
+VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
+VSCODE_CONFIG_FILES=settings.json keybindings.json snippets
+
 vscode: $(VSCODE) vscode/extensions
-	rm -rf ${HOME}/Library/Application\ Support/Code/User/{settings.json,snippets}
-	ln -nfs ${DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-	ln -nfs ${DIR}/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
+	$(foreach config,$(VSCODE_CONFIG_FILES),ln -nis ${DIR}/vscode/${config} ${VSCODE_CONFIG_DIR}/${config};)
 
 vscode/dump: $(VSCODE)
 	$(VSCODE) --list-extensions > ./vscode/extensions.txt
