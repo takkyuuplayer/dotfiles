@@ -10,5 +10,6 @@
     ],
     "vim.hlsearch": true,
     "workbench.statusBar.visible": true,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh"
 }
