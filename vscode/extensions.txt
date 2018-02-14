@@ -1,8 +1,10 @@
 dbaeumer.vscode-eslint
+eg2.tslint
 joaoacdias.golang-tdd
 lukehoban.Go
 ms-vscode.node-debug2
 patbenatar.advanced-new-file
+spoonscen.es6-mocha-snippets
 vscodevim.vim
 vsmobile.vscode-react-native
 yzhang.markdown-all-in-one
