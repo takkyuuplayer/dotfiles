@@ -46,5 +46,25 @@
         "key": "ctrl+k",
         "command": "-deleteAllRight",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "toggleSuggestionDetails",
+        "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-toggleSuggestionDetails",
+        "when": "editorTextFocus && suggestWidgetVisible"
     }
 ]
