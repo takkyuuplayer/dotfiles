@@ -1,8 +1,6 @@
-*.mwb.bak
-*.mwb.beforefix
 .local.vimrc
 
-# Created by https://www.gitignore.io/api/linux,mac,windows,vim,visualstudiocode
+# Created by https://www.gitignore.io/api/linux,macos,windows,vim,visualstudiocode
 
 ### Linux ###
 *~
@@ -19,7 +17,32 @@
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-#!! ERROR: mac is undefined. Use list command to see defined gitignore types !!#
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
 ### Vim ###
 # swap
@@ -62,4 +85,4 @@ $RECYCLE.BIN/
 *.lnk
 
 
-# End of https://www.gitignore.io/api/linux,mac,windows,vim,visualstudiocode
+# End of https://www.gitignore.io/api/linux,macos,windows,vim,visualstudiocode
