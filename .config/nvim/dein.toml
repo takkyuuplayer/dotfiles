@@ -93,3 +93,6 @@ repo = 'tobyS/pdv'
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'qbbr/vim-twig'

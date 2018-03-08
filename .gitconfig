@@ -15,7 +15,7 @@
 	push-branches-except-master = !git branch | sed -e 's/^*/ /' | grep -v \"^  master$\" | xargs -I% git push origin %
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	st = status
-	tidiable = !git diff origin/master... --name-only --diff-filter=AMCRTU
+	tidiable = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
 	branch = auto
 	diff = auto
