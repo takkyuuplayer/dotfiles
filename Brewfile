@@ -27,6 +27,7 @@ brew "eddieantonio/eddieantonio/imgcat"
 brew "homebrew/php/php-code-sniffer"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "adobe-acrobat-reader"
+cask "amazon-music"
 cask "anki"
 cask "atom"
 cask "avg-antivirus"
