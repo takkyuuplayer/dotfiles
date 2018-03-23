@@ -17,7 +17,7 @@ plugins=(git svn vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%F %T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
-    %{$fg[blue]%}->%{$fg_bold[blue]%} $%{$reset_color%} '
+%{$fg[blue]%}%{$fg_bold[blue]%}$%{$reset_color%} '
 
 ###################################################
 # history
