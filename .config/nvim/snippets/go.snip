@@ -1,27 +1,14 @@
 snippet     assertEqual
-	if ${1:TARGET} != ${2:EXPECTED} {
-		t.Errorf(\`$1 = %#v, want %#v\`, $1, $2)
-	}
+    assert.Equal(t, ${1:EXPECTED}, ${1:TARGET})
 
 snippet     assertNotEqual
-	if ${1:TARGET} == ${2:EXPECTED} {
-		t.Errorf(\`$1 = %#v, do NOT want %#v\`, $1, $2)
-	}
+    assert.NotEqual(t, ${1:EXPECTED}, ${1:TARGET})
 
-snippet     assertDeep
-	if !reflect.DeepEqual(${1:TARGET}, ${2:EXPECTED}) {
-		t.Errorf(\`$1 = %#v, want %#v\`, $1, $2)
-	}
+snippet     assertNil
+    assert.Nil(t, ${1:TARGET})
 
-snippet     assertAsString
-	if fmt.Sprintf("%s", ${1:TARGET}) == "${2:EXPECTED}" {
-		t.Errorf(\`$1 = %#v, do NOT want %#v\`, fmt.Sprintf("%s", $1), "$2")
-	}
-
-snippet     assertType
-	if fmt.Sprintf("%T", ${1:TARGET}) != "${2:EXPECTED}" {
-		t.Errorf(\`Type of $1 = %T, want %s\`, $1, "$2")
-	}
+snippet     assertNotNil
+    assert.NotNil(t, ${1:TARGET})
 
 snippet     dump
 	fmt.Printf("${1:TARGET} = %#v\\n", $1)

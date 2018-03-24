@@ -93,3 +93,7 @@ repo = 'tobyS/pdv'
 
 [[plugins]]
 repo = 'qbbr/vim-twig'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
