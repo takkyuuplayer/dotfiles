@@ -97,3 +97,11 @@ repo = 'qbbr/vim-twig'
 [[plugins]]
 repo = 'fatih/vim-go'
 
+[[plugins]]
+repo = 'qbbr/vim-twig'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
