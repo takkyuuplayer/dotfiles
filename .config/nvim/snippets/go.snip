@@ -11,4 +11,4 @@ snippet     assertNotNil
     assert.NotNil(t, ${1:TARGET})
 
 snippet     dump
-	fmt.Printf("${1:TARGET} = %#v\\n", $1)
+	log.Printf(\`${1:TARGET} = %#v\`, $1)
