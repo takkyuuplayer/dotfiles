@@ -51,4 +51,5 @@ alias ll='ls -alFh'
 alias memo='(){ vim `date +"~/.memo/%Y%m%d.md"` }'
 alias mkdir="mkdir -p"
 alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
+alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias vimtutor="vimtutor ja"
