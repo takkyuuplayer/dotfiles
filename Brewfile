@@ -20,6 +20,7 @@ brew "jq"
 brew "mas"
 brew "php", link: false
 brew "tmux"
+brew "travis"
 brew "tree"
 brew "vim"
 brew "watchman"
@@ -52,6 +53,7 @@ cask "virtualbox"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "GarageBand", id: 682658836
+mas "GIPHY CAPTURE", id: 668208984
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
