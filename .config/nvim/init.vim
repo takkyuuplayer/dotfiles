@@ -256,6 +256,7 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 nnoremap ; :
 map ,pb <Esc>:%! pbcopy;pbpaste<CR>
 map ,pbv <Esc>:'<,'>! pbcopy;pbpaste<CR>
+map <C-]> <Esc>g<C-]>
 
 "----------------------------------------------------
 " テンプレート補完
