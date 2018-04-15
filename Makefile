@@ -2,9 +2,6 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-BREW=/usr/local/bin/brew
-VSCODE=/usr/local/bin/code
-
 all: link ${HOME}/.anyenv
 
 help:
@@ -28,29 +25,26 @@ fish:
 fish/dump:
 	fish -c "fisher ls > .config/fish/fishfile"
 
-
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets
 
-vscode: $(VSCODE) vscode/extensions
+vscode: vscode/extensions
 	$(foreach config,$(VSCODE_CONFIG_FILES),ln -nis ${DIR}/vscode/${config} ${VSCODE_CONFIG_DIR}/${config};)
 
-vscode/dump: $(VSCODE)
-	$(VSCODE) --list-extensions > ./vscode/extensions.txt
+vscode/dump:
+	code --list-extensions > ./vscode/extensions.txt
 
-vscode/extensions: $(VSCODE)
+vscode/extensions:
 	@cat ./vscode/extensions.txt | while read line; \
 	do \
-		$(VSCODE) --install-extension $$line; \
+		code --install-extension $$line; \
 	done
 
-$(BREW):
-	ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew:
+	which brew || ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew bundle
+	brew update
 
-brew: $(BREW)
-	$(BREW) bundle
-	$(BREW) update
-
-brew/dump: $(BREW)
+brew/dump:
 	rm -rf Brewfile
-	$(BREW) bundle dump
+	brew bundle dump
