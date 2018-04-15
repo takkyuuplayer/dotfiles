@@ -19,6 +19,7 @@ brew "go"
 brew "jq"
 brew "mas"
 brew "php", link: false
+brew "php-code-sniffer"
 brew "tmux"
 brew "travis"
 brew "tree"
@@ -27,7 +28,6 @@ brew "watchman"
 brew "zsh", args: ["without-etcdir"]
 brew "eddieantonio/eddieantonio/imgcat"
 brew "heroku/brew/heroku"
-brew "homebrew/php/php-code-sniffer"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "adobe-acrobat-reader"
 cask "amazon-music"

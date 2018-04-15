@@ -1,5 +1,7 @@
+EQuimper.react-native-react-redux
 KnisterPeter.vscode-github
 dbaeumer.vscode-eslint
+ducksoupdev.Vue2
 eg2.tslint
 felixfbecker.php-debug
 ikappas.phpcs
@@ -11,4 +13,5 @@ spoonscen.es6-mocha-snippets
 vmsynkov.colonize
 vscodevim.vim
 vsmobile.vscode-react-native
+xabikos.ReactSnippets
 yzhang.markdown-all-in-one
