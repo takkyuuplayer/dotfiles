@@ -6,7 +6,7 @@ eg2.tslint
 felixfbecker.php-debug
 ikappas.phpcs
 joaoacdias.golang-tdd
-lukehoban.Go
+ms-vscode.Go
 ms-vscode.node-debug2
 patbenatar.advanced-new-file
 spoonscen.es6-mocha-snippets

@@ -12,5 +12,6 @@
     "workbench.statusBar.visible": true,
     "files.autoSave": "off",
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-    "tslint.autoFixOnSave": true
+    "tslint.autoFixOnSave": true,
+    "window.zoomLevel": 0
 }
