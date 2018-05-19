@@ -66,5 +66,9 @@
         "key": "ctrl+space",
         "command": "-toggleSuggestionDetails",
         "when": "editorTextFocus && suggestWidgetVisible"
+    },
+    {
+        "key": "\\ r",
+        "command": "workbench.action.tasks.test"
     }
 ]
