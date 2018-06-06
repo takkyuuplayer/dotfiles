@@ -102,3 +102,6 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
