@@ -16,5 +16,5 @@
     "workbench.statusBar.visible": true,
     "files.autoSave": "off",
     "tslint.autoFixOnSave": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 1
 }

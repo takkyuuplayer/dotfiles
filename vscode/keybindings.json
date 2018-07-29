@@ -68,7 +68,7 @@
         "when": "editorTextFocus && suggestWidgetVisible"
     },
     {
-        "key": "\\ r",
+        "key": "\\ t",
         "command": "workbench.action.tasks.test"
     }
 ]
