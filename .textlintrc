@@ -1,0 +1,11 @@
+{
+    "rules": {
+        "preset-japanese": true,
+        "preset-ja-technical-writing": true"
+    },
+    "prh": {
+        "rulePaths": [
+            "~/.prh.yml"
+        ]
+    }
+}

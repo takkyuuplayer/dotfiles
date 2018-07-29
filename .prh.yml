@@ -1,0 +1,7 @@
+version: 1
+
+rules:
+  - pattern:
+      - 僕
+      - 俺
+    expected: 私
