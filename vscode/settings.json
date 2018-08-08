@@ -16,5 +16,13 @@
     "workbench.statusBar.visible": true,
     "files.autoSave": "off",
     "tslint.autoFixOnSave": true,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
+            "cf.yaml",
+            "cf.yml"
+        ]
+    },
+    "yaml.validate": true,
 }

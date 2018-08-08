@@ -1,10 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "cmd+n",
-        "command": "extension.advancedNewFile"
-    },
-    {
         "key": "alt+cmd+n",
         "command": "-extension.advancedNewFile"
     },
@@ -68,7 +64,7 @@
         "when": "editorTextFocus && suggestWidgetVisible"
     },
     {
-        "key": "\\ t",
-        "command": "workbench.action.tasks.test"
-    }
+        "key": "cmd+n",
+        "command": "extension.advancedNewFile"
+    },
 ]
