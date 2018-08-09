@@ -25,4 +25,5 @@
         ]
     },
     "yaml.validate": true,
+    "editor.formatOnSave": true,
 }
