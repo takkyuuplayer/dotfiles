@@ -1,7 +1,7 @@
 {
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
-    "git.autofetch": true,
+    "git.autofetch": false,
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -18,12 +18,13 @@
     "tslint.autoFixOnSave": true,
     "window.zoomLevel": 1,
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "editor.formatOnSave": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
     "yaml.schemas": {
         "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
             "cf.yaml",
             "cf.yml"
         ]
     },
-    "yaml.validate": true,
-    "editor.formatOnSave": true,
+    "yaml.validate": false
 }

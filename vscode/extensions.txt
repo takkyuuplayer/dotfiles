@@ -1,10 +1,8 @@
-Arjun.swagger-viewer
+aeschli.vscode-css-formatter
 bmewburn.vscode-intelephense-client
 DanielThielking.aws-cloudformation-yaml
 dbaeumer.vscode-eslint
-ducksoupdev.Vue2
 eg2.tslint
-EQuimper.react-native-react-redux
 felixfbecker.php-debug
 felixfbecker.php-intellisense
 formulahendry.code-runner
@@ -14,10 +12,8 @@ ikappas.phpcs
 joaoacdias.golang-tdd
 KnisterPeter.vscode-github
 ms-vscode.Go
-ms-vscode.node-debug2
 Orta.vscode-jest
 patbenatar.advanced-new-file
-patrys.vscode-code-outline
 PeterJausovec.vscode-docker
 redhat.vscode-yaml
 sgryjp.japanese-word-handler
@@ -25,7 +21,7 @@ spoonscen.es6-mocha-snippets
 taichi.vscode-textlint
 vmsynkov.colonize
 vscodevim.vim
-vsmobile.vscode-react-native
 vvakame.vscode-prh-extention
 xabikos.ReactSnippets
 yzhang.markdown-all-in-one
+Zignd.html-css-class-completion
