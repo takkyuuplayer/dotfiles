@@ -105,3 +105,6 @@ repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
