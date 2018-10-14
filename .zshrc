@@ -57,6 +57,14 @@ if [[ -x `which direnv` ]]; then
     eval "$(direnv hook zsh)"
 fi
 
+if [ -d $HOME/.anyenv/bin ]; then
+    eval "$(anyenv init -)"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
+
 function ghq-fzf() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
 
