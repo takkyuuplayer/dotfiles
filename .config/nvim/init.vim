@@ -149,10 +149,10 @@ let g:quickrun_config['coffee']['cmdopt'] = ''
 let g:quickrun_config['coffee']['exec'] = '%c %o %s'
 
 "javascript
-let g:quickrun_config['javascript'] = {}
-let g:quickrun_config['javascript']['command'] = './node_modules/.bin/babel-node'
-let g:quickrun_config['javascript']['cmdopt'] = ''
-let g:quickrun_config['javascript']['exec'] = '%c %o %s'
+let g:quickrun_config['javascript.jsx'] = {}
+let g:quickrun_config['javascript.jsx']['command'] = 'babel-node'
+let g:quickrun_config['javascript.jsx']['cmdopt'] = ''
+let g:quickrun_config['javascript.jsx']['exec'] = '%c %o %s'
 
 "mocha
 augroup QuickRunMocha
@@ -171,6 +171,22 @@ augroup QuickRunMocha
   let g:quickrun_config['typescript.unit']['command'] = './node_modules/.bin/mocha'
   let g:quickrun_config['typescript.unit']['cmdopt'] = '--compilers ts:espower-typescript/guess'
   let g:quickrun_config['typescript.unit']['exec'] = '%c %o %s'
+augroup END
+
+""rspec
+augroup QuickRunRubyTest
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.spec
+    let g:quickrun_config['ruby.spec'] = {}
+    let g:quickrun_config['ruby.spec']['command'] = 'bundle'
+    let g:quickrun_config['ruby.spec']['cmdopt'] = 'exec -- rspec'
+    let g:quickrun_config['ruby.spec']['exec'] = '%c %o %s'
+
+  autocmd BufWinEnter,BufNewFile *_test.rb set filetype=ruby.unit
+    let g:quickrun_config['ruby.unit'] = {}
+    let g:quickrun_config['ruby.unit']['command'] = 'bundle'
+    let g:quickrun_config['ruby.unit']['cmdopt'] = 'exec -- ruby'
+    let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
 augroup END
 
 
