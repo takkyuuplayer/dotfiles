@@ -31,6 +31,7 @@ vscodevim.vim
 vscoss.vscode-ansible
 vsmobile.vscode-react-native
 vvakame.vscode-prh-extention
+wholroyd.jinja
 xabikos.ReactSnippets
 yzhang.markdown-all-in-one
 Zignd.html-css-class-completion
