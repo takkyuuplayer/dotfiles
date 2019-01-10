@@ -116,8 +116,8 @@ augroup QuickRunPHPUnit
 augroup END
 let g:quickrun_config['php.unit'] = {}
 "let g:quickrun_config['php.unit']['outputter/buffer/split'] = 'vertical 35'
-let g:quickrun_config['php.unit']['command'] = './vendor/bin/phpunit'
-let g:quickrun_config['php.unit']['cmdopt'] = ''
+let g:quickrun_config['php.unit']['command'] = 'phpunit'
+let g:quickrun_config['php.unit']['cmdopt'] = '' "'--debug --verbose'
 let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
 
 "prove
