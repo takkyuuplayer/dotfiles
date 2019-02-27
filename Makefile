@@ -11,8 +11,8 @@ link:
 	perl ./copies.pl
 
 ${HOME}/.anyenv:
-	git clone https://github.com/riywo/anyenv.git ~/.anyenv
-	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+	git clone https://github.com/anyenv/anyenv ~/.anyenv
+	anyenv install --force-init
 
 ssh_authorized_keys:
 	touch ~/.ssh/authorized_keys
