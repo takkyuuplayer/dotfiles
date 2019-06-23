@@ -2,12 +2,15 @@ tap "eddieantonio/eddieantonio"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/php"
 tap "universal-ctags/universal-ctags"
 brew "ack"
 brew "python"
+brew "ansible"
 brew "awscli"
+brew "cocoapods"
 brew "coreutils"
 brew "direnv"
 brew "findutils"
@@ -15,7 +18,9 @@ brew "fzf"
 brew "ghq"
 brew "git"
 brew "gnu-sed"
+brew "gnupg"
 brew "go"
+brew "imagemagick"
 brew "jq"
 brew "mas"
 brew "nkf"
@@ -26,6 +31,7 @@ brew "tree"
 brew "unrar"
 brew "vim"
 brew "watchman"
+brew "wrk-trello"
 brew "zsh"
 brew "eddieantonio/eddieantonio/imgcat"
 brew "heroku/brew/heroku"
@@ -41,12 +47,16 @@ cask "firefox"
 cask "google-backup-and-sync"
 cask "google-chrome"
 cask "google-japanese-ime"
+cask "gpg-suite"
+cask "grammarly"
 cask "iterm2"
 cask "kindle"
 cask "libreoffice"
+cask "music-manager"
 cask "onedrive"
-cask "pomodone"
-cask "sequel-pro"
+cask "phpstorm"
+cask "postman"
+cask "sequel-pro-nightly"
 cask "shiftit"
 cask "slack"
 cask "toggl"
@@ -54,10 +64,10 @@ cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "whatsapp"
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "LINE", id: 539883307
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
+mas "", id: 682658836
+mas "", id: 408981434
+mas "", id: 409201541
+mas "", id: 497799835
+mas "", id: 539883307
+mas "", id: 409183694
+mas "", id: 409203825
