@@ -54,3 +54,4 @@ alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU |
 alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias vimtutor="vimtutor ja"
 alias docker-run-here="docker run --volume=\$PWD:/srv -w=/srv"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
