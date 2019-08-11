@@ -26,5 +26,6 @@
             "cf.yml"
         ]
     },
-    "yaml.validate": false
+    "yaml.validate": false,
+    "python.jediEnabled": false
 }
