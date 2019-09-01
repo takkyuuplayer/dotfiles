@@ -5,6 +5,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/php"
+tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
 brew "ack"
 brew "python"
@@ -18,13 +19,15 @@ brew "fzf"
 brew "ghq"
 brew "git"
 brew "gnu-sed"
-brew "gnupg"
+brew "gnupg", link: false
 brew "go"
 brew "imagemagick"
 brew "jq"
 brew "mas"
+brew "mysql-client"
 brew "nkf"
 brew "p7zip"
+brew "postgresql"
 brew "tmux"
 brew "travis"
 brew "tree"
@@ -49,6 +52,7 @@ cask "google-chrome"
 cask "google-japanese-ime"
 cask "gpg-suite"
 cask "grammarly"
+cask "istat-menus"
 cask "iterm2"
 cask "kindle"
 cask "libreoffice"
@@ -64,10 +68,10 @@ cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "whatsapp"
-mas "", id: 682658836
-mas "", id: 408981434
-mas "", id: 409201541
-mas "", id: 497799835
-mas "", id: 539883307
-mas "", id: 409183694
-mas "", id: 409203825
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LINE", id: 539883307
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835
