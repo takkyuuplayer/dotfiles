@@ -1,6 +1,18 @@
 {
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
     "git.autofetch": false,
     "vim.insertModeKeyBindings": [
         {
@@ -27,5 +39,17 @@
         ]
     },
     "yaml.validate": false,
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "[javascript]": {
+        "editor.formatOnSave": false,
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false,
+    },
+    "[typescript]": {
+        "editor.formatOnSave": false,
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": false,
+    },
 }
