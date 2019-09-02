@@ -4,3 +4,5 @@ backup
 .config/*
 !.config/fish/config.fish
 !.config/nvim
+.byobu/*
+!.byobu/.tmux.conf
