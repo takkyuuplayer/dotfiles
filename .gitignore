@@ -3,6 +3,7 @@ backup
 .vim/bundle/*
 .config/*
 !.config/fish/config.fish
+!.config/fish/functions/fish_prompt.fish
 !.config/nvim
 .byobu/*
 !.byobu/.tmux.conf
