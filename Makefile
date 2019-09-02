@@ -2,7 +2,7 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-all: link ${HOME}/.anyenv
+all: link
 
 help:
 	cat Makefile
@@ -10,6 +10,7 @@ help:
 link:
 	perl ./copies.pl
 
+anyenv: ${HOME}/.anyenv
 ${HOME}/.anyenv:
 	git clone https://github.com/anyenv/anyenv ~/.anyenv
 	anyenv install --force-init
