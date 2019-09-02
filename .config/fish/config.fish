@@ -31,4 +31,14 @@ if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \cn 'history-search-forward'
 end
 
+bind \cn 'history-search-forward'
+if bind -M insert >/dev/null 2>/dev/null
+    bind -M insert \cn 'history-search-forward'
+end
+
+bind \t complete
+if bind -M insert >/dev/null 2>/dev/null
+    bind -M insert \t complete
+end
+
 [ -f ~/.fishrc_mine ]; and source ~/.fishrc_mine
