@@ -14,24 +14,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [ -d ${HOME}/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
-    for D in `ls $HOME/.anyenv/envs`
-    do
-        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-
-fi
-
-if [ -d $LPM_LIB/slib ]; then
-    export SCHEME_LIBRARY_PATH=$LPM_LIB/slib/
-fi
-
-if [ -d $HOME/.composer ]; then
-    export PATH=$HOME/.composer/vendor/bin:$PATH
-fi
-
 if [ -x "`which go`" ]; then
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
@@ -48,10 +30,8 @@ alias exit-code="echo $?"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alFh'
-alias memo='(){ vim `date +"~/.memo/%Y%m%d.md"` }'
 alias mkdir="mkdir -p"
-alias perltidy-all="git diff origin/master... --name-only --diff-filter=AMCRTU | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
+alias perltidy-all="git tidible | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
 alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias vimtutor="vimtutor ja"
 alias docker-run-here="docker run --volume=\$PWD:/srv -w=/srv"
-export PATH="/usr/local/opt/mysql-client/bin:/usr/local/opt/sqlite/bin:$PATH"

@@ -57,10 +57,6 @@ if [[ -x `which direnv` ]]; then
     eval "$(direnv hook zsh)"
 fi
 
-if [ -d $HOME/.anyenv/bin ]; then
-    eval "$(anyenv init -)"
-fi
-
 function ghq-fzf() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
 
