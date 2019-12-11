@@ -2,16 +2,16 @@
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	ctags = !.git/hooks/ctags
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -D %
-	delete-merged-remote-branches = !git branch -a --merged | grep -v master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%
+	delete-merged-remote-branches = !git branch -r --merged | grep -v origin/master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :refs/heads/%
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	heroku = "!f () { git remote add heroku git@heroku.com:$1.git; }; f"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >> .gitignore
 	ignore-tmpl = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
-	push-branches-except-master = !git branch | sed -e 's/^*/ /' | grep -v \"^  master$\" | xargs -I% git push origin %
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
-	st = !git status
+	st = status
+	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
 	tidlble = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
 	branch = auto
