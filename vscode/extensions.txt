@@ -15,14 +15,15 @@ joaoacdias.golang-tdd
 jvandyke.vscode-circleci
 KnisterPeter.vscode-github
 kumar-harsh.graphql-for-vscode
+ms-azuretools.vscode-docker
 ms-vscode.Go
 Orta.vscode-jest
 patbenatar.advanced-new-file
-PeterJausovec.vscode-docker
 Prisma.vscode-graphql
 redhat.vscode-yaml
 roperzh.make-auto-vars
 sgryjp.japanese-word-handler
+stevencl.addDocComments
 taichi.vscode-textlint
 vmsynkov.colonize
 vscodevim.vim

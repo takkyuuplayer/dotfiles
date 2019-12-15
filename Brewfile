@@ -39,6 +39,7 @@ brew "heroku/brew/heroku"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "adobe-acrobat-reader"
 cask "amazon-music"
+cask "android-studio"
 cask "anki"
 cask "avg-antivirus"
 cask "clipy"
