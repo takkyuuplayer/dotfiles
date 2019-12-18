@@ -13,7 +13,7 @@
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	st = status
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
-	tidlble = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
+	tidible = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
 	branch = auto
 	diff = auto
