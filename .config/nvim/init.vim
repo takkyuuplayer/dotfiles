@@ -281,6 +281,7 @@ autocmd BufNewFile,BufReadPost *.rb,*.coffee silent! setl shiftwidth=2 tabstop=2
 autocmd BufNewFile *.tx silent! setl ft=html
 au BufNewFile,BufRead *.tx set filetype=html
 au BufNewFile,BufRead cpanfile,*.psgi set filetype=perl
+au BufNewFile,BufRead *.crontab set filetype=crontab
 
 autocmd BufNewFile *.pm call s:pm_template()
 au! BufWritePost *.pm call s:check_package_name()
