@@ -13,7 +13,7 @@ link:
 anyenv: ${HOME}/.anyenv ${HOME}/.anyenv/plugins ${HOME}/.anyenv/plugins/anyenv-update ${HOME}/.anyenv/plugins/anyenv-git
 ${HOME}/.anyenv:
 	git clone https://github.com/anyenv/anyenv ~/.anyenv
-	anyenv install --force-init
+	-~/.anyenv/bin/anyenv install --force-init
 
 ${HOME}/.anyenv/plugins:
 	mkdir -p ~/.anyenv/plugins
