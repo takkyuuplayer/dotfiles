@@ -1,17 +1,10 @@
 {
-    "eslint.autoFixOnSave": true,
-    "eslint.packageManager": "yarn",
+    "eslint.packageManager": "npm",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        {
-            "language": "typescript",
-            "autoFix": true
-        },
-        {
-            "language": "typescriptreact",
-            "autoFix": true
-        }
+        "typescript",
+        "typescriptreact"
     ],
     "git.autofetch": false,
     "vim.insertModeKeyBindings": [
@@ -27,7 +20,6 @@
     "vim.hlsearch": true,
     "workbench.statusBar.visible": true,
     "files.autoSave": "off",
-    "tslint.autoFixOnSave": true,
     "window.zoomLevel": 1,
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "editor.formatOnSave": true,
@@ -40,20 +32,6 @@
     },
     "yaml.validate": false,
     "python.jediEnabled": false,
-    "[javascript]": {
-        "editor.formatOnSave": false,
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": false,
-    },
-    "[typescript]": {
-        "editor.formatOnSave": false,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[typescriptreact]": {
-        "editor.formatOnSave": false,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
