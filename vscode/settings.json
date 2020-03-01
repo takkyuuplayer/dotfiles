@@ -22,7 +22,6 @@
     "files.autoSave": "off",
     "window.zoomLevel": 1,
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-    "editor.formatOnSave": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "yaml.schemas": {
         "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
@@ -36,4 +35,6 @@
         "source.fixAll.eslint": true
     },
     "explorer.confirmDragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "eslint.format.enable": true,
 }
