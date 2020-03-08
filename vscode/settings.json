@@ -37,4 +37,10 @@
     "explorer.confirmDragAndDrop": false,
     "editor.minimap.enabled": false,
     "eslint.format.enable": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
