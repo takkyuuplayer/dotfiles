@@ -19,7 +19,7 @@
     ],
     "vim.hlsearch": true,
     "workbench.statusBar.visible": true,
-    "files.autoSave": "off",
+    "files.autoSave": "afterDelay",
     "window.zoomLevel": 1,
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "typescript.updateImportsOnFileMove.enabled": "always",
@@ -43,4 +43,11 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[v]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false
+        }
+    }
 }

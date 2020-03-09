@@ -59,4 +59,8 @@
         "command": "-toggleSuggestionDetails",
         "when": "editorTextFocus && suggestWidgetVisible"
     },
+    {
+        "key": "cmd+n",
+        "command": "explorer.newFile"
+    },
 ]
