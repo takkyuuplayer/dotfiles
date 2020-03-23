@@ -49,6 +49,14 @@ if dein#check_install()
   call dein#install()
 endif
 
+" plugin remove check {{{
+let s:removed_plugins = dein#check_clean()
+if len(s:removed_plugins) > 0
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+endif
+" }}}
+
 filetype plugin indent on
 
 "-------------------------------------------------
