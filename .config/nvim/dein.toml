@@ -108,3 +108,6 @@ repo = 'SirVer/ultisnips'
 
 [[plugins]]
 repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'ollykel/v-vim'

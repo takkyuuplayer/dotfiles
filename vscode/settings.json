@@ -6,7 +6,7 @@
         "typescript",
         "typescriptreact"
     ],
-    "git.autofetch": false,
+    "git.autofetch": true,
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -49,5 +49,6 @@
         "editor.codeActionsOnSave": {
             "source.organizeImports": false
         }
-    }
+    },
+    "C_Cpp.updateChannel": "Insiders"
 }
