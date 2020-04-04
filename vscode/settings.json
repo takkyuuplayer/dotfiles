@@ -50,5 +50,5 @@
             "source.organizeImports": false
         }
     },
-    "C_Cpp.updateChannel": "Insiders"
+    "editor.formatOnSave": true
 }

@@ -253,6 +253,7 @@ set smartcase
 set smarttab
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set tabstop=4
+set tags=.git/tags;~
 set whichwrap=b,s,h,l,<,>,[,]
 set wildmode=list:longest
 
