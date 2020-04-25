@@ -13,3 +13,4 @@ let g:quickrun_config['vlang.unit']['command'] = 'v'
 let g:quickrun_config['vlang.unit']['cmdopt'] = 'test'
 let g:quickrun_config['vlang.unit']['exec'] = '%c %o %s'
 
+map ,ct <Esc>:%! v fmt %<CR>
