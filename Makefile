@@ -49,7 +49,7 @@ vscode/extensions:
 	done
 
 brew:
-	which brew || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	which brew || bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	brew bundle
 	brew update
 
