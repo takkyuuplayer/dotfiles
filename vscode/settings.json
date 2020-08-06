@@ -50,5 +50,6 @@
             "source.organizeImports": false
         }
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "go.formatTool": "goimports"
 }
