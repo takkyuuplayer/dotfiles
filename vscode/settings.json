@@ -1,55 +1,48 @@
 {
-    "eslint.packageManager": "npm",
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    "git.autofetch": true,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "C-]"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
-    ],
-    "vim.hlsearch": true,
-    "workbench.statusBar.visible": true,
-    "files.autoSave": "afterDelay",
-    "window.zoomLevel": 1,
-    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
-            "cf.yaml",
-            "cf.yml"
-        ]
-    },
-    "yaml.validate": false,
-    "python.jediEnabled": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "explorer.confirmDragAndDrop": false,
-    "editor.minimap.enabled": false,
-    "eslint.format.enable": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[v]": {
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": false,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": false
-        }
-    },
-    "editor.formatOnSave": true,
-    "go.formatTool": "goimports"
+  "eslint.packageManager": "npm",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "git.autofetch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "C-]"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.hlsearch": true,
+  "workbench.statusBar.visible": true,
+  "files.autoSave": "afterDelay",
+  "window.zoomLevel": 1,
+  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
+      "cf.yaml",
+      "cf.yml"
+    ]
+  },
+  "yaml.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "explorer.confirmDragAndDrop": false,
+  "editor.minimap.enabled": false,
+  "eslint.format.enable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": false,
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "go.formatTool": "goimports"
 }
