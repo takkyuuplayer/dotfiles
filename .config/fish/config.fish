@@ -68,3 +68,5 @@ set -U fish_pager_color_prefix white --bold --underline
 set -U fish_pager_color_progress brwhite --background=cyan
 
 [ -f ~/.fishrc_mine ]; and source ~/.fishrc_mine
+
+eval (direnv hook fish)
