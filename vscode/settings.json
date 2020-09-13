@@ -9,12 +9,8 @@
   "git.autofetch": true,
   "vim.insertModeKeyBindings": [
     {
-      "before": [
-        "C-]"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["C-]"],
+      "after": ["<Esc>"]
     }
   ],
   "vim.hlsearch": true,
@@ -38,10 +34,13 @@
   "eslint.format.enable": true,
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[terraform]": {
+    "editor.formatOnSave": true
   },
   "editor.formatOnSave": true,
   "go.formatTool": "goimports"

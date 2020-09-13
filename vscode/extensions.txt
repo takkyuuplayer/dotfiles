@@ -1,4 +1,3 @@
-0x9ef.vscode-vlang
 andys8.jest-snippets
 bbenoist.vagrant
 bmewburn.vscode-intelephense-client
@@ -10,10 +9,12 @@ eamodio.gitlens
 esbenp.prettier-vscode
 felixfbecker.php-debug
 felixfbecker.php-intellisense
+flowtype.flow-for-vscode
 formulahendry.code-runner
 freebroccolo.reasonml
-golang.Go
+golang.go
 hackwaly.ocaml
+hashicorp.terraform
 jasonnutter.search-node-modules
 jaydenlin.ctags-support
 joaoacdias.golang-tdd
@@ -35,6 +36,8 @@ redhat.vscode-yaml
 roperzh.make-auto-vars
 sgryjp.japanese-word-handler
 stevencl.addDocComments
+toba.vsfire
+vlang-vscode.extension
 vmsynkov.colonize
 vscodevim.vim
 vscoss.vscode-ansible
