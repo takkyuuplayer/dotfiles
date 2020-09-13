@@ -3,7 +3,6 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
-
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
 
@@ -111,3 +110,8 @@ repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'ollykel/v-vim'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+
+
