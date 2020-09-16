@@ -45,7 +45,21 @@
     "!And",
     "!If",
     "!Not",
-    "!Or"
+    "!Or",
+    "!And sequence",
+    "!If sequence",
+    "!Not sequence",
+    "!Equals",
+    "!Or sequence",
+    "!FindInMap",
+    "!Base64",
+    "!Join",
+    "!Cidr",
+    "!Sub",
+    "!GetAtt",
+    "!ImportValue sequence",
+    "!Select",
+    "!Split"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
