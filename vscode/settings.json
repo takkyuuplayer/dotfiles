@@ -43,5 +43,7 @@
     "editor.formatOnSave": true
   },
   "editor.formatOnSave": true,
-  "go.formatTool": "goimports"
+  "go.formatTool": "goimports",
+  "aws.profile": "profile:default",
+  "aws.samcli.location": "/usr/local/bin/sam"
 }
