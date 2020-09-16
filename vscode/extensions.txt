@@ -1,3 +1,4 @@
+amazonwebservices.aws-toolkit-vscode
 andys8.jest-snippets
 bbenoist.vagrant
 bmewburn.vscode-intelephense-client

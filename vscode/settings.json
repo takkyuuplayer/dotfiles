@@ -20,12 +20,33 @@
   "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
+    "https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json": [
       "cf.yaml",
       "cf.yml"
     ]
   },
   "yaml.validate": false,
+  "yaml.customTags": [
+    "!Ref",
+    "!Sub scalar",
+    "!Sub sequence",
+    "!Join sequence",
+    "!FindInMap sequence",
+    "!GetAtt scalar",
+    "!GetAtt sequence",
+    "!Base64 mapping",
+    "!GetAZs",
+    "!Select scalar",
+    "!Select sequence",
+    "!Split sequence",
+    "!ImportValue",
+    "!Condition",
+    "!Equals sequence",
+    "!And",
+    "!If",
+    "!Not",
+    "!Or"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
