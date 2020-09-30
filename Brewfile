@@ -82,5 +82,4 @@ cask "toggl"
 cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
-mas "GIPHY CAPTURE", id: 668208984
 mas "Xcode", id: 497799835

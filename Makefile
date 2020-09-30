@@ -50,9 +50,8 @@ vscode/extensions:
 
 brew:
 	which brew || bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	brew bundle
 	brew update
+	brew bundle install --no-lock
 
 brew/dump:
-	rm -rf Brewfile
-	brew bundle dump
+	brew bundle dump --force
