@@ -162,23 +162,16 @@ let g:quickrun_config['javascript.jsx']['command'] = 'babel-node'
 let g:quickrun_config['javascript.jsx']['cmdopt'] = ''
 let g:quickrun_config['javascript.jsx']['exec'] = '%c %o %s'
 
-"mocha
-augroup QuickRunMocha
+"jest
+augroup QuickRunJest
   autocmd!
 
   " javascript
-  autocmd BufWinEnter,BufNewFile *.spec.js,*.spec.jsx,*.spec.es6 silent! set filetype=javascript.unit
+  autocmd BufWinEnter,BufNewFile *.spec.js,*.spec.jsx silent! set filetype=javascript.unit
   let g:quickrun_config['javascript.unit'] = {}
-  let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/mocha'
+  let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/jest'
   let g:quickrun_config['javascript.unit']['cmdopt'] = ''
   let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
-
-  " type script
-  autocmd BufWinEnter,BufNewFile *.spec.ts set filetype=typescript.unit
-  let g:quickrun_config['typescript.unit'] = {}
-  let g:quickrun_config['typescript.unit']['command'] = './node_modules/.bin/mocha'
-  let g:quickrun_config['typescript.unit']['cmdopt'] = '--compilers ts:espower-typescript/guess'
-  let g:quickrun_config['typescript.unit']['exec'] = '%c %o %s'
 augroup END
 
 ""rspec

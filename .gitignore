@@ -7,3 +7,4 @@ backup
 !.config/nvim
 .byobu/*
 !.byobu/.tmux.conf
+!.byobu/keybindings.tmux

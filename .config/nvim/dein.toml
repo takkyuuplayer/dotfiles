@@ -114,4 +114,7 @@ repo = 'ollykel/v-vim'
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+
 
