@@ -28,10 +28,7 @@ ssh_authorized_keys:
 	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
 
 fish:
-	fish -c "fisher"
-
-fish/dump:
-	fish -c "fisher ls > .config/fish/fishfile"
+	fish -c "fisher update"
 
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets
