@@ -77,9 +77,8 @@ augroup FileTyping
 augroup END
 
 "-------------------------------------------------
-" dein.vim
+" plugin (manager: dein.vim)
 "-------------------------------------------------
-
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -117,14 +116,37 @@ endif
 
 filetype plugin indent on
 
+" denite.vim
 "-------------------------------------------------
-" plugin
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> <Tab>
+  \ denite#do_map('choose_action')
+endfunction
+
+nnoremap <silent> <C-O><C-F> :<C-U>DeniteBufferDir file file:new<CR>
+nnoremap <silent> <C-O><C-G> :<C-u>Denite buffer<CR>
+nnoremap <silent> <C-O><C-H> :<C-u>Denite file_mru<CR>
+nnoremap <silent> <C-O><C-O> :<C-U>Denite file file:new<CR>
+
+" deoplete.vim
 "-------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
 " quick run
 "-------------------------------------------------
-"初期化
 let g:quickrun_config = {}
 
 "vimproc
@@ -205,14 +227,9 @@ augroup QuickRunRubyTest
     let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
 augroup END
 
-" deoplete
-"-------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
 " ale
 "-------------------------------------------------
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 let g:ale_set_highlights = 1
-
