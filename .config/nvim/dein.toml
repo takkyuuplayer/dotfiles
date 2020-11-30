@@ -51,9 +51,6 @@ repo = 'thinca/vim-localrc'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'tobyS/vmustache'
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]

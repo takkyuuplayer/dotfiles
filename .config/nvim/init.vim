@@ -69,11 +69,17 @@ augroup FileTyping
     autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
     autocmd BufNewFile,BufRead *.md set filetype=markdown
     autocmd BufNewFile,BufRead *.psgi set filetype=perl
-    autocmd BufNewFile,BufRead *.t set filetype=perl
     autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
     autocmd BufNewFile,BufRead *.twig set filetype=html
     autocmd BufNewFile,BufRead *.tx set filetype=html
     autocmd BufNewFile,BufRead cpanfile set filetype=perl
+
+    autocmd BufNewFile,BufRead *.spec.js set filetype=javascript.unit
+    autocmd BufNewFile,BufRead *.spec.jsx set filetype=javascript.unit
+    autocmd BufNewFile,BufRead *.t set filetype=perl.unit
+    autocmd BufNewFile,BufRead *_spec.rb set filetype=ruby.spec
+    autocmd BufNewFile,BufRead *_test.rb set filetype=ruby.unit
+    autocmd BufNewFile,BufRead *Test.php set filetype=php.unit
 augroup END
 
 "-------------------------------------------------
@@ -130,6 +136,10 @@ function! s:denite_my_settings() abort
   \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> i
   \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> a
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> o
+  \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
   nnoremap <silent><buffer><expr> <Tab>
@@ -155,21 +165,12 @@ let g:quickrun_config['_']['runner'] = 'vimproc'
 let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
 
 ""phpunit
-augroup QuickRunPHPUnit
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
-augroup END
 let g:quickrun_config['php.unit'] = {}
-"let g:quickrun_config['php.unit']['outputter/buffer/split'] = 'vertical 35'
 let g:quickrun_config['php.unit']['command'] = 'phpunit'
 let g:quickrun_config['php.unit']['cmdopt'] = '' "'--debug --verbose'
 let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
 
 "prove
-augroup QuickRunProve
-    autocmd!
-    autocmd BufWinEnter,BufNewFile *.t set filetype=perl.unit
-augroup END
 let g:quickrun_config['perl.unit'] = {}
 let g:quickrun_config['perl.unit']['command'] = 'carton'
 let g:quickrun_config['perl.unit']['cmdopt'] = 'exec -- perl -Ilib'
@@ -200,32 +201,21 @@ let g:quickrun_config['javascript.jsx']['cmdopt'] = ''
 let g:quickrun_config['javascript.jsx']['exec'] = '%c %o %s'
 
 "jest
-augroup QuickRunJest
-  autocmd!
+let g:quickrun_config['javascript.unit'] = {}
+let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/jest'
+let g:quickrun_config['javascript.unit']['cmdopt'] = ''
+let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
 
-  " javascript
-  autocmd BufWinEnter,BufNewFile *.spec.js,*.spec.jsx silent! set filetype=javascript.unit
-  let g:quickrun_config['javascript.unit'] = {}
-  let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/jest'
-  let g:quickrun_config['javascript.unit']['cmdopt'] = ''
-  let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
-augroup END
+"rspec
+let g:quickrun_config['ruby.spec'] = {}
+let g:quickrun_config['ruby.spec']['command'] = 'bundle'
+let g:quickrun_config['ruby.spec']['cmdopt'] = 'exec -- rspec'
+let g:quickrun_config['ruby.spec']['exec'] = '%c %o %s'
 
-""rspec
-augroup QuickRunRubyTest
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.spec
-    let g:quickrun_config['ruby.spec'] = {}
-    let g:quickrun_config['ruby.spec']['command'] = 'bundle'
-    let g:quickrun_config['ruby.spec']['cmdopt'] = 'exec -- rspec'
-    let g:quickrun_config['ruby.spec']['exec'] = '%c %o %s'
-
-  autocmd BufWinEnter,BufNewFile *_test.rb set filetype=ruby.unit
-    let g:quickrun_config['ruby.unit'] = {}
-    let g:quickrun_config['ruby.unit']['command'] = 'bundle'
-    let g:quickrun_config['ruby.unit']['cmdopt'] = 'exec -- ruby'
-    let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
-augroup END
+let g:quickrun_config['ruby.unit'] = {}
+let g:quickrun_config['ruby.unit']['command'] = 'bundle'
+let g:quickrun_config['ruby.unit']['cmdopt'] = 'exec -- ruby'
+let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
 
 " ale
 "-------------------------------------------------
