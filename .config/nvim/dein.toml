@@ -1,34 +1,24 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
-
-[[plugins]]
-repo = 'h1mesuke/vim-alignta'
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
-repo = 'mattn/emmet-vim'
-
-[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/neocomplete'
+repo = "roxma/nvim-yarp"
+if   = '''! has('nvim')'''
+
+[[plugins]]
+repo = "roxma/vim-hug-neovim-rpc"
+if   = '''! has('nvim')'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
 if   = '''has('lua')'''
 
 [[plugins]]
-repo = 'Shougo/neocomplcache'
-if   = '''! has('lua')'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/deoppet.nvim'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -49,28 +39,10 @@ repo = 'travisjeffery/vim-auto-mkdir'
 repo = 'vim-scripts/YankRing.vim'
 
 [[plugins]]
-repo = 'vim-scripts/JSON.vim'
-
-[[plugins]]
-repo = 'millermedeiros/vim-esformatter'
-
-[[plugins]]
-repo = 'jason0x43/vim-js-indent'
-
-[[plugins]]
-repo = "pangloss/vim-javascript"
-
-[[plugins]]
-repo = "mxw/vim-jsx"
-
-[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'w0rp/ale'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'thinca/vim-localrc'
@@ -79,22 +51,7 @@ repo = 'thinca/vim-localrc'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'joonty/vdebug'
-
-[[plugins]]
-repo = 'honza/vim-snippets'
-
-[[plugins]]
 repo = 'tobyS/vmustache'
-
-[[plugins]]
-repo = 'tobyS/pdv'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-
-[[plugins]]
-repo = 'qbbr/vim-twig'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -103,18 +60,35 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
+repo = 'ollykel/v-vim'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
 repo = 'SirVer/ultisnips'
 
 [[plugins]]
 repo = 'honza/vim-snippets'
 
+#################
+# LSP
+#################
 [[plugins]]
-repo = 'ollykel/v-vim'
+repo = 'prabirshrestha/vim-lsp'
 
 [[plugins]]
-repo = 'hashivim/vim-terraform'
+repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
-repo = 'vim-ruby/vim-ruby'
+repo = 'lighttiger2505/deoplete-vim-lsp'
 
+[[plugins]]
+repo = 'thomasfaingnaert/vim-lsp-snippets'
+
+[[plugins]]
+repo = 'thomasfaingnaert/vim-lsp-ultisnips'
 
