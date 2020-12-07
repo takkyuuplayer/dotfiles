@@ -29,6 +29,8 @@ set shiftwidth=4
 set showmatch
 set smartcase
 set smarttab
+set splitbelow
+set splitright
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set tabstop=4
 set tags=.git/tags;~
@@ -79,6 +81,7 @@ augroup FileTyping
     autocmd BufNewFile,BufRead *.t set filetype=perl.unit
     autocmd BufNewFile,BufRead *_spec.rb set filetype=ruby.spec
     autocmd BufNewFile,BufRead *_test.rb set filetype=ruby.unit
+    autocmd BufNewFile,BufRead *_test.go set filetype=go.unit
     autocmd BufNewFile,BufRead *Test.php set filetype=php.unit
 augroup END
 
@@ -160,6 +163,12 @@ function! s:denite_my_settings() abort
   \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> o
   \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> I
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> A
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> O
+  \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
   nnoremap <silent><buffer><expr> <Tab>
@@ -226,7 +235,7 @@ let g:quickrun_config['javascript.unit']['command'] = './node_modules/.bin/jest'
 let g:quickrun_config['javascript.unit']['cmdopt'] = ''
 let g:quickrun_config['javascript.unit']['exec'] = '%c %o %s'
 
-"rspec
+"ruby
 let g:quickrun_config['ruby.spec'] = {}
 let g:quickrun_config['ruby.spec']['command'] = 'bundle'
 let g:quickrun_config['ruby.spec']['cmdopt'] = 'exec -- rspec'
@@ -236,6 +245,12 @@ let g:quickrun_config['ruby.unit'] = {}
 let g:quickrun_config['ruby.unit']['command'] = 'bundle'
 let g:quickrun_config['ruby.unit']['cmdopt'] = 'exec -- ruby'
 let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
+
+"go
+let g:quickrun_config['go.unit'] = {}
+let g:quickrun_config['go.unit']['command'] = 'go'
+let g:quickrun_config['go.unit']['cmdopt'] = 'test'
+let g:quickrun_config['go.unit']['exec'] = '%c %o %s'
 
 " ale
 "-------------------------------------------------
