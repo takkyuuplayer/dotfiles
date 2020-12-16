@@ -72,3 +72,4 @@ set -U fish_pager_color_progress brwhite --background=cyan
 eval (direnv hook fish)
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 status --is-interactive; and source (anyenv init -|psub)
+alias awslocal="aws --endpoint-url=http://localhost:4566"

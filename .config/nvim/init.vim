@@ -249,7 +249,7 @@ let g:quickrun_config['ruby.unit']['exec'] = '%c %o %s'
 "go
 let g:quickrun_config['go.unit'] = {}
 let g:quickrun_config['go.unit']['command'] = 'go'
-let g:quickrun_config['go.unit']['cmdopt'] = 'test'
+let g:quickrun_config['go.unit']['cmdopt'] = 'test -v'
 let g:quickrun_config['go.unit']['exec'] = '%c %o %s'
 
 " ale

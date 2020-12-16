@@ -30,13 +30,14 @@ if [ -d ${HOME}/.anyenv ] ; then
     eval "$(anyenv init -)"
 fi
 
+alias awslocal="aws --endpoint-url=http://localhost:4566"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
+alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
 alias exit-code="echo $?"
+alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alFh'
 alias mkdir="mkdir -p"
 alias perltidy-all="git tidible | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
-alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias vimtutor="vimtutor ja"
-alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"

@@ -1,3 +1,8 @@
+*.json diff=json
+
+[diff "json"]
+	 textconv = "jq ."
+
 [alias]
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	ctags = !.git/hooks/ctags
@@ -42,3 +47,4 @@
 	root = ~/go/src
 [grep]
 	lineNumber = true
+
