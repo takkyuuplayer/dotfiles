@@ -14,7 +14,7 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [ -x "`which go`" ]; then
+if [[ -x `which go` ]]; then
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
 fi
@@ -28,6 +28,10 @@ fi
 if [ -d ${HOME}/.anyenv ] ; then
     export PATH="$HOME/.anyenv/bin:$PATH"
     eval "$(anyenv init -)"
+fi
+
+if [ -d /usr/local/sbin ]; then
+    export PATH="/usr/local/sbin:$PATH"
 fi
 
 alias awslocal="aws --endpoint-url=http://localhost:4566"
