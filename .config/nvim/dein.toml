@@ -15,7 +15,7 @@ if   = '''! has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if   = '''has('lua')'''
+if   = '''has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoppet.nvim'
@@ -42,7 +42,7 @@ repo = 'vim-scripts/YankRing.vim'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 
 [[plugins]]
 repo = 'thinca/vim-localrc'

@@ -10,16 +10,18 @@ fi
 ###################################################
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###################################################
-DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT=true
 ZSH_THEME="candy"
 CASE_SENSITIVE="true"
 plugins=(
     aws
+    brew
     direnv
     docker
     docker-compose
     fzf
     git
+    gnu-utils
     heroku
     rsync
     terraform

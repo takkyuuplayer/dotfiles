@@ -1,5 +1,5 @@
 export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
-export EDITOR="vim"
+export EDITOR="nvim"
 export LESS="-giMRW -z-4"
 export PAGER=less
 export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
@@ -39,9 +39,7 @@ alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repo
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
 alias exit-code="echo $?"
 alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
-alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -alFh'
 alias mkdir="mkdir -p"
 alias perltidy-all="git tidible | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
+alias vim="nvim"
 alias vimtutor="vimtutor ja"

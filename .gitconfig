@@ -36,7 +36,6 @@
 	untracked = cyan
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = vim
 [merge]
 	tool = vimdiff
 [init]
