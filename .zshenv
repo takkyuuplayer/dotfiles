@@ -35,11 +35,12 @@ if [ -d /usr/local/sbin ]; then
 fi
 
 alias awslocal="aws --endpoint-url=http://localhost:4566"
+alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
 alias exit-code="echo $?"
-alias heroku-clean="heroku list | perl -nlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
+alias heroku-clean="heroku list | perl -WnlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias mkdir="mkdir -p"
-alias perltidy-all="git tidible | perl -wnle '/\.(pl|pm|t|psgi)$/ and print' | xargs perltidy -b -bext='/'"
+alias perltidy-all="git tidible | perl -WnlE 'say if /\.(pl|pm|t|psgi)$/' | xargs perltidy -b -bext='/'"
 alias vim="nvim"
 alias vimtutor="vimtutor ja"
