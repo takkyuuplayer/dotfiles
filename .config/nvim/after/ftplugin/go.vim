@@ -1,2 +1,0 @@
-set listchars=tab:\ \ ,trail:^
-

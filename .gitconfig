@@ -12,7 +12,6 @@
 	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >> .gitignore
 	ignore-tmpl = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
-	push-branches-except-master = !git branch | sed -e 's/^*/ /' | grep -v \"^  master$\" | xargs -I% git push origin %
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	st = status
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"

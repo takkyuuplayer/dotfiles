@@ -1,4 +1,4 @@
-augroup QuickRunPHPUnit
+augroup QuickRunVlangUnit
   autocmd!
   autocmd BufWinEnter,BufNewFile *_test.v set filetype=vlang.unit
 augroup END
