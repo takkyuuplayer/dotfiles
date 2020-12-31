@@ -13,7 +13,18 @@ fi
 DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="candy"
 CASE_SENSITIVE="true"
-plugins=(git svn vi-mode)
+plugins=(
+    aws
+    direnv
+    docker
+    docker-compose
+    fzf
+    git
+    heroku
+    rsync
+    terraform
+    vi-mode
+)
 source $ZSH/oh-my-zsh.sh
 
 PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%F %T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
@@ -53,10 +64,6 @@ autoload predict-off    # prediction
 ###################################################
 [ -f $HOME/.zshrc_mine ] && source $HOME/.zshrc_mine
 
-if [[ -x `which direnv` ]]; then
-    eval "$(direnv hook zsh)"
-fi
-
 function ghq-fzf() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
 
@@ -70,6 +77,3 @@ function ghq-fzf() {
 
 zle -N ghq-fzf
 bindkey "" ghq-fzf
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/takafumi.sekiguchi/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
