@@ -15,7 +15,6 @@ if   = '''! has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if   = '''has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoppet.nvim'
