@@ -1,5 +1,5 @@
 export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
-export EDITOR="vim"
+export EDITOR="nvim"
 export LESS="-giMRW -z-4"
 export PAGER=less
 export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
@@ -42,5 +42,5 @@ alias exit-code="echo $?"
 alias heroku-clean="heroku list | perl -WnlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias mkdir="mkdir -p"
 alias perltidy-all="git tidible | perl -WnlE 'say if /\.(pl|pm|t|psgi)$/' | xargs perltidy -b -bext='/'"
-alias vim="vim"
+alias vim="nvim"
 alias vimtutor="vimtutor ja"
