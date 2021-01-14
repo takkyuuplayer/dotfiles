@@ -1,3 +1,4 @@
+export DOCKER_BUILDKIT=1
 export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
 export EDITOR="nvim"
 export LESS="-giMRW -z-4"
@@ -34,7 +35,8 @@ if [ -d /usr/local/sbin ]; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
-alias awslocal="aws --endpoint-url=http://localhost:4566"
+alias aws="aws --cli-auto-prompt"
+alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
