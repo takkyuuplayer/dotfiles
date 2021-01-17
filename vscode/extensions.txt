@@ -3,8 +3,8 @@ andys8.jest-snippets
 antfu.i18n-ally
 apollographql.vscode-apollo
 bbenoist.vagrant
-bmewburn.vscode-intelephense-client
 castwide.solargraph
+casualjim.gotemplate
 CoenraadS.bracket-pair-colorizer-2
 connorshea.vscode-ruby-test-adapter
 DanielThielking.aws-cloudformation-yaml
@@ -16,22 +16,16 @@ EditorConfig.EditorConfig
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 exiasr.hadolint
-felixfbecker.php-debug
-felixfbecker.php-intellisense
-flowtype.flow-for-vscode
 formulahendry.code-runner
 foxundermoon.shell-format
-freebroccolo.reasonml
 golang.go
 GraphQL.vscode-graphql
-hackwaly.ocaml
 hashicorp.terraform
 hbenl.vscode-test-explorer
 Hridoy.rails-snippets
 jasonnutter.search-node-modules
 jaydenlin.ctags-support
 joaoacdias.golang-tdd
-jvandyke.vscode-circleci
 KnisterPeter.vscode-github
 kumar-harsh.graphql-for-vscode
 misogi.ruby-rubocop
@@ -46,7 +40,6 @@ ms-vscode.cpptools
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
 ms-vsliveshare.vsliveshare-pack
-noku.rails-run-spec-vscode
 Orta.vscode-jest
 patbenatar.advanced-new-file
 rebornix.ruby
@@ -63,6 +56,5 @@ vscodevim.vim
 vscoss.vscode-ansible
 wholroyd.jinja
 wingrunr21.vscode-ruby
-xabikos.ReactSnippets
 ypresto.vscode-intelli-refactor
 Zignd.html-css-class-completion

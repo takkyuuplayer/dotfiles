@@ -62,29 +62,23 @@
     "!Split"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
   },
   "explorer.confirmDragAndDrop": false,
   "editor.minimap.enabled": false,
   "eslint.format.enable": true,
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": false
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[terraform]": {
-    "editor.formatOnSave": true
-  },
-  "editor.formatOnSave": true,
-  "go.formatTool": "goimports",
-  "aws.profile": "profile:default",
-  "aws.samcli.location": "/usr/local/bin/sam",
-  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "go.formatTool": "goimports",
+  "aws.profile": "profile:default",
+  "aws.samcli.location": "/usr/local/bin/sam"
 }
