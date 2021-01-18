@@ -108,7 +108,7 @@ let g:loaded_zipPlugin         = 1
 "-------------------------------------------------
 " plugin (manager: dein.vim)
 "-------------------------------------------------
-let s:dein_dir = expand('~/.cache/dein')
+let s:dein_dir = has('nvim') ? expand('~/.cache/dein/nvim') : expand('~/.cache/dein/vim')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
