@@ -1,6 +1,5 @@
 amazonwebservices.aws-toolkit-vscode
 andys8.jest-snippets
-antfu.i18n-ally
 apollographql.vscode-apollo
 bbenoist.vagrant
 castwide.solargraph
@@ -28,6 +27,7 @@ jaydenlin.ctags-support
 joaoacdias.golang-tdd
 KnisterPeter.vscode-github
 kumar-harsh.graphql-for-vscode
+lokalise.i18n-ally
 misogi.ruby-rubocop
 mitaki28.vscode-clang
 ms-azuretools.vscode-docker

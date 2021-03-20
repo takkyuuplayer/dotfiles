@@ -83,6 +83,9 @@ repo = 'prabirshrestha/vim-lsp'
 repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
+repo = 'mattn/vim-lsp-icons'
+
+[[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 
 [[plugins]]

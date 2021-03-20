@@ -80,5 +80,8 @@
   "editor.formatOnSave": true,
   "go.formatTool": "goimports",
   "aws.profile": "profile:default",
-  "aws.samcli.location": "/usr/local/bin/sam"
+  "aws.samcli.location": "/usr/local/bin/sam",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  }
 }
