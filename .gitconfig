@@ -6,6 +6,7 @@
 	ctags = !.git/hooks/ctags
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -D %
 	delete-merged-remote-branches = !git branch -r --merged | grep -v origin/master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :refs/heads/%
+	delete-squash-merged-branches = "!git checkout -q master && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	heroku = "!f () { git remote add heroku git@heroku.com:$1.git; }; f"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -13,8 +14,8 @@
 	ignore-tmpl = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
-	st = status
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
+	st = status
 	tidible = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
 	branch = auto
