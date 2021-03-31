@@ -13,7 +13,7 @@
 	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >> .gitignore
 	ignore-tmpl = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
-	rebase-onto-latest = "!f() { current=$(git rev-parse --abbrev-ref HEAD); onto=${1-origin/master}; from=$(git merge-base $current $onto); git rebase --onto=$onto $from $current; }; f"
+	rebase-onto-latest = "!f() { current=$(git rev-parse --abbrev-ref HEAD); onto=${1-origin/master}; from=$(git merge-base $current ${2-$onto}); git rebase --onto=$onto $from $current; }; f"
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
 	st = status
