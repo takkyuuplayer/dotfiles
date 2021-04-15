@@ -1,5 +1,5 @@
 [diff "json"]
-	 textconv = "jq ."
+	textconv = jq -S '.' $1
 
 [alias]
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
@@ -37,6 +37,7 @@
 	untracked = cyan
 [core]
 	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
 [merge]
 	tool = vimdiff
 [init]
