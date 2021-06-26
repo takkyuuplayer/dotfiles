@@ -41,9 +41,6 @@ repo = 'vim-scripts/YankRing.vim'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'dense-analysis/ale'
-
-[[plugins]]
 repo = 'thinca/vim-localrc'
 
 [[plugins]]

@@ -176,8 +176,8 @@ function! s:denite_my_settings() abort
 endfunction
 
 nnoremap <silent> <C-O><C-F> :<C-U>DeniteBufferDir file file:new<CR>
-nnoremap <silent> <C-O><C-G> :<C-u>Denite buffer<CR>
-nnoremap <silent> <C-O><C-H> :<C-u>Denite file_mru<CR>
+nnoremap <silent> <C-O><C-G> :<C-U>Denite buffer<CR>
+nnoremap <silent> <C-O><C-H> :<C-U>Denite file_mru<CR>
 nnoremap <silent> <C-O><C-O> :<C-U>Denite file file:new<CR>
 
 " deoplete.vim
@@ -186,7 +186,15 @@ let g:deoplete#enable_at_startup = 1
 
 " quick run
 "-------------------------------------------------
+nnoremap <silent> \r :<C-U>QuickRun<CR>
 let g:quickrun_config = {}
+let g:quickrun_config._ = {
+      \ 'outputter' : 'error',
+      \ 'outputter/error/success' : 'buffer',
+      \ 'outputter/error/error'   : 'quickfix',
+      \ 'outputter/buffer/split'  : ':righttop 8sp',
+      \ 'outputter/buffer/close_on_empty' : 1,
+      \ }
 
 "vimproc
 let g:quickrun_config['_'] = {}
@@ -252,9 +260,8 @@ let g:quickrun_config['go.unit']['command'] = 'go'
 let g:quickrun_config['go.unit']['cmdopt'] = 'test -v'
 let g:quickrun_config['go.unit']['exec'] = '%c %o %s'
 
-" ale
+" vim-lsp
 "-------------------------------------------------
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_set_highlights = 1
+autocmd BufWritePre <buffer> LspDocumentFormatSync
+map ,ct <Esc>:LspDocumentFormat<CR>
+map ,ctv <Esc>:LspDocumentRangeFormat<CR>
