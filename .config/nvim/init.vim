@@ -61,7 +61,13 @@ nmap <silent> <C-{><C-{> :nohlsearch<CR><C-{>
 nnoremap ; :
 map ,pb <Esc>:%! pbcopy;pbpaste<CR>
 map ,pbv <Esc>:'<,'>! pbcopy;pbpaste<CR>
-map <C-]> <Esc>g<C-]>
+"map <C-]> <Esc>g<C-]>
+" 行頭へ
+inoremap <C-a> <Esc>^a
+noremap <C-a> <Esc>^a
+" 行末へ
+inoremap <C-e> <Esc>$a
+noremap <C-e> <Esc>$a
 
 augroup FileTyping
     autocmd!
@@ -265,3 +271,12 @@ let g:quickrun_config['go.unit']['exec'] = '%c %o %s'
 autocmd BufWritePre <buffer> LspDocumentFormatSync
 map ,ct <Esc>:LspDocumentFormat<CR>
 map ,ctv <Esc>:LspDocumentRangeFormat<CR>
+noremap <C-]> <Esc>:LspDefinition<CR>
+
+
+" vim-gist
+"-------------------------------------------------
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1

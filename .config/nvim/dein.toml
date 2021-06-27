@@ -70,6 +70,12 @@ repo = 'honza/vim-snippets'
 [[plugins]]
 repo = 'mattn/vim-goimports'
 
+[[plugins]]
+repo = 'mattn/vim-gist'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
 #################
 # LSP
 #################
