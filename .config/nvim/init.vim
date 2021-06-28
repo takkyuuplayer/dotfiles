@@ -268,7 +268,7 @@ let g:quickrun_config['go.unit']['exec'] = '%c %o %s'
 
 " vim-lsp
 "-------------------------------------------------
-autocmd BufWritePre <buffer> LspDocumentFormatSync
+"autocmd BufWritePre <buffer> LspDocumentFormatSync
 map ,ct <Esc>:LspDocumentFormat<CR>
 map ,ctv <Esc>:LspDocumentRangeFormat<CR>
 noremap <C-]> <Esc>:LspDefinition<CR>
