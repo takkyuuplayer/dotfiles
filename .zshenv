@@ -35,7 +35,7 @@ if [ -d /usr/local/sbin ]; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
-alias aws="aws --cli-auto-prompt"
+#alias aws="aws --cli-auto-prompt"
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
