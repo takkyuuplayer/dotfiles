@@ -19,7 +19,7 @@
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
 	st = status
 	sync-default-branch = "!f() { git remote set-head ${1-origin} --auto; }; f"
-	tidible = "!f() { git diff ${1-$(git default-branch)}... --name-only --diff-filter=AMCRTU; }; f"
+	tidible = "!f() { git diff ${1-origin/$(git default-branch)}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
 	branch = auto
 	diff = auto
