@@ -4,6 +4,7 @@
 [alias]
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	ctags = !.git/hooks/ctags
+	default-branch = "!f() { git symbolic-ref refs/remotes/${1-origin}/HEAD | sed 's@^refs/remotes/${1-origin}/@@'; }; f"
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -D %
 	delete-merged-remote-branches = !git branch -r --merged | grep -v origin/master | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :refs/heads/%
 	delete-squash-merged-branches = "!current=$(git rev-parse --abbrev-ref HEAD); git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $current $branch) && [[ $(git cherry $current $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
@@ -16,6 +17,7 @@
 	rebase-onto-latest = "!f() { current=$(git rev-parse --abbrev-ref HEAD); onto=${1-origin/master}; from=$(git merge-base $current ${2-$onto}); git rebase --onto=$onto $from $current; }; f"
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
+	sync-default-branch = "!f() { git remote set-head ${1-origin} --auto; }; f"
 	st = status
 	tidible = "!f() { git diff ${1-origin/master}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
