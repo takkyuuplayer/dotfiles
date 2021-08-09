@@ -15,9 +15,11 @@ if   = '''! has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+if   = '''has('python3')'''
 
 [[plugins]]
 repo = 'Shougo/deoppet.nvim'
+if   = '''has('python3')'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -63,6 +65,7 @@ repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+if   = '''has('python3')'''
 
 [[plugins]]
 repo = 'honza/vim-snippets'
@@ -90,6 +93,7 @@ repo = 'mattn/vim-lsp-icons'
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
+if   = '''has('python3')'''
 
 [[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-snippets'
