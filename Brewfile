@@ -44,7 +44,6 @@ brew "heroku/brew/heroku"
 brew "reviewdog/tap/reviewdog"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "adobe-acrobat-reader"
-cask "adoptopenjdk8"
 cask "anki"
 cask "clipy"
 cask "cyberduck"
