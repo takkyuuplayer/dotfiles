@@ -1,15 +1,11 @@
-amazonwebservices.aws-toolkit-vscode
 andys8.jest-snippets
-apollographql.vscode-apollo
 bbenoist.vagrant
 castwide.solargraph
 casualjim.gotemplate
 CoenraadS.bracket-pair-colorizer-2
 connorshea.vscode-ruby-test-adapter
-DanielThielking.aws-cloudformation-yaml
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
-donjayamanne.githistory
 eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.vscode-npm-script
@@ -27,7 +23,6 @@ jaydenlin.ctags-support
 joaoacdias.golang-tdd
 KnisterPeter.vscode-github
 kumar-harsh.graphql-for-vscode
-lokalise.i18n-ally
 misogi.ruby-rubocop
 mitaki28.vscode-clang
 ms-azuretools.vscode-docker
@@ -37,6 +32,7 @@ ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.cpptools
+ms-vscode.test-adapter-converter
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
 ms-vsliveshare.vsliveshare-pack
@@ -46,14 +42,10 @@ rebornix.ruby
 redhat.vscode-yaml
 roperzh.make-auto-vars
 sgryjp.japanese-word-handler
-stevencl.addDocComments
 timonwong.shellcheck
-toba.vsfire
 usernamehw.errorlens
-vlang-vscode.extension
 vmsynkov.colonize
 vscodevim.vim
-vscoss.vscode-ansible
 wholroyd.jinja
 wingrunr21.vscode-ruby
 ypresto.vscode-intelli-refactor

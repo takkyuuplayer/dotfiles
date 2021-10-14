@@ -1,66 +1,74 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    {
-        "key": "cmd+n",
-        "command": "-workbench.action.files.newUntitledFile"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "jumpToNextSnippetPlaceholder",
-        "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
-    },
-    {
-        "key": "tab",
-        "command": "-jumpToNextSnippetPlaceholder",
-        "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "acceptSelectedSuggestion",
-        "when": "editorTextFocus && suggestWidgetVisible"
-    },
-    {
-        "key": "tab",
-        "command": "-acceptSelectedSuggestion",
-        "when": "editorTextFocus && suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "insertSnippet",
-        "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
-    },
-    {
-        "key": "tab",
-        "command": "-insertSnippet",
-        "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "-deleteAllRight",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+tab",
-        "command": "editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+space",
-        "command": "-editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+tab",
-        "command": "toggleSuggestionDetails",
-        "when": "editorTextFocus && suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+space",
-        "command": "-toggleSuggestionDetails",
-        "when": "editorTextFocus && suggestWidgetVisible"
-    },
-    {
-        "key": "cmd+n",
-        "command": "explorer.newFile"
-    },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "jumpToNextSnippetPlaceholder",
+    "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
+  },
+  {
+    "key": "tab",
+    "command": "-jumpToNextSnippetPlaceholder",
+    "when": "editorTextFocus && hasNextTabstop && inSnippetMode"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+  },
+  {
+    "key": "tab",
+    "command": "-insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-deleteAllRight",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "toggleSuggestionDetails",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-toggleSuggestionDetails",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "cmd+f1",
+    "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
+  }
 ]
