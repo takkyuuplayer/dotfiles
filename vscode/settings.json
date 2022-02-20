@@ -16,7 +16,6 @@
   "vim.hlsearch": true,
   "workbench.statusBar.visible": true,
   "files.autoSave": "afterDelay",
-  "window.zoomLevel": 1,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
@@ -71,5 +70,7 @@
     "!Split sequence"
   ],
   "aws.profile": "profile:default",
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "json.schemas": [],
+  "window.zoomLevel": 2
 }
