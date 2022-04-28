@@ -18,8 +18,9 @@
   "files.autoSave": "afterDelay",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.codeActionsOnSave": {
+  
     "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.organizeImports": false
   },
   "explorer.confirmDragAndDrop": false,
   "editor.minimap.enabled": false,
@@ -72,5 +73,8 @@
   "aws.profile": "profile:default",
   "redhat.telemetry.enabled": false,
   "json.schemas": [],
-  "window.zoomLevel": 2
+  "window.zoomLevel": 1,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
