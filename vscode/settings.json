@@ -76,5 +76,9 @@
   "window.zoomLevel": 1,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.exclude": {
+    "**/.vscode": true,
+    "**/node_modules": true
   }
 }
