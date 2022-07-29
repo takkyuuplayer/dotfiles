@@ -1,6 +1,5 @@
 KnisterPeter.vscode-github
 ms-azuretools.vscode-docker
-Orta.vscode-jest
-sgryjp.japanese-word-handler
+ms-vscode-remote.remote-containers
 vmsynkov.colonize
 vscodevim.vim
