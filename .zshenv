@@ -44,5 +44,7 @@ alias exit-code="echo $?"
 alias heroku-clean="heroku list | perl -WnlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias mkdir="mkdir -p"
 alias perltidy-all="git tidible | perl -WnlE 'say if /\.(pl|pm|t|psgi)$/' | xargs perltidy -b -bext='/'"
-alias vim="nvim"
+if [[ -x `which nvim` ]]; then
+    alias vim="nvim"
+fi
 alias vimtutor="vimtutor ja"
