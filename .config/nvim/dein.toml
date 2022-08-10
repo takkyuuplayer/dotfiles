@@ -1,0 +1,112 @@
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'ayu-theme/ayu-vim'
+
+# https://wonwon-eater.com/neovim-susume-recommendation-plugin/#outline__4_9
+[[plugins]]
+repo='hoob3rt/lualine.nvim'
+hook_add = '''
+lua << LUA
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+        'g:coc_status',
+      }
+    },
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+LUA
+'''
+
+
+# https://wonwon-eater.com/neovim-susume-recommendation-plugin/#outline__4_21
+[[plugins]]
+repo = 'vim-test/vim-test'
+hook_add = '''
+  nmap <silent> <leader>tn <cmd>update<cr><cmd>TestNearest -strategy=neoterm<CR>
+  nmap <silent> <leader>tf <cmd>update<cr><cmd>TestFile -strategy=neoterm<CR>
+  nmap <silent> <leader>ts <cmd>TestSuite -strategy=neoterm<CR>
+  nmap <silent> <leader>tg <cmd>TestLast -strategy=neoterm<CR>
+'''
+[[plugins]]
+repo = 'kassio/neoterm'
+hook_add = '''
+  let g:neoterm_autoinsert = 1
+  let g:neoterm_autoscroll = 1
+  nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
+'''
+
+# https://wonwon-eater.com/neovim-susume-file-explorer/
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+  let g:fern#default_hidden = 1
+  nnoremap <leader>ef <cmd>Fern . -toggle -reveal=% -drawer<cr>
+  nnoremap <leader>eo <cmd>Fern . -toggle -reveal=. -drawer<cr>
+'''
+
+# https://wonwon-eater.com/nvim-susume-fuzzy-finder/
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+hook_add = '''
+  nnoremap <leader>p <cmd>Telescope find_files hidden=true theme=get_dropdown<cr>
+  nnoremap <leader>gr <cmd>Telescope live_grep theme=get_dropdown<cr>
+  nnoremap <leader>b <cmd>Telescope buffers theme=get_dropdown<cr>
+  nnoremap <leader>h <cmd>Telescope oldfiles theme=get_dropdown<cr>
+  nnoremap <leader>gb <cmd>Telescope git_branches theme=get_dropdown<cr>
+'''
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+build = 'make'
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'travisjeffery/vim-auto-mkdir'
+
+[[plugins]]
+repo = 'vim-scripts/YankRing.vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
+hook_add = '''
+lua << LUA
+  vim.api.nvim_set_keymap('', '<leader>gh', "<Esc>:0GBrowse<CR>", { noremap = true })
+LUA
+'''
