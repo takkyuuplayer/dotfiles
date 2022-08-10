@@ -33,9 +33,6 @@ for (@files) {
     }
 }
 
-symbolic_link("$Bin/.config/nvim/init.vim", "$ENV{'HOME'}/.vimrc");
-symbolic_link("$Bin/.config/nvim",          "$ENV{'HOME'}/.vim");
-
 sub symbolic_link {
     my ($src, $dest) = @_;
     `ln -ins $src $dest` if readlink($dest) ne $src;
