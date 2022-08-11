@@ -23,7 +23,7 @@ vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.signcolumn = 'yes'
 
-vim.g.mapleader = ' '
+vim.g.mapleader = ','
 
 local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, opts and opts or { noremap = true })
@@ -31,6 +31,8 @@ end
 
 map('', '/', "/\\v") -- perl like search
 map('n', ';', ':')
+map('', '<esc><esc>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
+map('', '<C-{><C-{>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
 
 if os.execute('uname -a | grep Darwin') ~= '' then
   map('', '<leader>pb', '<Esc>:%! pbcopy;pbpaste<CR>')
@@ -85,3 +87,5 @@ require('telescope').setup{
   }
 }
 require('telescope').load_extension('fzf')
+
+vim.cmd('filetype plugin indent on')
