@@ -48,19 +48,20 @@ LUA
 # https://wonwon-eater.com/neovim-susume-recommendation-plugin/#outline__4_21
 [[plugins]]
 repo = 'vim-test/vim-test'
+depends = ['neoterm']
 hook_add = '''
-  nmap <silent> <leader>tn <cmd>update<cr><cmd>TestNearest -strategy=neoterm<CR>
-  nmap <silent> <leader>tf <cmd>update<cr><cmd>TestFile -strategy=neoterm<CR>
-  nmap <silent> <leader>ts <cmd>TestSuite -strategy=neoterm<CR>
-  nmap <silent> <leader>tg <cmd>TestLast -strategy=neoterm<CR>
+  nmap <silent> <leader>tn <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestNearest<CR>
+  nmap <silent> <leader>tf <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestFile<CR>
+  nmap <silent> <leader>ts <cmd>exec v:count.'Tclear'<cr><cmd>TestSuite<CR>
+  nmap <silent> <leader>tg <cmd>exec v:count.'Tclear'<cr><cmd>TestLast<CR>
+
+  let g:neoterm_default_mod='vert botright'
+  let g:neoterm_autoscroll=1
+  let g:test#strategy = 'neoterm'
+  let g:test#preserve_screen = 0
 '''
 [[plugins]]
 repo = 'kassio/neoterm'
-hook_add = '''
-  let g:neoterm_autoinsert = 1
-  let g:neoterm_autoscroll = 1
-  nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
-'''
 
 # https://wonwon-eater.com/neovim-susume-file-explorer/
 [[plugins]]
@@ -126,3 +127,25 @@ lua << LUA
   vim.api.nvim_set_keymap('', '<leader>gh', "<Esc>:0GBrowse<CR>", { noremap = true })
 LUA
 '''
+
+##########
+# LSP
+##########
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
