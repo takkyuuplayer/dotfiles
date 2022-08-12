@@ -52,13 +52,11 @@ depends = ['neoterm']
 hook_add = '''
   nmap <silent> <leader>tn <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestNearest<CR>
   nmap <silent> <leader>tf <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestFile<CR>
-  nmap <silent> <leader>ts <cmd>exec v:count.'Tclear'<cr><cmd>TestSuite<CR>
-  nmap <silent> <leader>tg <cmd>exec v:count.'Tclear'<cr><cmd>TestLast<CR>
 
   let g:neoterm_default_mod='vert botright'
-  let g:neoterm_autoscroll=1
+  let g:neoterm_keep_term_open = 0
+  let g:neoterm_autoscroll = 1
   let g:test#strategy = 'neoterm'
-  let g:test#preserve_screen = 0
 '''
 [[plugins]]
 repo = 'kassio/neoterm'

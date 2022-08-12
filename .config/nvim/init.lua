@@ -22,6 +22,7 @@ vim.o.writebackup = false
 vim.wo.cursorline = true
 vim.wo.number = true
 vim.wo.signcolumn = 'yes'
+vim.wo.statusline = "%f [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L %P"
 
 vim.g.mapleader = ','
 
