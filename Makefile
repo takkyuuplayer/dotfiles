@@ -10,18 +10,6 @@ help:
 link:
 	perl ./copies.pl
 
-anyenv: ${HOME}/.anyenv ${HOME}/.anyenv/plugins ${HOME}/.anyenv/plugins/anyenv-update ${HOME}/.anyenv/plugins/anyenv-git
-${HOME}/.anyenv:
-	git clone https://github.com/anyenv/anyenv ~/.anyenv
-	-~/.anyenv/bin/anyenv install --force-init
-
-${HOME}/.anyenv/plugins:
-	mkdir -p ~/.anyenv/plugins
-${HOME}/.anyenv/plugins/anyenv-update:
-	git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
-${HOME}/.anyenv/plugins/anyenv-git:
-	git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git
-
 ssh_authorized_keys:
 	touch ~/.ssh/authorized_keys
 	chmod 600 ~/.ssh/authorized_keys
