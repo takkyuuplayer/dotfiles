@@ -16,6 +16,18 @@ if type -q gdate
   alias date='gdate'
 end
 
+if type -q anyenv
+  status --is-interactive; and source (anyenv init -|psub)
+end
+
+if type -q direnv
+  eval (direnv hook fish)
+end
+
+if type -q nvim
+  alias vim='nvim'
+end
+
 bind \c] '__ghq_repository_search'
 if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \c] '__ghq_repository_search'
@@ -69,7 +81,5 @@ set -U fish_pager_color_progress brwhite --background=cyan
 
 [ -f ~/.fishrc_mine ]; and source ~/.fishrc_mine
 
-eval (direnv hook fish)
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-status --is-interactive; and source (anyenv init -|psub)
 alias awslocal="aws --endpoint-url=http://localhost:4566"
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
