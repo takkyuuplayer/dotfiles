@@ -3,6 +3,11 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+'''
 
 # https://wonwon-eater.com/neovim-susume-recommendation-plugin/#outline__4_9
 [[plugins]]
