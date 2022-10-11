@@ -15,19 +15,13 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [[ -x `which go` ]]; then
-    export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH/bin
-fi
-
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
 else
   alias diff='diff -u'
 fi
 
-if [ -d ${HOME}/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
+if [[ -x `which anyenv` ]]; then
     eval "$(anyenv init -)"
 fi
 
