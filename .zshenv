@@ -26,9 +26,8 @@ else
   alias diff='diff -u'
 fi
 
-if [ -d ${HOME}/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
+if [[ -x `which anyenv` ]]; then
+  eval "$(anyenv init -)"
 fi
 
 if [ -d /usr/local/sbin ]; then
