@@ -1,8 +1,16 @@
 .PHONY: vscode
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+ANYENV_ROOT=$(shell anyenv root)
 
 all: link
+
+anyenv: ${ANYENV_ROOT}/plugins/anyenv-update
+	anyenv update
+
+${ANYENV_ROOT}/plugins/anyenv-update:
+	git clone https://github.com/znz/anyenv-update.git ${ANYENV_ROOT}/plugins/anyenv-update
+
 
 help:
 	cat Makefile
