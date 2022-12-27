@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sqlite3 -tabs $1 ".import '|cat -' tbl"
+sqlite3 $1 ".import '|cat -' tbl"
