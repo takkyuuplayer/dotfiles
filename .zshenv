@@ -47,3 +47,4 @@ if [[ -x `which nvim` ]]; then
     alias vim="nvim"
 fi
 alias vimtutor="vimtutor ja"
+alias git-clone-many="(){gh repo list \$1 --limit \${2:-30} --no-archived --json url --jq '.[].url' | ghq get -p -P}"
