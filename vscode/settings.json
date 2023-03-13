@@ -20,7 +20,7 @@
   "editor.codeActionsOnSave": {
   
     "source.fixAll.eslint": true,
-    "source.organizeImports": false
+    "source.organizeImports": true
   },
   "explorer.confirmDragAndDrop": false,
   "editor.minimap.enabled": false,
