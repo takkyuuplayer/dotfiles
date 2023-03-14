@@ -81,5 +81,6 @@
     "**/.vscode": true,
     "**/node_modules": true
   },
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
