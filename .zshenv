@@ -15,11 +15,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [[ -x `which go` ]]; then
-    export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH/bin
-fi
-
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
 else
