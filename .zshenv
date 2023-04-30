@@ -25,19 +25,11 @@ if [[ -x `which anyenv` ]]; then
   eval "$(anyenv init -)"
 fi
 
-if [ -d /usr/local/sbin ]; then
-    export PATH="/usr/local/sbin:$PATH"
-fi
-
-#alias aws="aws --cli-auto-prompt"
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
-alias exit-code="echo $?"
-alias heroku-clean="heroku list | perl -WnlE 'say if /\d+$/' | xargs -I% heroku destroy -a % -c %"
 alias mkdir="mkdir -p"
-alias perltidy-all="git tidible | perl -WnlE 'say if /\.(pl|pm|t|psgi)$/' | xargs perltidy -b -bext='/'"
 if [[ -x `which nvim` ]]; then
     alias vim="nvim"
 fi
