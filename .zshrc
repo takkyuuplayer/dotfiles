@@ -79,3 +79,8 @@ function ghq-fzf() {
 
 zle -N ghq-fzf
 bindkey "" ghq-fzf
+
+
+if [ -d /opt/homebrew/opt/openjdk/bin ] ; then
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi
