@@ -25,6 +25,11 @@ if [[ -x `which anyenv` ]]; then
   eval "$(anyenv init -)"
 fi
 
+if [ -d ${HOME}/.deno ]; then
+  export DENO_INSTALL="$HOME/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
 alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
