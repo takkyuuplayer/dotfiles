@@ -56,6 +56,6 @@
       ]
     }
   ],
-  "window.zoomLevel": 1,
-  "workbench.statusBar.visible": true
+  "workbench.statusBar.visible": true,
+  "editor.rulers": [120]
 }
