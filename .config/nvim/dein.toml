@@ -131,6 +131,9 @@ lua << LUA
 LUA
 '''
 
+[[plugins]]
+repo = 'github/copilot.vim'
+
 ##########
 # LSP
 ##########
@@ -152,3 +155,5 @@ repo = 'hrsh7th/cmp-path'
 repo = 'hrsh7th/cmp-buffer'
 [[plugins]]
 repo = 'hrsh7th/cmp-cmdline'
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
