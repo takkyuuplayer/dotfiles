@@ -57,5 +57,10 @@
     }
   ],
   "workbench.statusBar.visible": true,
-  "editor.rulers": [120]
+  "editor.rulers": [
+    120
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

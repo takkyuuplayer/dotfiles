@@ -18,8 +18,8 @@
 			"\tpanic(err)",
 			"} else {",
 			"\tresponse.Body = io.NopCloser(bytes.NewBuffer(b))",
-			"\tfmt.Printf(\"=======\\n%s %s\\n\", request.Method, request.URL.Path)",
-			"\tif err := os.WriteFile(fmt.Sprintf(\"./test_asset/%s%s.json\", request.Method, strings.ReplaceAll(request.URL.Path, \"/\", \"_\")), b, 0664); err != nil {",
+			"\tfmt.Printf(\"=======\\n%s %s\\n\", response.Request.Method, response.Request.URL.Path)",
+			"\tif err := os.WriteFile(fmt.Sprintf(\"./test_asset/%s%s.json\", response.Request.Method, strings.ReplaceAll(response.Request.URL.Path, \"/\", \"_\")), b, 0664); err != nil {",
 			"\tpanic(err)",
 			"\t}",
 			"}"
