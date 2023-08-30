@@ -86,8 +86,39 @@ require('mason-lspconfig').setup_handlers({ function(server)
     -- Function executed when the LSP server startup
     on_attach = function(client, bufnr)
       local opts = { noremap = true, silent = true }
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.format()'
+
+      if client.server_capabilities.hoverProvider then
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+      end
+
+      if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = vim.api.nvim_create_augroup("Format", { clear = true }),
+          buffer = bufnr,
+          callback = function() vim.lsp.buf.format() end
+        })
+      end
+
+      if client.server_capabilities.documentHighlightProvider then
+        local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+
+        vim.opt.updatetime = 1000
+
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          buffer = bufnr,
+          group = group,
+          callback = function()
+            vim.lsp.buf.document_highlight()
+          end,
+        })
+        vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+          buffer = bufnr,
+          group = group,
+          callback = function()
+            vim.lsp.buf.clear_references()
+          end,
+        })
+      end
     end,
     capabilities = require('cmp_nvim_lsp').default_capabilities()
   }
@@ -113,18 +144,6 @@ vim.keymap.set('n', '<leader>g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 )
--- Reference highlight
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]]
 
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")
