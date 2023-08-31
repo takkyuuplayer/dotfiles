@@ -49,3 +49,5 @@ if [[ -x `which nvim` ]]; then
 fi
 alias vimtutor="vimtutor ja"
 alias git-clone-many="(){gh repo list \$1 --limit \${2:-30} --no-archived --json url --jq '.[].url' | ghq get -p -P}"
+
+alias tparagen="go run github.com/sho-hata/tparagen/cmd/tparagen@latest"
