@@ -41,4 +41,3 @@ cask "postman"
 cask "slack"
 cask "spotify"
 cask "visual-studio-code"
-mas "LINE", id: 539883307

@@ -46,4 +46,4 @@ brew:
 	brew bundle install --no-lock
 
 brew/dump:
-	brew bundle dump --force
+	brew bundle dump --force --brews --casks --taps
