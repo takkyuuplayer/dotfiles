@@ -21,8 +21,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
@@ -48,18 +48,12 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "after": [
-        "<Esc>"
-      ],
-      "before": [
-        "C-]"
-      ]
+      "after": ["<Esc>"],
+      "before": ["C-]"]
     }
   ],
   "workbench.statusBar.visible": true,
-  "editor.rulers": [
-    120
-  ],
+  "editor.rulers": [120],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
