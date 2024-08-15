@@ -10,7 +10,6 @@ vim.o.helplang = 'ja,en'
 vim.o.hidden = true
 vim.o.ignorecase = true
 vim.o.list = true
--- vim.o.pastetoggle = '<F2>'
 vim.o.smartcase = true
 vim.o.splitright = true
 vim.o.swapfile = false
@@ -34,6 +33,10 @@ map('', '/', "/\\v") -- perl like search
 map('n', ';', ':')
 map('', '<esc><esc>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
 map('', '<C-{><C-{>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
+
+-- pastetoggle https://stackoverflow.com/questions/76687544/emulate-pastetoggle-in-neovim
+map('n', '<f2>', ':set paste!<cr>', { noremap = true, silent = true })
+map('i', '<f2> <esc>', ':set paste!<cr>i', { noremap = true, silent = true })
 
 if os.execute('uname -a | grep Darwin') ~= '' then
   map('', '<leader>pb', '<Esc>:%! pbcopy;pbpaste<CR>')
