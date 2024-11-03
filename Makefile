@@ -2,16 +2,8 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-link: ${HOME}/.gitconfig
-	chezmoi apply
-
-.PHONY: ${HOME}/.gitconfig
-${HOME}/.gitconfig:
-	@userline=$$(git config --list --global | grep user | sed 's/=/ /g'); \
-	cp .gitconfig ~/.gitconfig; \
-	echo "$$userline" | while IFS= read -r line; do \
-		git config --global $$line; \
-	done;
+link:
+	chezmoi apply --mode symlink
 
 fish:
 	fish -c "fisher update"
