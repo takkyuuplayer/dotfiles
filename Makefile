@@ -5,6 +5,11 @@ DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 link:
 	chezmoi apply --mode symlink
 
+mise:
+	mise up -y
+	mise prune -y
+	mise reshim
+
 fish:
 	fish -c "fisher update"
 
