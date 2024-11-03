@@ -2,18 +2,8 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-all: link
-
-help:
-	cat Makefile
-
 link:
-	perl ./copies.pl
-
-ssh_authorized_keys:
-	touch ~/.ssh/authorized_keys
-	chmod 600 ~/.ssh/authorized_keys
-	curl -L http://github.com/takkyuuplayer.keys >>~/.ssh/authorized_keys
+	chezmoi apply --mode symlink
 
 fish:
 	fish -c "fisher update"

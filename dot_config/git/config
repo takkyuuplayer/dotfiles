@@ -37,9 +37,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[core]
-	excludesfile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes
 [merge]
 	tool = vimdiff
 [init]
