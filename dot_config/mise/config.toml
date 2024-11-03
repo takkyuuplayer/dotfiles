@@ -2,3 +2,4 @@
 node = "lts"
 terraform = "latest"
 ruby = "latest"
+v = "latest"
