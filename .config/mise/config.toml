@@ -1,0 +1,4 @@
+[tools]
+node = "lts"
+terraform = "latest"
+ruby = "latest"

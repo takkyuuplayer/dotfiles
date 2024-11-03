@@ -9,4 +9,5 @@
 !/.config/fish/fish_plugins
 !/.config/fish/functions/fish_prompt.fish
 !/.config/nvim
+!/.config/mise
 /.vim/bundle/*

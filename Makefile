@@ -4,13 +4,6 @@ DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
 all: link
 
-anyenv: $(shell anyenv root)/plugins/anyenv-update
-	anyenv update
-
-$(shell anyenv root)/plugins/anyenv-update:
-	git clone https://github.com/znz/anyenv-update.git $(shell anyenv root)/plugins/anyenv-update
-
-
 help:
 	cat Makefile
 

@@ -16,6 +16,7 @@ CASE_SENSITIVE="true"
 plugins=(
     aws
     brew
+    mise
     direnv
     docker
     docker-compose
