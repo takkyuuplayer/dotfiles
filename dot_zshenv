@@ -37,6 +37,7 @@ fi
 
 if [ -d ${HOME}/.cargo ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
+  . "$HOME/.cargo/env"
 fi
 
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
