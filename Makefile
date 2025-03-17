@@ -31,7 +31,7 @@ vscode/extensions:
 brew:
 	which brew || bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	brew update
-	brew bundle install --no-lock
+	brew bundle install
 
 brew/dump:
 	brew bundle dump --force --brews --casks --taps
