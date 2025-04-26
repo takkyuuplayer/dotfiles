@@ -79,6 +79,36 @@ if vim.fn.len(removed_plugins) > 0 then
   vim.fn['dein#recache_runtimepath']()
 end
 
+-- plugin update check
+local update_interval_days = 7
+local last_update_file = vim.fn.expand("~/.cache/nvim/dein_last_update")
+
+local function should_update()
+  local stat = vim.loop.fs_stat(last_update_file)
+  if not stat then
+    return true
+  end
+
+  local last = stat.mtime.sec
+  local now = os.time()
+  return now - last > update_interval_days * 24 * 60 * 60
+end
+
+local function mark_updated()
+  local fd = assert(io.open(last_update_file, "w"))
+  fd:write("") -- 空ファイルとして保存（タイムスタンプが重要）
+  fd:close()
+end
+
+if should_update() then
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      vim.cmd("call dein#update()")
+      mark_updated()
+    end,
+  })
+end
+
 vim.cmd('filetype plugin indent on')
 
 -- https://zenn.dev/botamotch/articles/21073d78bc68bf
