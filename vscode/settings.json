@@ -58,5 +58,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.editor.enableAutoCompletions": true,
-  "git.openRepositoryInParentFolders": "never"
+  "git.openRepositoryInParentFolders": "never",
+  "makefile.configureOnOpen": true,
+  "github.copilot.nextEditSuggestions.enabled": true
 }
