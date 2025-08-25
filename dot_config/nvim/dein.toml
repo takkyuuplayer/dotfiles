@@ -140,9 +140,9 @@ repo = 'github/copilot.vim'
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 [[plugins]]
-repo = 'williamboman/mason.nvim'
+repo = 'mason-org/mason.nvim'
 [[plugins]]
-repo = 'williamboman/mason-lspconfig.nvim'
+repo = 'mason-org/mason-lspconfig.nvim'
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 [[plugins]]
