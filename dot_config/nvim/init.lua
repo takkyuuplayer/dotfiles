@@ -46,117 +46,221 @@ end
 -- https://stackoverflow.com/questions/630884/opening-vim-help-in-a-vertical-split-window
 vim.cmd('autocmd FileType help wincmd L')
 
--- https://wonwon-eater.com/neovim-susume-plugin-manager/
-local dein_dir = vim.fn.expand('~/.cache/nvim/dein')
-local dein_repo_dir = dein_dir .. '/repos/github.com/Shougo/dein.vim'
-
-vim.o.runtimepath = dein_repo_dir .. ',' .. vim.o.runtimepath
-
--- dein install check
-if (vim.fn.isdirectory(dein_repo_dir) == 0) then
-  os.execute('git clone https://github.com/Shougo/dein.vim ' .. dein_repo_dir)
-end
-
--- begin settings
-if (vim.fn['dein#load_state'](dein_dir) == 1) then
-  local rc_dir = vim.fn.expand('~/.config/nvim')
-  local toml = rc_dir .. '/dein.toml'
-  vim.fn['dein#begin'](dein_dir)
-  vim.fn['dein#load_toml'](toml, { lazy = 0 })
-  vim.fn['dein#end']()
-  vim.fn['dein#save_state']()
-end
-
--- plugin install check
-if (vim.fn['dein#check_install']() ~= 0) then
-  vim.fn['dein#install']()
-end
-
--- plugin remove check
-local removed_plugins = vim.fn['dein#check_clean']()
-if vim.fn.len(removed_plugins) > 0 then
-  vim.fn.map(removed_plugins, "delete(v:val, 'rf')")
-  vim.fn['dein#recache_runtimepath']()
-end
-
--- plugin update check
-local update_interval_days = 7
-local last_update_file = vim.fn.expand("~/.cache/nvim/dein_last_update")
-
-local function should_update()
-  local stat = vim.loop.fs_stat(last_update_file)
-  if not stat then
-    return true
-  end
-
-  local last = stat.mtime.sec
-  local now = os.time()
-  return now - last > update_interval_days * 24 * 60 * 60
-end
-
-local function mark_updated()
-  local fd = assert(io.open(last_update_file, "w"))
-  fd:write("") -- 空ファイルとして保存（タイムスタンプが重要）
-  fd:close()
-end
-
-if should_update() then
-  vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-      vim.cmd("call dein#update()")
-      mark_updated()
-    end,
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   })
 end
+vim.opt.rtp:prepend(lazypath)
+
+-- Setup lazy.nvim
+require("lazy").setup({
+  -- Japanese documentation
+  { "vim-jp/vimdoc-ja" },
+
+  -- Theme
+  {
+    "ayu-theme/ayu-vim",
+    config = function()
+      vim.cmd([[
+        set termguicolors
+        let ayucolor="dark"
+        colorscheme ayu
+      ]])
+    end,
+  },
+
+  -- Status line
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+          theme = 'auto',
+          component_separators = {'', ''},
+          section_separators = {'', ''},
+          disabled_filetypes = {}
+        },
+        sections = {
+          lualine_a = {'mode'},
+          lualine_b = {'branch'},
+          lualine_c = {
+            {
+              'filename',
+              path = 1,
+              'g:coc_status',
+            }
+          },
+          lualine_x = {'encoding', 'fileformat', 'filetype'},
+          lualine_y = {'progress'},
+          lualine_z = {'location'}
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {{'filename', path = 1}},
+          lualine_x = {'location'},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        tabline = {},
+        extensions = {}
+      }
+    end,
+  },
+
+  -- Testing
+  {
+    "vim-test/vim-test",
+    dependencies = { "kassio/neoterm" },
+    config = function()
+      vim.cmd([[
+        nmap <silent> <leader>tn <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestNearest<CR>
+        nmap <silent> <leader>tf <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestFile<CR>
+
+        let g:neoterm_default_mod='vert botright'
+        let g:neoterm_keep_term_open = 0
+        let g:neoterm_autoscroll = 1
+        let g:test#strategy = 'neoterm'
+      ]])
+    end,
+  },
+  { "kassio/neoterm" },
+
+  -- File explorer
+  {
+    "lambdalisue/fern.vim",
+    config = function()
+      vim.cmd([[
+        let g:fern#default_hidden = 1
+        nnoremap <leader>ef <cmd>Fern . -toggle -reveal=% -drawer<cr>
+        nnoremap <leader>eo <cmd>Fern . -toggle -reveal=. -drawer<cr>
+      ]])
+    end,
+  },
+
+  -- Fuzzy finder
+  { "nvim-lua/plenary.nvim" },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      vim.cmd([[
+        nnoremap <leader>p <cmd>Telescope find_files hidden=true theme=get_dropdown<cr>
+        nnoremap <leader>gr <cmd>Telescope live_grep theme=get_dropdown<cr>
+        nnoremap <leader>b <cmd>Telescope buffers theme=get_dropdown<cr>
+        nnoremap <leader>h <cmd>Telescope oldfiles theme=get_dropdown<cr>
+        nnoremap <leader>gb <cmd>Telescope git_branches theme=get_dropdown<cr>
+      ]])
+    end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    build = "make",
+    config = function()
+      require('telescope').setup{
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = false,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          }
+        }
+      }
+      require('telescope').load_extension('fzf')
+    end,
+  },
+
+  -- Utility plugins
+  { "vim-scripts/sudo.vim" },
+  { "travisjeffery/vim-auto-mkdir" },
+  { "vim-scripts/YankRing.vim" },
+  { "nathanaelkane/vim-indent-guides" },
+
+  -- Git integration
+  { "tpope/vim-fugitive" },
+  {
+    "tpope/vim-rhubarb",
+    config = function()
+      vim.api.nvim_set_keymap('', '<leader>gh', "<Esc>:0GBrowse<CR>", { noremap = true })
+    end,
+  },
+
+  -- AI assistance
+  { "github/copilot.vim" },
+
+  -- LSP and completion
+  { "neovim/nvim-lspconfig" },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/vim-vsnip" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-cmdline" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+})
 
 vim.cmd('filetype plugin indent on')
 
 -- https://zenn.dev/botamotch/articles/21073d78bc68bf
 -- 1. LSP Sever management
 require('mason').setup()
-require('mason-lspconfig').setup_handlers({ function(server)
-  local opt = {
-    -- Function executed when the LSP server startup
-    on_attach = function(client, bufnr)
-      local opts = { noremap = true, silent = true }
+require('mason-lspconfig').setup({
+  ensure_installed = {}, -- Install servers automatically if needed
+})
 
-      if client.server_capabilities.hoverProvider then
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      end
+-- Setup LSP servers
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = vim.api.nvim_create_augroup("Format", { clear = true }),
-          buffer = bufnr,
-          callback = function() vim.lsp.buf.format() end
-        })
-      end
+local on_attach = function(client, bufnr)
+  local opts = { noremap = true, silent = true }
 
-      if client.server_capabilities.documentHighlightProvider then
-        local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+  if client.server_capabilities.hoverProvider then
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  end
 
-        vim.opt.updatetime = 1000
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.format() end
+    })
+  end
 
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          buffer = bufnr,
-          group = group,
-          callback = function()
-            vim.lsp.buf.document_highlight()
-          end,
-        })
-        vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-          buffer = bufnr,
-          group = group,
-          callback = function()
-            vim.lsp.buf.clear_references()
-          end,
-        })
-      end
-    end,
-    capabilities = require('cmp_nvim_lsp').default_capabilities()
-  }
-  require('lspconfig')[server].setup(opt)
-end })
+  if client.server_capabilities.documentHighlightProvider then
+    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+
+    vim.opt.updatetime = 1000
+
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      buffer = bufnr,
+      group = group,
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+      buffer = bufnr,
+      group = group,
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end,
+    })
+  end
+end
 
 -- 2. build-in LSP function
 -- keyboard shortcut
