@@ -262,24 +262,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Setup common LSP servers manually (more reliable than setup_handlers)
--- Only setup servers that are actually available
-local function setup_lsp_server(server_name)
-  local ok, server = pcall(function() return lspconfig[server_name] end)
-  if ok and server and server.setup then
-    server.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-  end
-end
-
--- Common servers (only setup if available)
-local servers = { 'lua_ls', 'pyright', 'ts_ls', 'rust_analyzer', 'gopls' }
-for _, server in ipairs(servers) do
-  setup_lsp_server(server)
-end
-
 -- 2. build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', '<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>')
