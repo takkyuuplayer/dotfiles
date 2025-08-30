@@ -217,49 +217,68 @@ vim.cmd('filetype plugin indent on')
 -- https://zenn.dev/botamotch/articles/21073d78bc68bf
 -- 1. LSP Sever management
 require('mason').setup()
-require('mason-lspconfig').setup_handlers({ function(server)
-  local opt = {
-    -- Function executed when the LSP server startup
-    on_attach = function(client, bufnr)
-      local opts = { noremap = true, silent = true }
+require('mason-lspconfig').setup({
+  ensure_installed = {}, -- Install servers automatically if needed
+})
 
-      if client.server_capabilities.hoverProvider then
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      end
+-- Setup LSP servers
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = vim.api.nvim_create_augroup("Format", { clear = true }),
-          buffer = bufnr,
-          callback = function() vim.lsp.buf.format() end
-        })
-      end
+local on_attach = function(client, bufnr)
+  local opts = { noremap = true, silent = true }
 
-      if client.server_capabilities.documentHighlightProvider then
-        local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+  if client.server_capabilities.hoverProvider then
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  end
 
-        vim.opt.updatetime = 1000
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.format() end
+    })
+  end
 
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          buffer = bufnr,
-          group = group,
-          callback = function()
-            vim.lsp.buf.document_highlight()
-          end,
-        })
-        vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-          buffer = bufnr,
-          group = group,
-          callback = function()
-            vim.lsp.buf.clear_references()
-          end,
-        })
-      end
-    end,
-    capabilities = require('cmp_nvim_lsp').default_capabilities()
-  }
-  require('lspconfig')[server].setup(opt)
-end })
+  if client.server_capabilities.documentHighlightProvider then
+    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+
+    vim.opt.updatetime = 1000
+
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      buffer = bufnr,
+      group = group,
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+      buffer = bufnr,
+      group = group,
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end,
+    })
+  end
+end
+
+-- Setup common LSP servers manually (more reliable than setup_handlers)
+-- Only setup servers that are actually available
+local function setup_lsp_server(server_name)
+  local ok, server = pcall(function() return lspconfig[server_name] end)
+  if ok and server and server.setup then
+    server.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+  end
+end
+
+-- Common servers (only setup if available)
+local servers = { 'lua_ls', 'pyright', 'ts_ls', 'rust_analyzer', 'gopls' }
+for _, server in ipairs(servers) do
+  setup_lsp_server(server)
+end
 
 -- 2. build-in LSP function
 -- keyboard shortcut
