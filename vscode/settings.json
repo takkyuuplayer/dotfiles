@@ -60,5 +60,14 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "git.openRepositoryInParentFolders": "never",
   "makefile.configureOnOpen": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "roo-cline.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show",
+    "go tool staticcheck",
+    "go tool golangci-lint",
+    "go test"
+  ],
+  "roo-cline.deniedCommands": []
 }
