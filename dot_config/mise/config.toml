@@ -1,5 +1,5 @@
 [tools]
-node = "lts"
+node = "latest"
 terraform = "latest"
 ruby = "latest"
 v = "latest"

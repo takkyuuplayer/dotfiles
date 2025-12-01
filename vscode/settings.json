@@ -15,7 +15,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -48,17 +48,29 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "after": ["<Esc>"],
-      "before": ["C-]"]
+      "after": [
+        "<Esc>"
+      ],
+      "before": [
+        "C-]"
+      ]
     }
   ],
   "workbench.statusBar.visible": true,
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.editor.enableAutoCompletions": true,
   "git.openRepositoryInParentFolders": "never",
   "makefile.configureOnOpen": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "roo-cline.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "roo-cline.deniedCommands": []
 }
