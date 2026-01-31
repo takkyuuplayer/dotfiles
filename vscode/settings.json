@@ -72,5 +72,11 @@
     "git diff",
     "git show"
   ],
-  "roo-cline.deniedCommands": []
+  "roo-cline.deniedCommands": [],
+  "yaml": {
+    "schemas": {
+      "https://json.schemastore.org/github-workflow.json": "/*/.github/workflows/*.{yml,yaml}",
+      "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml"
+    }
+  }
 }
