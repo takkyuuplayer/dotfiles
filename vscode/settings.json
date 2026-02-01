@@ -48,7 +48,6 @@
   },
   "git.autofetch": true,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.nextEditSuggestions.enabled": true,
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
@@ -65,10 +64,8 @@
   ],
   "workbench.settings.applyToAllProfiles": [],
   "workbench.statusBar.visible": true,
-  "yaml": {
-    "schemas": {
-      "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml",
-      "https://json.schemastore.org/github-workflow.json": "/*/.github/workflows/*.{yml,yaml}",
-    },
+  "yaml.schemas": {
+    "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml",
+    "https://json.schemastore.org/github-workflow.json": "/*/.github/workflows/*.{yml,yaml}",
   },
 }
