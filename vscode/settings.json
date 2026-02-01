@@ -1,82 +1,74 @@
 {
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome",
+  },
+  "[json]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.sort-json": "explicit",
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[jsonc]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.sort-json": "explicit",
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "explicit",
   },
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
-  "eslint.format.enable": true,
-  "eslint.packageManager": "npm",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "editor.rulers": [120],
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.vscode": true,
-    "**/node_modules": true
+    "**/node_modules": true,
   },
   "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
+  "makefile.configureOnOpen": true,
+  "roo-cline.allowedCommands": ["git diff", "git log", "git show"],
+  "roo-cline.deniedCommands": [],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "after": [
-        "<Esc>"
-      ],
-      "before": [
-        "C-]"
-      ]
-    }
+      "after": ["<Esc>"],
+      "before": ["C-]"],
+    },
   ],
+  "workbench.settings.applyToAllProfiles": [],
   "workbench.statusBar.visible": true,
-  "editor.rulers": [
-    120
-  ],
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "github.copilot.editor.enableAutoCompletions": true,
-  "git.openRepositoryInParentFolders": "never",
-  "makefile.configureOnOpen": true,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "roo-cline.allowedCommands": [
-    "git log",
-    "git diff",
-    "git show"
-  ],
-  "roo-cline.deniedCommands": [],
   "yaml": {
     "schemas": {
+      "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml",
       "https://json.schemastore.org/github-workflow.json": "/*/.github/workflows/*.{yml,yaml}",
-      "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml"
-    }
-  }
+    },
+  },
 }

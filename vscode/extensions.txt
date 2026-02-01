@@ -13,6 +13,7 @@ ms-vscode.makefile-tools
 rooveterinaryinc.roo-cline
 rust-lang.rust-analyzer
 tamasfe.even-better-toml
+thinker.sort-json
 vlanguage.vscode-vlang
 vmsynkov.colonize
 vscodevim.vim
