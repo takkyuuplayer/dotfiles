@@ -2,22 +2,18 @@
 	textconv = sh -c 'jq -S . "$1" 2>/dev/null || cat "$1" 2>/dev/null || true' --
 
 [alias]
-	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-	ctags = !.git/hooks/ctags
+	alias = !git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | sort
 	default-branch = "!f() { git symbolic-ref refs/remotes/${1-origin}/HEAD | sed 's@^refs/remotes/${1-origin}/@@'; }; f"
-	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -D %
+	delete-merged-branches = "!f() { git branch --merged | grep -vE \"^\\*|^\\s*$(git default-branch)$\" | xargs -I % git branch -D %; }; f"
 	delete-merged-remote-branches = !git branch -r --merged | grep -v origin/$(git default-branch) | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :refs/heads/%
 	delete-squash-merged-branches = "!current=$(git rev-parse --abbrev-ref HEAD); git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $current $branch) && [[ $(git cherry $current $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
-	heroku = "!f () { git remote add heroku git@heroku.com:$1.git; }; f"
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >> .gitignore
+	ignore = "!f() { [ ! -e .gitignore ] && touch .gitignore; echo \"$1\" >> .gitignore; }; f"
 	ignore-tmpl = "!gi() { curl -L -s www.toptal.com/developers/gitignore/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
 	rebase-onto-latest = "!f() { current=$(git rev-parse --abbrev-ref HEAD); onto=${1-origin/$(git default-branch)}; from=$(git merge-base $current ${2-$onto}); git rebase --onto=$onto $from $current; }; f"
-	sed =  "!f () { git grep -Il $1 | LC_ALL=C xargs sed -i '' -e s/$1/$2/g; }; f"
-	show-non-merged-branches = "!f () { for branch in `git branch -a --no-merged | grep -v HEAD`; do echo `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\\\t$branch; done }; f | sort -r"
-	st = status
+	sed = "!f() { git grep -Il \"$1\" | LC_ALL=C xargs sed -i '' -e \"s/$1/$2/g\"; }; f"
+	show-non-merged-branches = "!f() { git for-each-ref --no-merged=HEAD --sort=-committerdate refs/heads/ refs/remotes/ --format='%(committerdate:iso) %(committerdate:relative) %(authorname)\t%(refname:short)'; }; f"
 	sync-default-branch = "!f() { git remote set-head ${1-origin} --auto; }; f"
 	tidible = "!f() { git diff ${1-$(git default-branch)}... --name-only --diff-filter=AMCRTU; }; f"
 [color]
