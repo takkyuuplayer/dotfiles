@@ -4,6 +4,8 @@ DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
 link:
 	chezmoi apply --mode symlink
+	rm -rf ~/.claude/skills
+	ln -s $(realpath dot_claude/skills) ~/.claude/skills
 
 mise:
 	mise up -y
