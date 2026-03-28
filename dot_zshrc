@@ -88,4 +88,10 @@ fi
 
 if git wt --version &>/dev/null 2>&1; then
   eval "$(git wt --init zsh)"
+
+  function cdwt() {
+    local dir
+    dir=$(git-wt | fzf --header-lines=1 | awk '{if ($1 == "*") print $2; else print $1}')
+    [ -n "$dir" ] && cd "$dir"
+  }
 fi
