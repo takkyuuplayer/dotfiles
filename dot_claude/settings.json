@@ -26,5 +26,8 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "sandbox": {
+    "enabled": true
+  }
 }
