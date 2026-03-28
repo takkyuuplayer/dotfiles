@@ -85,3 +85,7 @@ bindkey "" ghq-fzf
 if [ -d /opt/homebrew/opt/openjdk/bin ] ; then
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
+
+if git wt --version &>/dev/null 2>&1; then
+  eval "$(git wt --init zsh)"
+fi
