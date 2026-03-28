@@ -52,3 +52,4 @@
 	rebase = false
 [wt]
 	basedir = .git/wt
+	hook = code "$PWD"
