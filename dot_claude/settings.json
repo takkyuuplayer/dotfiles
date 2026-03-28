@@ -1,6 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "effortLevel": "high",
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(grep *)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Edit"
+    ],
+    "additionalDirectories": ["~/.claude"]
+  },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
@@ -15,12 +26,5 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
-  "permissions": {
-    "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git diff:*)",
-      "Bash(grep *)"
-    ]
-  }
+  "effortLevel": "high"
 }
