@@ -50,3 +50,5 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [pull]
 	rebase = false
+[wt]
+	basedir = .git/wt
