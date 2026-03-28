@@ -24,9 +24,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.sort-json": "explicit"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
