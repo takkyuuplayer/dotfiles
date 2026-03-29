@@ -4,9 +4,10 @@
 [alias]
 	alias = !git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | sort
 	default-branch = "!f() { git symbolic-ref refs/remotes/${1-origin}/HEAD | sed 's@^refs/remotes/${1-origin}/@@'; }; f"
-	delete-merged-branches = "!f() { git branch --merged | grep -vE \"^\\*|^\\s*$(git default-branch)$\" | xargs -I % git branch -D %; }; f"
+	delete-branch = "!f() { wt=$(git worktree list --porcelain | awk -v b=\"refs/heads/$1\" '/^worktree /{p=substr($0,10)} /^branch /{if($2==b) print p}'); [ -n \"$wt\" ] && git worktree remove \"$wt\"; git branch -D \"$1\"; }; f"
+	delete-merged-branches = "!f() { git branch --merged | grep -vE \"^\\*|^\\s*$(git default-branch)$\" | xargs -I % git delete-branch %; }; f"
 	delete-merged-remote-branches = !git branch -r --merged | grep -v origin/$(git default-branch) | grep remotes/origin| sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :refs/heads/%
-	delete-squash-merged-branches = "!current=$(git rev-parse --abbrev-ref HEAD); git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $current $branch) && [[ $(git cherry $current $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
+	delete-squash-merged-branches = "!current=$(git rev-parse --abbrev-ref HEAD); git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $current $branch) && [[ $(git cherry $current $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git delete-branch $branch; done"
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	ignore = "!f() { [ ! -e .gitignore ] && touch .gitignore; echo \"$1\" >> .gitignore; }; f"
 	ignore-tmpl = "!gi() { curl -L -s www.toptal.com/developers/gitignore/api/$@ ;}; gi"
