@@ -70,7 +70,6 @@
   },
   "makefile.configureOnOpen": true,
   "rubyLsp.formatter": "rubocop",
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
