@@ -13,6 +13,7 @@
 	ignore-tmpl = "!gi() { curl -L -s www.toptal.com/developers/gitignore/api/$@ ;}; gi"
 	import-hook = "!cp -rf ~/.git_template/hooks/* .git/hooks/; chmod -R +x .git/hooks/*"
 	rebase-onto-latest = "!f() { current=$(git rev-parse --abbrev-ref HEAD); onto=${1-origin/$(git default-branch)}; from=$(git merge-base $current ${2-$onto}); git rebase --onto=$onto $from $current; }; f"
+	remote-init  = !git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 	sed = "!f() { git grep -Il \"$1\" | LC_ALL=C xargs sed -i '' -e \"s/$1/$2/g\"; }; f"
 	show-non-merged-branches = "!f() { git for-each-ref --no-merged=HEAD --sort=-committerdate refs/heads/ refs/remotes/ --format='%(committerdate:iso) %(committerdate:relative) %(authorname)\t%(refname:short)'; }; f"
 	sync-default-branch = "!f() { git remote set-head ${1-origin} --auto; }; f"
