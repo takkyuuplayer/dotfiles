@@ -29,7 +29,10 @@
   },
   "language": "japanese",
   "sandbox": {
-    "enabled": true
+    "enabled": true,
+    "network": {
+      "allowedDomains": ["api.github.com"]
+    }
   },
   "effortLevel": "high"
 }
