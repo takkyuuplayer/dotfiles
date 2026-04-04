@@ -8,7 +8,9 @@
       "Bash(grep *)",
       "Skill(update-config)",
       "Skill(update-config:*)",
-      "Edit"
+      "Edit",
+      "Bash(gh pr:*)",
+      "Bash(git branch:*)"
     ],
     "additionalDirectories": ["~/.claude"]
   },
@@ -26,8 +28,8 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
-  "effortLevel": "high",
   "sandbox": {
     "enabled": true
-  }
+  },
+  "effortLevel": "high"
 }
