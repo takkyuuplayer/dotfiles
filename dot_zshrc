@@ -86,7 +86,7 @@ if [ -d /opt/homebrew/opt/openjdk/bin ] ; then
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
-if git wt --version &>/dev/null 2>&1; then
+if (( $+commands[git-wt] )); then
   eval "$(git wt --init zsh)"
 
   function cdwt() {

@@ -38,7 +38,7 @@ map('', '<C-{><C-{>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
 map('n', '<f2>', ':set paste!<cr>', { noremap = true, silent = true })
 map('i', '<f2> <esc>', ':set paste!<cr>i', { noremap = true, silent = true })
 
-if os.execute('uname -a | grep Darwin') ~= '' then
+if vim.fn.has('mac') == 1 then
   map('', '<leader>pb', '<Esc>:%! pbcopy;pbpaste<CR>')
   map('', '<leader>pbv', "<Esc>:'<,'>%! pbcopy;pbpaste<CR>")
 end
@@ -48,7 +48,7 @@ vim.cmd('autocmd FileType help wincmd L')
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -96,7 +96,6 @@ require("lazy").setup({
             {
               'filename',
               path = 1,
-              'g:coc_status',
             }
           },
           lualine_x = {'encoding', 'fileformat', 'filetype'},
@@ -133,8 +132,6 @@ require("lazy").setup({
       ]])
     end,
   },
-  { "kassio/neoterm" },
-
   -- File explorer
   {
     "lambdalisue/fern.vim",
@@ -209,7 +206,6 @@ require("lazy").setup({
   { "hrsh7th/cmp-path" },
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-cmdline" },
-  { "jose-elias-alvarez/null-ls.nvim" },
 })
 
 vim.cmd('filetype plugin indent on')
@@ -265,7 +261,7 @@ end
 -- 2. build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', '<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', '<leader>gf', '<cmd>lua vim.lsp.buf.format()<CR>')
 vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -277,10 +273,8 @@ vim.keymap.set('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<leader>ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', '<leader>g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', '<leader>g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
--- LSP handlers
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
+-- Diagnostic display config
+vim.diagnostic.config({ virtual_text = false })
 
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")

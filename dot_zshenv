@@ -15,40 +15,39 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [[ -x `which colordiff` ]]; then
+if (( $+commands[colordiff] )); then
   alias diff='colordiff -u'
 else
   alias diff='diff -u'
 fi
 
-if [[ -x `which anyenv` ]]; then
+if (( $+commands[anyenv] )); then
   eval "$(anyenv init -)"
 fi
 
-if [[ -x `which go` ]]; then
-    export PATH="`go env GOPATH`/bin:$PATH"
+if (( $+commands[go] )); then
+    export PATH="$HOME/go/bin:$PATH"
 fi
 
-if [ -d ${HOME}/.deno ]; then
+if [ -d "${HOME}/.deno" ]; then
   export DENO_INSTALL="$HOME/.deno"
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
-if [ -d ${HOME}/.cargo ]; then
+if [ -d "${HOME}/.cargo" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
-  . "$HOME/.cargo/env"
 fi
 
-if [ -d ${HOME}/.local/bin ]; then
+if [ -d "${HOME}/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
-alias docker-image-versions='(){ curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq '.' | grep name | sort }'
+alias docker-image-versions='(){ curl -s "https://registry.hub.docker.com/v2/repositories/$1/tags/" | jq "." | grep name | sort }'
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
 alias mkdir="mkdir -p"
-if [[ -x `which nvim` ]]; then
+if (( $+commands[nvim] )); then
     alias vim="nvim"
 fi
 alias vimtutor="vimtutor ja"
