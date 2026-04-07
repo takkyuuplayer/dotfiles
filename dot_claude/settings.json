@@ -10,9 +10,13 @@
       "Skill(update-config:*)",
       "Edit",
       "Bash(gh pr:*)",
-      "Bash(git branch:*)"
+      "Bash(git branch:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git push:*)"
     ],
-    "additionalDirectories": ["~/.claude"]
+    "additionalDirectories": [
+      "~/.claude"
+    ]
   },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
@@ -31,7 +35,9 @@
   "sandbox": {
     "enabled": true,
     "network": {
-      "allowedDomains": ["api.github.com"]
+      "allowedDomains": [
+        "api.github.com"
+      ]
     }
   },
   "effortLevel": "high"
