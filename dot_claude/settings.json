@@ -1,23 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "permissions": {
-    "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git diff:*)",
-      "Bash(grep *)",
-      "Skill(update-config)",
-      "Skill(update-config:*)",
-      "Edit",
-      "Bash(gh pr:*)",
-      "Bash(git branch:*)",
-      "WebFetch(domain:github.com)",
-      "Bash(git push:*)"
-    ],
-    "additionalDirectories": [
-      "~/.claude"
-    ]
-  },
+  "effortLevel": "high",
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
@@ -32,13 +15,23 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
-  "sandbox": {
-    "enabled": true,
-    "network": {
-      "allowedDomains": [
-        "api.github.com"
-      ]
-    }
+  "permissions": {
+    "additionalDirectories": ["~/.claude"],
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(grep *)",
+      "Edit",
+      "Skill(update-config:*)",
+      "Skill(update-config)"
+    ],
+    "deny": ["WebFetch(*)"],
+    "disableBypassPermissionsMode": "disable"
   },
-  "effortLevel": "high"
+  "sandbox": {
+    "allowUnsandboxedCommands": false,
+    "enabled": true
+  }
 }
