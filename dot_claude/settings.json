@@ -14,6 +14,7 @@
     "security-guidance@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
   },
+  "fastMode": false,
   "language": "japanese",
   "permissions": {
     "additionalDirectories": ["~/.claude"],
