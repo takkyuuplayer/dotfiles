@@ -2,7 +2,6 @@ anthropic.claude-code
 biomejs.biome
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
-github.copilot-chat
 github.remotehub
 github.vscode-github-actions
 github.vscode-pull-request-github
