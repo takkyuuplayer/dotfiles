@@ -1,3 +1,6 @@
+[settings]
+install_before = "7d"
+
 [tools]
 node = "lts"
 terraform = "latest"
