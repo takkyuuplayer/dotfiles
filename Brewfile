@@ -55,7 +55,5 @@ cask "jetbrains-toolbox"
 cask "postman"
 # Team communication and collaboration software
 cask "slack"
-# Music streaming service
-cask "spotify"
 # Open-source code editor
 cask "visual-studio-code"
