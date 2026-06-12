@@ -1,8 +1,10 @@
-tap "k1low/tap"
+tap "k1low/tap", trusted: true
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Collection of GNU find, xargs, and locate
@@ -25,6 +27,8 @@ brew "go"
 brew "grep"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
@@ -39,6 +43,8 @@ brew "tmux"
 brew "tree"
 # UNIX shell (command interpreter)
 brew "zsh"
+# A Git subcommand that makes `git worktree` simple
+brew "k1low/tap/git-wt"
 # Clipboard extension app
 cask "clipy"
 # Client for the Google Drive storage service
