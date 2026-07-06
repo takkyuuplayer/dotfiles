@@ -1,4 +1,4 @@
-tap "k1low/tap", trusted: true
+tap "k1low/tap", "https://github.com/k1LoW/homebrew-tap", trusted: true
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -25,6 +25,8 @@ brew "gnu-sed"
 brew "go"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # YAML Parser
