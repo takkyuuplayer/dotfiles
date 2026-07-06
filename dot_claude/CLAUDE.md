@@ -1,5 +1,9 @@
 # Git Commit Rules
 
+# Code Editing Rules
+
+- When editing source code, do not add comments that simply restate what is already obvious from the code itself.
+
 - Always commit immediately after editing files. Do not wait for the user to ask.
 - Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`. Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `perf`, `build`.
 - Only add `Co-Authored-By` trailer when Claude has edited files in the commit. Do not add it when Claude only creates the commit message. Use the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`).
