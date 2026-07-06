@@ -44,7 +44,9 @@
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
@@ -57,6 +59,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
+  "json.format.enable": false,
   "json.schemaDownload.trustedDomains": {
     "https://biomejs.dev": true,
     "https://json-schema.org/": true,
@@ -70,8 +73,12 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "after": ["<Esc>"],
-      "before": ["C-]"]
+      "after": [
+        "<Esc>"
+      ],
+      "before": [
+        "C-]"
+      ]
     }
   ],
   "workbench.settings.applyToAllProfiles": [],
@@ -79,6 +86,5 @@
   "yaml.schemas": {
     "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.{yml,yaml}",
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}"
-  },
-  "json.format.enable": false
+  }
 }
