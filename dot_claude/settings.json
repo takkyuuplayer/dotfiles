@@ -18,9 +18,8 @@
   "language": "japanese",
   "model": "fable",
   "permissions": {
-    "additionalDirectories": [
-      "~/.claude"
-    ],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": ["~/.claude"],
     "allow": [
       "Bash(git add:*)",
       "Bash(git branch:*)",
@@ -31,13 +30,12 @@
       "Skill(update-config:*)",
       "Skill(update-config)"
     ],
-    "deny": [
-      "WebFetch(*)"
-    ],
+    "deny": ["WebFetch(*)"],
     "disableBypassPermissionsMode": "disable"
   },
   "sandbox": {
     "allowUnsandboxedCommands": false,
+    "autoAllowBashIfSandboxed": true,
     "enabled": true,
     "network": {
       "allowLocalBinding": true
