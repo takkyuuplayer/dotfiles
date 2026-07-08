@@ -15,6 +15,20 @@
     "skill-creator@claude-plugins-official": true
   },
   "fastMode": false,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/takafumi/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
   "language": "japanese",
   "model": "fable",
   "permissions": {
