@@ -89,4 +89,5 @@
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml",
   ],
+  "js/ts.updateImportsOnFileMove.enabled": "always",
 }
