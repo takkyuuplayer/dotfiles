@@ -43,5 +43,12 @@
     }
   },
   "effortLevel": "high",
-  "fastMode": false
+  "fastMode": false,
+  "autoMode": {
+    "environment": [],
+    "allow": [
+      "$defaults",
+      "Reading and writing files within the current working directory (the git repository Claude was started in) is allowed"
+    ]
+  }
 }
