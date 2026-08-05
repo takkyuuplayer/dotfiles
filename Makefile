@@ -7,6 +7,14 @@ link:
 	rm -rf ~/.claude/skills
 	ln -s $(realpath dot_claude/skills) ~/.claude/skills
 
+GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
+
+gh:
+	@for ext in $(GH_EXTENSIONS); do \
+		gh extension remove $${ext##*/} >/dev/null 2>&1 || true; \
+		(cd $$ext && gh extension install .) || exit 1; \
+	done
+
 mise:
 	mise up -y
 	mise prune -y

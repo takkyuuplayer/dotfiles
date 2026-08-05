@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOS'
+Usage: gh merge-ready [options]
+
+Squash-merge every open, non-draft PR whose checks have all passed. PRs with
+failing, pending, or no checks are skipped. Only Dependabot PRs in the
+authenticated user's repositories are considered unless told otherwise.
+
+Options:
+  -o, --owner <owner>      Repository owner to search (default: authenticated user)
+  -R, --repo <owner/repo>  Limit to this repository; repeatable, not with --owner
+  -a, --author <login>     Filter by author, "app/<name>" for a GitHub App
+                           (default: app/dependabot; '' for any author)
+  -n, --dry-run            List the PRs that would be merged, without merging
+  -h, --help               Show this help
+EOS
+}
+
+die() {
+  echo "$1" >&2
+  exit 1
+}
+
+owner=""
+repo_args=()
+author="app/dependabot"
+dry_run=false
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -o | --owner)
+      [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
+      owner=$2
+      shift 2
+      ;;
+    -R | --repo)
+      [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
+      repo_args+=(--repo "$2")
+      shift 2
+      ;;
+    -a | --author)
+      # An empty value is legal here: it drops the author filter entirely.
+      [ $# -ge 2 ] || die "missing value for $1"
+      author=$2
+      shift 2
+      ;;
+    -n | --dry-run)
+      dry_run=true
+      shift
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      usage >&2
+      die "unknown option: $1"
+      ;;
+  esac
+done
+
+# gh omits the author qualifier for an empty value, so no filter is needed here.
+search_args=(--state open --archived=false --draft=false --limit 1000 --author "$author")
+
+if [ ${#repo_args[@]} -gt 0 ]; then
+  [ -z "$owner" ] || die "--repo and --owner are mutually exclusive"
+  search_args+=("${repo_args[@]}")
+else
+  [ -n "$owner" ] || owner=$(gh api user --jq '.login')
+  search_args+=(--owner "$owner")
+fi
+
+prs=$(gh search prs "${search_args[@]}" --json url --jq '.[].url')
+
+status=0
+
+# Fed by a here-string rather than a pipe so failures below set $status in this
+# shell instead of in a subshell.
+while IFS= read -r pr; do
+  [ -n "$pr" ] || continue
+
+  # Read the head commit before the checks gate: if the branch is pushed to in
+  # between, the checks below cover the new head and --match-head-commit aborts
+  # the merge instead of merging an unverified commit.
+  if ! sha=$(gh pr view "$pr" --json headRefOid --jq '.headRefOid'); then
+    echo "skip (cannot resolve head commit): $pr" >&2
+    status=1
+    continue
+  fi
+
+  # gh pr checks exits non-zero for failing, still running, and no checks.
+  if ! gh pr checks "$pr" >/dev/null 2>&1; then
+    echo "skip (checks not passing): $pr" >&2
+    continue
+  fi
+
+  if [ "$dry_run" = true ]; then
+    echo "dry-run: would merge $pr ($sha)"
+    continue
+  fi
+
+  gh pr merge "$pr" --squash --match-head-commit "$sha" || {
+    echo "failed to merge: $pr" >&2
+    status=1
+  }
+done <<<"$prs"
+
+exit "$status"
