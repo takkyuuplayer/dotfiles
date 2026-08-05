@@ -19,4 +19,4 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 $ make gh
 ```
 
-- `gh merge-ready` : squash-merges every open, non-draft PR whose checks have all passed (`--dry-run` to preview).
+- `gh merge-ready` : squash-merges every merge-ready PR of the owner. See `gh merge-ready --help`.

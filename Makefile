@@ -7,10 +7,13 @@ link:
 	rm -rf ~/.claude/skills
 	ln -s $(realpath dot_claude/skills) ~/.claude/skills
 
-GH_EXTENSIONS=$(wildcard gh-extensions/gh-*)
+GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
 
 gh:
-	@$(foreach ext,$(GH_EXTENSIONS),gh extension list | grep -q '$(notdir $(ext))' || gh extension install $(realpath $(ext));)
+	@for ext in $(GH_EXTENSIONS); do \
+		name=$$(basename $$ext); \
+		gh extension list | grep -qw "$${name#gh-}" || (cd $$ext && gh extension install .) || exit 1; \
+	done
 
 mise:
 	mise up -y
