@@ -11,9 +11,9 @@ authenticated user's repositories are considered unless told otherwise.
 
 Options:
   -o, --owner <owner>      Repository owner to search (default: authenticated user)
-  -R, --repo <owner/repo>  Limit to this repository; repeatable, overrides --owner
+  -R, --repo <owner/repo>  Limit to this repository; repeatable, not with --owner
   -a, --author <login>     Filter by author, "app/<name>" for a GitHub App
-                           (default: app/dependabot; pass '' for any author)
+                           (default: app/dependabot; '' for any author)
   -n, --dry-run            List the PRs that would be merged, without merging
   -h, --help               Show this help
 EOS
@@ -25,7 +25,7 @@ die() {
 }
 
 owner=""
-repos=()
+repo_args=()
 author="app/dependabot"
 dry_run=false
 
@@ -38,10 +38,11 @@ while [ $# -gt 0 ]; do
       ;;
     -R | --repo)
       [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
-      repos+=("$2")
+      repo_args+=(--repo "$2")
       shift 2
       ;;
     -a | --author)
+      # An empty value is legal here: it drops the author filter entirely.
       [ $# -ge 2 ] || die "missing value for $1"
       author=$2
       shift 2
@@ -55,30 +56,22 @@ while [ $# -gt 0 ]; do
       exit 0
       ;;
     *)
-      echo "unknown option: $1" >&2
       usage >&2
-      exit 1
+      die "unknown option: $1"
       ;;
   esac
 done
 
-search_args=(--state open --archived=false --draft=false --limit 1000)
+# gh omits the author qualifier for an empty value, so no filter is needed here.
+search_args=(--state open --archived=false --draft=false --limit 1000 --author "$author")
 
-if [ ${#repos[@]} -gt 0 ]; then
-  for repo in "${repos[@]}"; do
-    search_args+=(--repo "$repo")
-  done
+if [ ${#repo_args[@]} -gt 0 ]; then
+  [ -z "$owner" ] || die "--repo and --owner are mutually exclusive"
+  search_args+=("${repo_args[@]}")
 else
   [ -n "$owner" ] || owner=$(gh api user --jq '.login')
   search_args+=(--owner "$owner")
 fi
-
-# gh search prs has a separate flag for GitHub App authors such as Dependabot.
-case "$author" in
-  "") ;;
-  app/*) search_args+=(--app "${author#app/}") ;;
-  *) search_args+=(--author "$author") ;;
-esac
 
 prs=$(gh search prs "${search_args[@]}" --json url --jq '.[].url')
 

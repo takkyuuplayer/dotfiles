@@ -1,4 +1,4 @@
-.PHONY: vscode gh
+.PHONY: vscode
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -11,8 +11,8 @@ GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
 
 gh:
 	@for ext in $(GH_EXTENSIONS); do \
-		name=$$(basename $$ext); \
-		gh extension list | grep -qw "$${name#gh-}" || (cd $$ext && gh extension install .) || exit 1; \
+		gh extension remove $${ext##*/} >/dev/null 2>&1 || true; \
+		(cd $$ext && gh extension install .) || exit 1; \
 	done
 
 mise:
