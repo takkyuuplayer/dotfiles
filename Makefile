@@ -1,4 +1,4 @@
-.PHONY: vscode
+.PHONY: vscode gh
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -6,6 +6,11 @@ link:
 	chezmoi apply --mode symlink
 	rm -rf ~/.claude/skills
 	ln -s $(realpath dot_claude/skills) ~/.claude/skills
+
+GH_EXTENSIONS=$(wildcard gh-extensions/gh-*)
+
+gh:
+	@$(foreach ext,$(GH_EXTENSIONS),gh extension list | grep -q '$(notdir $(ext))' || gh extension install $(realpath $(ext));)
 
 mise:
 	mise up -y

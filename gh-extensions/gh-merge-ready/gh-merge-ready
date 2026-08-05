@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOS'
+Usage: gh merge-ready [options]
+
+Squash-merge every open, non-draft PR in the owner's repositories whose
+checks have all passed. PRs with failing, pending, or no checks are skipped.
+
+Options:
+  -o, --owner <owner>  Repository owner to search (default: authenticated user)
+  -l, --limit <n>      Max number of PRs to search (default: 1000)
+  -n, --dry-run        List the PRs that would be merged, without merging
+  -h, --help           Show this help
+EOS
+}
+
+owner=""
+limit=1000
+dry_run=false
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -o | --owner)
+      owner="${2:-}"
+      shift 2
+      ;;
+    -l | --limit)
+      limit="${2:-}"
+      shift 2
+      ;;
+    -n | --dry-run)
+      dry_run=true
+      shift
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z "$owner" ]; then
+  owner=$(gh api user --jq '.login')
+fi
+
+gh search prs \
+  --owner "$owner" \
+  --state open \
+  --archived=false \
+  --limit "$limit" \
+  --json url,isDraft \
+  --jq '.[] | select(.isDraft == false) | .url' |
+  while IFS= read -r pr; do
+    sha=$(gh pr view "$pr" --json headRefOid --jq '.headRefOid') || {
+      echo "skip (cannot resolve head commit): $pr" >&2
+      continue
+    }
+
+    # 失敗・実行中・チェックなしは除外
+    if ! gh pr checks "$pr" >/dev/null 2>&1; then
+      echo "skip (checks not passing): $pr" >&2
+      continue
+    fi
+
+    if [ "$dry_run" = true ]; then
+      echo "dry-run: would merge $pr ($sha)"
+      continue
+    fi
+
+    gh pr merge "$pr" --squash --match-head-commit "$sha" ||
+      echo "failed to merge: $pr" >&2
+  done
