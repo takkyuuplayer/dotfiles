@@ -19,4 +19,4 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 $ make gh
 ```
 
-- `gh merge-ready` : squash-merges every merge-ready PR of the owner. See `gh merge-ready --help`.
+- `gh merge-ready` : squash-merges merge-ready Dependabot PRs. See `gh merge-ready --help`.

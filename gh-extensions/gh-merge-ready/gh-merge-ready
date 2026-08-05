@@ -5,27 +5,45 @@ usage() {
   cat <<'EOS'
 Usage: gh merge-ready [options]
 
-Squash-merge every open, non-draft PR in the owner's repositories whose
-checks have all passed. PRs with failing, pending, or no checks are skipped.
+Squash-merge every open, non-draft PR whose checks have all passed. PRs with
+failing, pending, or no checks are skipped. Only Dependabot PRs in the
+authenticated user's repositories are considered unless told otherwise.
 
 Options:
-  -o, --owner <owner>  Repository owner to search (default: authenticated user)
-  -n, --dry-run        List the PRs that would be merged, without merging
-  -h, --help           Show this help
+  -o, --owner <owner>      Repository owner to search (default: authenticated user)
+  -R, --repo <owner/repo>  Limit to this repository; repeatable, overrides --owner
+  -a, --author <login>     Filter by author, "app/<name>" for a GitHub App
+                           (default: app/dependabot; pass '' for any author)
+  -n, --dry-run            List the PRs that would be merged, without merging
+  -h, --help               Show this help
 EOS
 }
 
+die() {
+  echo "$1" >&2
+  exit 1
+}
+
 owner=""
+repos=()
+author="app/dependabot"
 dry_run=false
 
 while [ $# -gt 0 ]; do
   case "$1" in
     -o | --owner)
-      owner="${2:-}"
-      if [ -z "$owner" ]; then
-        echo "missing value for $1" >&2
-        exit 1
-      fi
+      [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
+      owner=$2
+      shift 2
+      ;;
+    -R | --repo)
+      [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
+      repos+=("$2")
+      shift 2
+      ;;
+    -a | --author)
+      [ $# -ge 2 ] || die "missing value for $1"
+      author=$2
       shift 2
       ;;
     -n | --dry-run)
@@ -44,18 +62,25 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-if [ -z "$owner" ]; then
-  owner=$(gh api user --jq '.login')
+search_args=(--state open --archived=false --draft=false --limit 1000)
+
+if [ ${#repos[@]} -gt 0 ]; then
+  for repo in "${repos[@]}"; do
+    search_args+=(--repo "$repo")
+  done
+else
+  [ -n "$owner" ] || owner=$(gh api user --jq '.login')
+  search_args+=(--owner "$owner")
 fi
 
-prs=$(gh search prs \
-  --owner "$owner" \
-  --state open \
-  --archived=false \
-  --draft=false \
-  --limit 1000 \
-  --json url \
-  --jq '.[].url')
+# gh search prs has a separate flag for GitHub App authors such as Dependabot.
+case "$author" in
+  "") ;;
+  app/*) search_args+=(--app "${author#app/}") ;;
+  *) search_args+=(--author "$author") ;;
+esac
+
+prs=$(gh search prs "${search_args[@]}" --json url --jq '.[].url')
 
 status=0
 
