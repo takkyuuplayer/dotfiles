@@ -1,4 +1,4 @@
-.PHONY: vscode
+.PHONY: vscode git/ignore
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -17,6 +17,9 @@ gh:
 		gh extension remove $${ext##*/} >/dev/null 2>&1 || true; \
 		(cd $$ext && gh extension install .) || exit 1; \
 	done
+
+git/ignore:
+	@$(DIR)gitignore/generate
 
 mise:
 	mise up -y

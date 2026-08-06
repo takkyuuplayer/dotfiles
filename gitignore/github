@@ -1,0 +1,10 @@
+# Paths under https://github.com/github/gitignore (without the .gitignore suffix)
+Global/Linux
+Global/macOS
+Global/Windows
+Global/Vim
+Global/VisualStudioCode
+Global/JetBrains
+Global/Agents
+Global/mise
+Terraform

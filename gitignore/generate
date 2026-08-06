@@ -1,0 +1,29 @@
+#!/bin/sh
+# Regenerate dot_config/git/ignore from the manifests next to this script.
+set -eu
+
+src=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+out=$src/../dot_config/git/ignore
+raw=https://raw.githubusercontent.com/github/gitignore/HEAD
+io=https://www.toptal.com/developers/gitignore/api
+
+templates() {
+	grep -v '^#' "$src/$1"
+}
+
+trap 'rm -f "$out.tmp"' EXIT
+
+{
+	for path in $(templates github); do
+		echo "### $path"
+		curl -fsSL "$raw/$path.gitignore"
+		echo
+	done
+
+	# gitignore.io brands its output with a header block and a trailing
+	# "End of" line; drop them so the section reads like the ones above.
+	curl -fsSL "$io/$(templates gitignore.io | paste -sd, -)" |
+		sed -e '/^# Created by /,/^$/d' -e '/^# End of /d'
+} > "$out.tmp"
+
+mv "$out.tmp" "$out"
