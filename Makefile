@@ -2,10 +2,13 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
+AGENT_SKILLS=$(wildcard $(DIR)dot_config/agents/skills/*)
+
 link:
 	chezmoi apply --mode symlink
-	rm -rf ~/.claude/skills
-	ln -s $(realpath dot_claude/skills) ~/.claude/skills
+	mkdir -p ~/.claude/skills ~/.codex/skills
+	ln -sfn $(AGENT_SKILLS) ~/.claude/skills/
+	ln -sfn $(AGENT_SKILLS) ~/.codex/skills/
 
 GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
 

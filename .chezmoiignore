@@ -1,5 +1,6 @@
 Brewfile
 Makefile
+.config/agents/skills
 gh-extensions
 README.md
 vscode

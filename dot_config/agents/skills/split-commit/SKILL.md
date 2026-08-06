@@ -101,7 +101,7 @@ git stash pop
 - Conventional Commits 形式を使う
 - スコープは省略可（明確な場合のみ付ける）
 - 本文は不要（タイトル行のみ）
-- CLAUDE.md に Co-Authored-By ルールがある場合はそれに従う
+- 指示書（CLAUDE.md / AGENTS.md）に Co-Authored-By ルールがある場合はそれに従う
 
 ## 注意事項
 
