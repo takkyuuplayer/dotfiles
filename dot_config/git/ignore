@@ -274,3 +274,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,vim,visualstudiocode,direnv,dotenv,jetbrains,terraform
 **/.claude/.cc-writes/
+**/.codex/.cc-writes/
