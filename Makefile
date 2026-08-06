@@ -2,10 +2,17 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
+AGENT_SKILLS=$(DIR)dot_config/agents/skills
+
 link:
 	chezmoi apply --mode symlink
-	rm -rf ~/.claude/skills
-	ln -s $(realpath dot_claude/skills) ~/.claude/skills
+	@rm -f ~/.claude/skills # 以前はディレクトリごと symlink していたため
+	@for dir in ~/.claude/skills ~/.codex/skills; do \
+		mkdir -p $$dir; \
+		for skill in $(AGENT_SKILLS)/*/; do \
+			ln -sfn $${skill%/} $$dir/$$(basename $$skill); \
+		done; \
+	done
 
 GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
 
