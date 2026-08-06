@@ -10,7 +10,7 @@
 
 # Pull Request Rules
 
-- When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file under your own scratch directory in the repository (`.claude/.cc-writes/` for Claude Code, `.codex/.cc-writes/` for Codex), then output a `gh pr create --web --title "<title>" --body-file <path>` command for the user to run.
+- When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file **outside** the repository — your session's scratch directory, or `$TMPDIR` — never inside the working tree, then output a `gh pr create --web --title "<title>" --body-file <path>` command for the user to run.
 
 # Code Editing Rules
 
