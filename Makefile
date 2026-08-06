@@ -6,7 +6,6 @@ AGENT_SKILLS=$(DIR)dot_config/agents/skills
 
 link:
 	chezmoi apply --mode symlink
-	@rm -f ~/.claude/skills # 以前はディレクトリごと symlink していたため
 	@for dir in ~/.claude/skills ~/.codex/skills; do \
 		mkdir -p $$dir; \
 		for skill in $(AGENT_SKILLS)/*/; do \
