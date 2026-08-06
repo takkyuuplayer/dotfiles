@@ -1,4 +1,4 @@
-.PHONY: vscode
+.PHONY: vscode git/ignore
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -14,6 +14,28 @@ gh:
 		gh extension remove $${ext##*/} >/dev/null 2>&1 || true; \
 		(cd $$ext && gh extension install .) || exit 1; \
 	done
+
+GITIGNORE_SRC=$(DIR)gitignore
+GITIGNORE_OUT=$(DIR)dot_config/git/ignore
+GITIGNORE_RAW=https://raw.githubusercontent.com/github/gitignore/HEAD
+GITIGNORE_IO=https://www.toptal.com/developers/gitignore/api
+
+git/ignore:
+	@set -eu; \
+	trap 'rm -f $(GITIGNORE_OUT).tmp' EXIT; \
+	{ \
+		cat $(GITIGNORE_SRC)/local; \
+		for path in $$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/github); do \
+			echo; echo "### $$path"; \
+			curl -fsSL "$(GITIGNORE_RAW)/$$path.gitignore"; \
+		done; \
+		names=$$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/gitignore.io | paste -sd, - || true); \
+		[ -z "$$names" ] || { \
+			echo; \
+			curl -fsSL "$(GITIGNORE_IO)/$$names" | sed -e '/^# Created by /d' -e '/^# Edit at /d' -e '/^# End of /d'; \
+		}; \
+	} > $(GITIGNORE_OUT).tmp; \
+	mv $(GITIGNORE_OUT).tmp $(GITIGNORE_OUT)
 
 mise:
 	mise up -y

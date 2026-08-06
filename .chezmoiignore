@@ -1,5 +1,6 @@
 Brewfile
 Makefile
 gh-extensions
+gitignore
 README.md
 vscode
