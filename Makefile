@@ -24,16 +24,14 @@ git/ignore:
 	@set -eu; \
 	trap 'rm -f $(GITIGNORE_OUT).tmp' EXIT; \
 	{ \
-		cat $(GITIGNORE_SRC)/local; \
 		for path in $$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/github); do \
-			echo; echo "### $$path"; \
+			echo "### $$path"; \
 			curl -fsSL "$(GITIGNORE_RAW)/$$path.gitignore"; \
+			echo; \
 		done; \
 		names=$$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/gitignore.io | paste -sd, - || true); \
-		[ -z "$$names" ] || { \
-			echo; \
-			curl -fsSL "$(GITIGNORE_IO)/$$names" | sed -e '/^# Created by /d' -e '/^# Edit at /d' -e '/^# End of /d'; \
-		}; \
+		[ -z "$$names" ] || curl -fsSL "$(GITIGNORE_IO)/$$names" \
+			| sed -e '/^# Created by /d' -e '/^# Edit at /d' -e '/^# End of /d' -e '/./,$$!d'; \
 	} > $(GITIGNORE_OUT).tmp; \
 	mv $(GITIGNORE_OUT).tmp $(GITIGNORE_OUT)
 
