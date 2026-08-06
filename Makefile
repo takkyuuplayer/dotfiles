@@ -15,25 +15,8 @@ gh:
 		(cd $$ext && gh extension install .) || exit 1; \
 	done
 
-GITIGNORE_SRC=$(DIR)gitignore
-GITIGNORE_OUT=$(DIR)dot_config/git/ignore
-GITIGNORE_RAW=https://raw.githubusercontent.com/github/gitignore/HEAD
-GITIGNORE_IO=https://www.toptal.com/developers/gitignore/api
-
 git/ignore:
-	@set -eu; \
-	trap 'rm -f $(GITIGNORE_OUT).tmp' EXIT; \
-	{ \
-		for path in $$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/github); do \
-			echo "### $$path"; \
-			curl -fsSL "$(GITIGNORE_RAW)/$$path.gitignore"; \
-			echo; \
-		done; \
-		names=$$(grep -vE '^[[:space:]]*(#|$$)' $(GITIGNORE_SRC)/gitignore.io | paste -sd, - || true); \
-		[ -z "$$names" ] || curl -fsSL "$(GITIGNORE_IO)/$$names" \
-			| sed -e '/^# Created by /d' -e '/^# Edit at /d' -e '/^# End of /d' -e '/./,$$!d'; \
-	} > $(GITIGNORE_OUT).tmp; \
-	mv $(GITIGNORE_OUT).tmp $(GITIGNORE_OUT)
+	@$(DIR)gitignore/generate
 
 mise:
 	mise up -y
