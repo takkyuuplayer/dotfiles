@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-git secrets --commit_msg_hook -- "$@"
+command -v gitleaks >/dev/null 2>&1 || exit 0
+exec gitleaks dir --no-banner --redact "$1"
