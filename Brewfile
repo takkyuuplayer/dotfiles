@@ -5,8 +5,6 @@ brew "awscli"
 brew "chezmoi"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Load/unload environment variables based on $PWD
-brew "direnv"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Command-line fuzzy finder written in Go
@@ -17,8 +15,8 @@ brew "gh"
 brew "ghq"
 # Distributed revision control system
 brew "git"
-# Prevents you from committing sensitive information to a git repo
-brew "git-secrets"
+# Audit git repos for secrets
+brew "gitleaks"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -29,10 +27,6 @@ brew "grep"
 brew "herdr"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# YAML Parser
-brew "libyaml"
-# Mac App Store command-line interface
-brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -57,8 +51,6 @@ cask "google-japanese-ime"
 cask "hammerspoon"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Collaboration platform for API development
 cask "postman"
 # Team communication and collaboration software
