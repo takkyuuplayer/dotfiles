@@ -22,7 +22,6 @@ plugins=(
     fzf
     git
     gnu-utils
-    rsync
     terraform
     vi-mode
 )
