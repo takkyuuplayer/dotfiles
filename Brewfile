@@ -1,4 +1,3 @@
-tap "k1low/tap", "https://github.com/k1LoW/homebrew-tap", trusted: true
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -39,8 +38,6 @@ brew "tmux"
 brew "tree"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A Git subcommand that makes `git worktree` simple
-brew "k1low/tap/git-wt"
 # Clipboard extension app
 cask "clipy"
 # Client for the Google Drive storage service
