@@ -17,13 +17,11 @@ plugins=(
     aws
     brew
     mise
-    direnv
     docker
     docker-compose
     fzf
     git
     gnu-utils
-    heroku
     rsync
     terraform
     vi-mode
