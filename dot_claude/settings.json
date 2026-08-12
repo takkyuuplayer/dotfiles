@@ -14,7 +14,7 @@
     "deny": [
       "WebFetch(*)"
     ],
-    "defaultMode": "acceptEdits",
+    "defaultMode": "auto",
     "disableBypassPermissionsMode": "disable",
     "additionalDirectories": [
       "~/.claude"
