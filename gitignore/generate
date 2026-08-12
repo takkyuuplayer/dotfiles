@@ -24,6 +24,11 @@ trap 'rm -f "$out.tmp"' EXIT
 	# "End of" line; drop them so the section reads like the ones above.
 	curl -fsSL "$io/$(templates gitignore.io | paste -sd, -)" |
 		sed -e '/^# Created by /,/^$/d' -e '/^# End of /d'
+
+	# Unlike the manifests above, this one holds patterns rather than
+	# template names, so it is copied through as-is.
+	echo "### local"
+	cat "$src/local"
 } > "$out.tmp"
 
 mv "$out.tmp" "$out"
