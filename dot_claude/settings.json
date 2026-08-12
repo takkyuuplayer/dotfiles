@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "defaultMode": "auto",
     "disableBypassPermissionsMode": "disable",
@@ -11,7 +10,6 @@
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
@@ -21,6 +19,9 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
+  "attribution": {
+    "commit": ""
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -32,7 +33,6 @@
   "effortLevel": "high",
   "fastMode": false,
   "autoMode": {
-    "environment": [],
     "allow": [
       "$defaults",
       "Reading and writing files within the current working directory is allowed, EXCEPT files under .git/, .claude/settings*.json, and any hook/script that executes automatically (e.g. .git/hooks/*, .claude/hooks/*) — those still require confirmation"
