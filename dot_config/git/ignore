@@ -360,3 +360,10 @@ terraform.rc
 ### dotenv ###
 .env
 
+### local
+# Patterns that no upstream template covers. Emitted verbatim, so `!`
+# negations of the sections above work here.
+
+# Claude Code stages every file write in a scratch directory beside the
+# target (write temp -> fsync -> rename), which puts it inside the repo.
+**/.claude/.cc-writes/
