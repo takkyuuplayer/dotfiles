@@ -1,10 +1,7 @@
 {
   "permissions": {
     "defaultMode": "auto",
-    "disableBypassPermissionsMode": "disable",
-    "additionalDirectories": [
-      "~/.claude"
-    ]
+    "disableBypassPermissionsMode": "disable"
   },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
@@ -19,9 +16,6 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
-  "attribution": {
-    "commit": ""
-  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
