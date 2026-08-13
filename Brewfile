@@ -41,8 +41,14 @@ brew "tree"
 brew "zsh"
 # A Git subcommand that makes `git worktree` simple
 brew "k1low/tap/git-wt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Clipboard extension app
 cask "clipy"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Japanese input software
