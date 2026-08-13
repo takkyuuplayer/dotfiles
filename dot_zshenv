@@ -1,5 +1,4 @@
 export DOCKER_BUILDKIT=1
-export FIND_OPTIONS="-I --color --exclude=\*.svn\* "
 export EDITOR="nvim"
 export LESS="-giMRW -z-4"
 export PAGER=less
@@ -26,7 +25,7 @@ if (( $+commands[anyenv] )); then
 fi
 
 if (( $+commands[go] )); then
-    export PATH="$HOME/go/bin:$PATH"
+  export PATH="$HOME/go/bin:$PATH"
 fi
 
 if [ -d "${HOME}/.deno" ]; then
@@ -44,13 +43,19 @@ fi
 
 alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
 alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
-alias docker-image-versions='(){ curl -s "https://registry.hub.docker.com/v2/repositories/$1/tags/" | jq "." | grep name | sort }'
 alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
 alias mkdir="mkdir -p"
 if (( $+commands[nvim] )); then
-    alias vim="nvim"
+  alias vim="nvim"
 fi
 alias vimtutor="vimtutor ja"
-alias git-clone-many="(){gh repo list \$1 --limit \${2:-30} --no-archived --json url --jq '.[].url' | ghq get -p -P}"
 
 alias tparagen="go run github.com/sho-hata/tparagen/cmd/tparagen@latest"
+
+docker-image-versions() {
+  curl -s "https://registry.hub.docker.com/v2/repositories/$1/tags/" | jq "." | grep name | sort
+}
+
+git-clone-many() {
+  gh repo list "$1" --limit "${2:-30}" --no-archived --json url --jq '.[].url' | ghq get -p -P
+}

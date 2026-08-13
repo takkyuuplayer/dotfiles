@@ -1,9 +1,9 @@
-vim.bo.autoindent = true
-vim.bo.autoread = true
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.smartindent = true
-vim.bo.tabstop = 2
+vim.o.autoindent = true
+vim.o.autoread = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.smartindent = true
+vim.o.tabstop = 2
 
 vim.o.fileencodings = 'utf-8,iso-2022-jp,euc-jp,sjis'
 vim.o.helplang = 'ja,en'
@@ -25,18 +25,16 @@ vim.wo.statusline = "%f [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L
 
 vim.g.mapleader = ','
 
-local function map(mode, lhs, rhs, opts)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opts and opts or { noremap = true })
-end
+local map = vim.keymap.set
 
 map('', '/', "/\\v") -- perl like search
 map('n', ';', ':')
-map('', '<esc><esc>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
-map('', '<C-{><C-{>', ':nohlsearch<cr><esc>', { noremap = true, silent = true })
+map('', '<esc><esc>', ':nohlsearch<cr><esc>', { silent = true })
+map('', '<C-{><C-{>', ':nohlsearch<cr><esc>', { silent = true })
 
 -- pastetoggle https://stackoverflow.com/questions/76687544/emulate-pastetoggle-in-neovim
-map('n', '<f2>', ':set paste!<cr>', { noremap = true, silent = true })
-map('i', '<f2> <esc>', ':set paste!<cr>i', { noremap = true, silent = true })
+map('n', '<f2>', ':set paste!<cr>', { silent = true })
+map('i', '<f2> <esc>', ':set paste!<cr>i', { silent = true })
 
 if vim.fn.has('mac') == 1 then
   map('', '<leader>pb', '<Esc>:%! pbcopy;pbpaste<CR>')
@@ -69,11 +67,8 @@ require("lazy").setup({
   {
     "ayu-theme/ayu-vim",
     config = function()
-      vim.cmd([[
-        set termguicolors
-        let ayucolor="dark"
-        colorscheme ayu
-      ]])
+      vim.g.ayucolor = 'dark'
+      vim.cmd.colorscheme('ayu')
     end,
   },
 
@@ -121,48 +116,30 @@ require("lazy").setup({
     "vim-test/vim-test",
     dependencies = { "kassio/neoterm" },
     config = function()
-      vim.cmd([[
-        nmap <silent> <leader>tn <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestNearest<CR>
-        nmap <silent> <leader>tf <cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestFile<CR>
+      vim.g.neoterm_default_mod = 'vert botright'
+      vim.g.neoterm_keep_term_open = 0
+      vim.g.neoterm_autoscroll = 1
+      vim.g['test#strategy'] = 'neoterm'
 
-        let g:neoterm_default_mod='vert botright'
-        let g:neoterm_keep_term_open = 0
-        let g:neoterm_autoscroll = 1
-        let g:test#strategy = 'neoterm'
-      ]])
+      map('n', '<leader>tn', "<cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestNearest<CR>", { silent = true })
+      map('n', '<leader>tf', "<cmd>update<cr><cmd>exec v:count.'Tclear'<cr><cmd>TestFile<CR>", { silent = true })
     end,
   },
   -- File explorer
   {
     "lambdalisue/fern.vim",
     config = function()
-      vim.cmd([[
-        let g:fern#default_hidden = 1
-        nnoremap <leader>ef <cmd>Fern . -toggle -reveal=% -drawer<cr>
-        nnoremap <leader>eo <cmd>Fern . -toggle -reveal=. -drawer<cr>
-      ]])
+      vim.g['fern#default_hidden'] = 1
+
+      map('n', '<leader>ef', '<cmd>Fern . -toggle -reveal=% -drawer<cr>')
+      map('n', '<leader>eo', '<cmd>Fern . -toggle -reveal=. -drawer<cr>')
     end,
   },
 
   -- Fuzzy finder
-  { "nvim-lua/plenary.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      vim.cmd([[
-        nnoremap <leader>p <cmd>Telescope find_files hidden=true theme=get_dropdown<cr>
-        nnoremap <leader>gr <cmd>Telescope live_grep theme=get_dropdown<cr>
-        nnoremap <leader>b <cmd>Telescope buffers theme=get_dropdown<cr>
-        nnoremap <leader>h <cmd>Telescope oldfiles theme=get_dropdown<cr>
-        nnoremap <leader>gb <cmd>Telescope git_branches theme=get_dropdown<cr>
-      ]])
-    end,
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    build = "make",
     config = function()
       require('telescope').setup{
         extensions = {
@@ -174,6 +151,19 @@ require("lazy").setup({
           }
         }
       }
+
+      map('n', '<leader>p', '<cmd>Telescope find_files hidden=true theme=get_dropdown<cr>')
+      map('n', '<leader>gr', '<cmd>Telescope live_grep theme=get_dropdown<cr>')
+      map('n', '<leader>b', '<cmd>Telescope buffers theme=get_dropdown<cr>')
+      map('n', '<leader>h', '<cmd>Telescope oldfiles theme=get_dropdown<cr>')
+      map('n', '<leader>gb', '<cmd>Telescope git_branches theme=get_dropdown<cr>')
+    end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    build = "make",
+    config = function()
       require('telescope').load_extension('fzf')
     end,
   },
@@ -189,7 +179,7 @@ require("lazy").setup({
   {
     "tpope/vim-rhubarb",
     config = function()
-      vim.api.nvim_set_keymap('', '<leader>gh', "<Esc>:0GBrowse<CR>", { noremap = true })
+      map('', '<leader>gh', '<Esc>:0GBrowse<CR>')
     end,
   },
 
@@ -208,8 +198,6 @@ require("lazy").setup({
   { "hrsh7th/cmp-cmdline" },
 })
 
-vim.cmd('filetype plugin indent on')
-
 -- https://zenn.dev/botamotch/articles/21073d78bc68bf
 -- 1. LSP Sever management
 require('mason').setup()
@@ -218,61 +206,68 @@ require('mason-lspconfig').setup({
 })
 
 -- Setup LSP servers
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('*', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
 
-local on_attach = function(client, bufnr)
-  local opts = { noremap = true, silent = true }
+-- Created once. Creating an augroup clears it, so doing it per attach would drop
+-- the autocmds already registered for other buffers.
+local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
+local highlight_group = vim.api.nvim_create_augroup("LSPDocumentHighlight", { clear = true })
 
-  if client.server_capabilities.hoverProvider then
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
 
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.format() end
-    })
-  end
+    if client:supports_method('textDocument/hover') then
+      map('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, silent = true })
+    end
 
-  if client.server_capabilities.documentHighlightProvider then
-    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+    if client:supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({ group = format_group, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = format_group,
+        buffer = bufnr,
+        callback = function() vim.lsp.buf.format() end
+      })
+    end
 
-    vim.opt.updatetime = 1000
-
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      buffer = bufnr,
-      group = group,
-      callback = function()
-        vim.lsp.buf.document_highlight()
-      end,
-    })
-    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-      buffer = bufnr,
-      group = group,
-      callback = function()
-        vim.lsp.buf.clear_references()
-      end,
-    })
-  end
-end
+    if client:supports_method('textDocument/documentHighlight') then
+      vim.api.nvim_clear_autocmds({ group = highlight_group, buffer = bufnr })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = bufnr,
+        group = highlight_group,
+        callback = function()
+          vim.lsp.buf.document_highlight()
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+        buffer = bufnr,
+        group = highlight_group,
+        callback = function()
+          vim.lsp.buf.clear_references()
+        end,
+      })
+    end
+  end,
+})
 
 -- 2. build-in LSP function
 -- keyboard shortcut
-vim.keymap.set('n', '<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<leader>gf', '<cmd>lua vim.lsp.buf.format()<CR>')
-vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.keymap.set('n', '<leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-vim.keymap.set('n', '<leader>gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n', '<leader>ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '<leader>g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-vim.keymap.set('n', '<leader>g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+map('n', '<leader>K', vim.lsp.buf.hover)
+map('n', '<leader>gf', vim.lsp.buf.format)
+map('n', '<leader>gr', vim.lsp.buf.references)
+map('n', '<leader>gd', vim.lsp.buf.definition)
+map('n', '<C-]>', vim.lsp.buf.definition)
+map('n', '<leader>gD', vim.lsp.buf.declaration)
+map('n', '<leader>gi', vim.lsp.buf.implementation)
+map('n', '<leader>gt', vim.lsp.buf.type_definition)
+map('n', '<leader>gn', vim.lsp.buf.rename)
+map('n', '<leader>ga', vim.lsp.buf.code_action)
+map('n', '<leader>ge', vim.diagnostic.open_float)
+map('n', '<leader>g]', function() vim.diagnostic.jump({ count = 1 }) end)
+map('n', '<leader>g[', function() vim.diagnostic.jump({ count = -1 }) end)
 -- Diagnostic display config
 vim.diagnostic.config({ virtual_text = false })
 
@@ -314,9 +309,7 @@ cmp.setup.cmdline(":", {
   },
 })
 
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       runtime = {
@@ -335,5 +328,6 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable('lua_ls')
 
 -- 4. my own

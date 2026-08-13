@@ -11,7 +11,7 @@ fi
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###################################################
 DISABLE_UPDATE_PROMPT=true
-ZSH_THEME="candy"
+ZSH_THEME=""
 CASE_SENSITIVE="true"
 plugins=(
     aws
@@ -26,6 +26,11 @@ plugins=(
     vi-mode
 )
 source $ZSH/oh-my-zsh.sh
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%F %T]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
 %{$fg[blue]%}%{$fg_bold[blue]%}$%{$reset_color%} '
@@ -55,9 +60,6 @@ setopt correct          # command correction
 setopt list_packed      # compact ls
 setopt nolistbeep       # no beep sound
 setopt noautoremoveslash        # no omit directory/
-
-autoload predict-off    # prediction
-
 
 ###################################################
 # etc
