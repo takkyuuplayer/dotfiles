@@ -1,6 +1,6 @@
 # dotfiles
 
-Managed by [chezmoi \- chezmoi](https://www.chezmoi.io/)
+Managed by [chezmoi](https://www.chezmoi.io/)
 
 ## Install
 
@@ -17,6 +17,21 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 
 ```bash
 $ make link
+```
+
+## gitignore
+
+`dot_config/git/ignore` is generated — do not edit it directly. Its sources are the manifests
+under `gitignore/`:
+
+- `github` : paths under [github/gitignore](https://github.com/github/gitignore), without the `.gitignore` suffix
+- `gitignore.io` : template names that github/gitignore does not carry
+- `local` : patterns no upstream template covers, emitted verbatim
+
+Regenerate after editing a manifest with:
+
+```bash
+$ make git/ignore
 ```
 
 ## gh extensions
