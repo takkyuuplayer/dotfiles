@@ -1,4 +1,4 @@
-.PHONY: link gh git/ignore mise fish vscode vscode/dump vscode/extensions brew brew/dump
+.PHONY: link gh git/ignore mise vscode vscode/dump vscode/extensions brew brew/dump
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -27,9 +27,6 @@ mise:
 	mise up -y
 	mise prune -y
 	mise reshim
-
-fish:
-	fish -c "fisher update"
 
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets
