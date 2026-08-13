@@ -206,46 +206,52 @@ require('mason-lspconfig').setup({
 })
 
 -- Setup LSP servers
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('*', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
 
--- Created once. Creating an augroup clears it, so doing it inside on_attach would
--- drop the autocmds already registered for other buffers.
+-- Created once. Creating an augroup clears it, so doing it per attach would drop
+-- the autocmds already registered for other buffers.
 local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
 local highlight_group = vim.api.nvim_create_augroup("LSPDocumentHighlight", { clear = true })
 
-local on_attach = function(client, bufnr)
-  if client.server_capabilities.hoverProvider then
-    map('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, silent = true })
-  end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
 
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_clear_autocmds({ group = format_group, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = format_group,
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.format() end
-    })
-  end
+    if client:supports_method('textDocument/hover') then
+      map('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, silent = true })
+    end
 
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_clear_autocmds({ group = highlight_group, buffer = bufnr })
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      buffer = bufnr,
-      group = highlight_group,
-      callback = function()
-        vim.lsp.buf.document_highlight()
-      end,
-    })
-    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-      buffer = bufnr,
-      group = highlight_group,
-      callback = function()
-        vim.lsp.buf.clear_references()
-      end,
-    })
-  end
-end
+    if client:supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({ group = format_group, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = format_group,
+        buffer = bufnr,
+        callback = function() vim.lsp.buf.format() end
+      })
+    end
+
+    if client:supports_method('textDocument/documentHighlight') then
+      vim.api.nvim_clear_autocmds({ group = highlight_group, buffer = bufnr })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = bufnr,
+        group = highlight_group,
+        callback = function()
+          vim.lsp.buf.document_highlight()
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+        buffer = bufnr,
+        group = highlight_group,
+        callback = function()
+          vim.lsp.buf.clear_references()
+        end,
+      })
+    end
+  end,
+})
 
 -- 2. build-in LSP function
 -- keyboard shortcut
@@ -260,8 +266,8 @@ map('n', '<leader>gt', vim.lsp.buf.type_definition)
 map('n', '<leader>gn', vim.lsp.buf.rename)
 map('n', '<leader>ga', vim.lsp.buf.code_action)
 map('n', '<leader>ge', vim.diagnostic.open_float)
-map('n', '<leader>g]', vim.diagnostic.goto_next)
-map('n', '<leader>g[', vim.diagnostic.goto_prev)
+map('n', '<leader>g]', function() vim.diagnostic.jump({ count = 1 }) end)
+map('n', '<leader>g[', function() vim.diagnostic.jump({ count = -1 }) end)
 -- Diagnostic display config
 vim.diagnostic.config({ virtual_text = false })
 
@@ -303,9 +309,7 @@ cmp.setup.cmdline(":", {
   },
 })
 
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       runtime = {
@@ -324,5 +328,6 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable('lua_ls')
 
 -- 4. my own
