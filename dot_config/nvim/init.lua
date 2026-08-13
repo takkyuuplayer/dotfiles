@@ -1,9 +1,9 @@
-vim.bo.autoindent = true
-vim.bo.autoread = true
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.smartindent = true
-vim.bo.tabstop = 2
+vim.o.autoindent = true
+vim.o.autoread = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.smartindent = true
+vim.o.tabstop = 2
 
 vim.o.fileencodings = 'utf-8,iso-2022-jp,euc-jp,sjis'
 vim.o.helplang = 'ja,en'
@@ -209,34 +209,37 @@ require('mason-lspconfig').setup({
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Created once. Creating an augroup clears it, so doing it inside on_attach would
+-- drop the autocmds already registered for other buffers.
+local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
+local highlight_group = vim.api.nvim_create_augroup("LSPDocumentHighlight", { clear = true })
+
 local on_attach = function(client, bufnr)
   if client.server_capabilities.hoverProvider then
     map('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, silent = true })
   end
 
   if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_clear_autocmds({ group = format_group, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      group = format_group,
       buffer = bufnr,
       callback = function() vim.lsp.buf.format() end
     })
   end
 
   if client.server_capabilities.documentHighlightProvider then
-    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
-
-    vim.opt.updatetime = 1000
-
+    vim.api.nvim_clear_autocmds({ group = highlight_group, buffer = bufnr })
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       buffer = bufnr,
-      group = group,
+      group = highlight_group,
       callback = function()
         vim.lsp.buf.document_highlight()
       end,
     })
     vim.api.nvim_create_autocmd({ "CursorMoved" }, {
       buffer = bufnr,
-      group = group,
+      group = highlight_group,
       callback = function()
         vim.lsp.buf.clear_references()
       end,
