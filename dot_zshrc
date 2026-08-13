@@ -56,9 +56,6 @@ setopt list_packed      # compact ls
 setopt nolistbeep       # no beep sound
 setopt noautoremoveslash        # no omit directory/
 
-autoload predict-off    # prediction
-
-
 ###################################################
 # etc
 ###################################################

@@ -2,8 +2,9 @@ fish_vi_key_bindings
 
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
+    curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish \
+        --create-dirs -o $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    and fish -c "fisher update"
 end
 
 if type -q colordiff
@@ -29,22 +30,14 @@ if type -q nvim
 end
 
 bind \c] '__ghq_repository_search'
+bind \cp 'history-search-backward'
+bind \cn 'history-search-forward'
+bind \t complete
+
 if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \c] '__ghq_repository_search'
-end
-
-bind \cp 'history-search-backward'
-if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \cp 'history-search-backward'
-end
-
-bind \cn 'history-search-forward'
-if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \cn 'history-search-forward'
-end
-
-bind \t complete
-if bind -M insert >/dev/null 2>/dev/null
     bind -M insert \t complete
 end
 
