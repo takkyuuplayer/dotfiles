@@ -1,5 +1,9 @@
-export DOCKER_BUILDKIT=1
-export EDITOR="nvim"
+if (( $+commands[nvim] )); then
+  export EDITOR="nvim"
+else
+  export EDITOR="vim"
+fi
+
 export LESS="-giMRW -z-4"
 export PAGER=less
 export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.

@@ -8,10 +8,6 @@ if [ -d "$HOME/.docker/bin" ]; then
   path+=("$HOME/.docker/bin")
 fi
 
-if [ -d /opt/homebrew/opt/openjdk/bin ]; then
-  path=("/opt/homebrew/opt/openjdk/bin" "${path[@]}")
-fi
-
 if (( $+commands[anyenv] )); then
   eval "$(anyenv init -)"
 fi
