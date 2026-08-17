@@ -1,14 +1,12 @@
 export DOCKER_BUILDKIT=1
 export EDITOR="nvim"
-export LESS="-giMRW -z-4"
 export PAGER=less
-export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
-export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
-export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
-export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
-export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
-export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
-export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
+export LESS="-FgiJKMRW -z-4 --incsearch --mouse --use-color -DSky -DPkw"
+export LESSHISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/less/history"
+[[ -d "${LESSHISTFILE:h}" ]] || mkdir -p "${LESSHISTFILE:h}" 2>/dev/null
+
+# man の太字/下線は overstrike なので less 側で着色する (旧 LESS_TERMCAP_* の代替)
+export MANPAGER="less -Dd+r -Du+g"
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
