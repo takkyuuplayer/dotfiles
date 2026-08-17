@@ -62,6 +62,34 @@ setopt nolistbeep       # no beep sound
 setopt noautoremoveslash        # no omit directory/
 
 ###################################################
+# aliases and functions
+###################################################
+if (( $+commands[colordiff] )); then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+
+alias awslocal="aws --endpoint-url=http://localhost:4566 --cli-auto-prompt"
+alias docker-balus="docker system prune -fa && docker volume ls -q | xargs docker volume rm"
+alias docker-run-here="docker run --volume=\$PWD:/srv:cached -w=/srv"
+alias mkdir="mkdir -p"
+if (( $+commands[nvim] )); then
+  alias vim="nvim"
+fi
+alias vimtutor="vimtutor ja"
+
+alias tparagen="go run github.com/sho-hata/tparagen/cmd/tparagen@latest"
+
+docker-image-versions() {
+  curl -s "https://registry.hub.docker.com/v2/repositories/$1/tags/" | jq "." | grep name | sort
+}
+
+git-clone-many() {
+  gh repo list "$1" --limit "${2:-30}" --no-archived --json url --jq '.[].url' | ghq get -p -P
+}
+
+###################################################
 # etc
 ###################################################
 [ -f $HOME/.zshrc_mine ] && source $HOME/.zshrc_mine
@@ -79,11 +107,6 @@ function ghq-fzf() {
 
 zle -N ghq-fzf
 bindkey "" ghq-fzf
-
-
-if [ -d /opt/homebrew/opt/openjdk/bin ] ; then
-  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-fi
 
 if (( $+commands[git-wt] )); then
   eval "$(git wt --init zsh)"
