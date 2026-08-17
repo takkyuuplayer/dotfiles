@@ -1,12 +1,13 @@
 # .bash_profile
 umask 0002
 
-if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [ -x "$HOME/.linuxbrew/bin/brew" ]; then
-    eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
 fi
 
-if [ -r "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+elif [ -d ~/.linuxbrew ]; then
+    eval $(~/.linuxbrew/bin/brew shellenv)
 fi
