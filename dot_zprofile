@@ -1,7 +1,34 @@
-if [ -d "$HOME/.docker/bin" ]; then
-  export PATH="$PATH:$HOME/.docker/bin"
+typeset -gU path PATH
+
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [ -d /opt/homebrew/bin ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -d "$HOME/.docker/bin" ]; then
+  path+=("$HOME/.docker/bin")
+fi
+
+if [ -d /opt/homebrew/opt/openjdk/bin ]; then
+  path=("/opt/homebrew/opt/openjdk/bin" "${path[@]}")
+fi
+
+if (( $+commands[anyenv] )); then
+  eval "$(anyenv init -)"
+fi
+
+if (( $+commands[go] )); then
+  path=("$HOME/go/bin" "${path[@]}")
+fi
+
+if [ -d "$HOME/.deno" ]; then
+  export DENO_INSTALL="$HOME/.deno"
+  path=("$DENO_INSTALL/bin" "${path[@]}")
+fi
+
+if [ -d "$HOME/.cargo" ]; then
+  path=("$HOME/.cargo/bin" "${path[@]}")
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+  path=("$HOME/.local/bin" "${path[@]}")
 fi
