@@ -1,6 +1,4 @@
 anthropic.claude-code
-biomejs.biome
-dbaeumer.vscode-eslint
 esbenp.prettier-vscode
 github.remotehub
 github.vscode-github-actions
@@ -22,5 +20,4 @@ shopify.ruby-lsp
 sorbet.sorbet-vscode-extension
 tamasfe.even-better-toml
 thinker.sort-json
-vitest.explorer
 vscodevim.vim

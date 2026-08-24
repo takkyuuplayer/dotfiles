@@ -1,93 +1,41 @@
 {
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[dockercompose]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers",
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[ruby]": {
-    "editor.defaultColorDecorators": "never",
-    "editor.defaultFormatter": "Shopify.ruby-lsp",
-    "editor.semanticHighlighting.enabled": true,
-    "editor.wordSeparators": "`~@#$%^&*()-=+[{]}\\|;:'\",.<>/",
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-  },
-  "claudeCode.preferredLocation": "panel",
-  "docker.extension.enableComposeLanguageServer": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit",
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "editor.rulers": [120],
+  "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.vscode": true,
-    "**/node_modules": true,
+    "**/node_modules": true
   },
   "git.autofetch": true,
   "git.blame.statusBarItem.enabled": false,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "go.formatTool": "goimports",
-  "go.toolsManagement.autoUpdate": true,
-  "json.format.enable": false,
   "json.schemaDownload.trustedDomains": {
-    "https://biomejs.dev": true,
-    "https://json-schema.org/": true,
-    "https://json.schemastore.org/": true,
-    "https://raw.githubusercontent.com/": true,
-    "https://schemastore.azurewebsites.net/": true,
-    "https://www.schemastore.org/": true,
+    "https://raw.githubusercontent.com/": true
   },
-  "makefile.configureOnOpen": true,
-  "rubyLsp.formatter": "rubocop",
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
       "after": ["<Esc>"],
-      "before": ["C-]"],
-    },
+      "before": ["C-]"]
+    }
   ],
-  "workbench.settings.applyToAllProfiles": [],
-  "workbench.statusBar.visible": true,
-  "yaml.schemas": {
-    "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.{yml,yaml}",
-    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}",
-  },
   "yaml.disableSchemaDetection": [
     "**/.github/workflows/*.yml",
     "**/.github/workflows/*.yaml",
     "**/.gitea/workflows/*.yml",
     "**/.gitea/workflows/*.yaml",
     "**/.forgejo/workflows/*.yml",
-    "**/.forgejo/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yaml"
   ],
-  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "yaml.schemas": {
+    "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.{yml,yaml}",
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}"
+  }
 }
