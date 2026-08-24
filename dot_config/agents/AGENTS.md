@@ -9,7 +9,8 @@
 
 # Pull Request Rules
 
-- When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output a `gh pr create --web --title "<title>" --body-file <path>` command for the user to run.
+- When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output a `gh pr create` command for the user to run.
+- The commands you output must be runnable from anywhere, without the user having to `cd` into the worktree or switch branches. Push with `git -C <worktree-path> push -u origin <branch>`, and pass `--repo`, `--head`, and `--base` explicitly to `gh`: `gh pr create --web --repo <owner>/<repo> --head <branch> --base <base-branch> --title "<title>" --body-file <path>`.
 
 # Code Editing Rules
 
