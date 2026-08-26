@@ -38,7 +38,6 @@
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
-    "**/.vscode": true,
     "**/node_modules": true
   },
   "git.autofetch": true,
