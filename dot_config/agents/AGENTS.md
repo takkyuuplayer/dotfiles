@@ -11,7 +11,7 @@
 # GitHub Rules
 
 - Sign anything you post on GitHub with `🤖 <agent> (<model>)` — your agent name and the actual model name powering the current session — so readers can tell an agent wrote it. Put it on the first line of a comment, or on the last line of an issue or pull request body.
-- When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output a `gh pr create --web --title "<title>" --body-file <path>` command for the user to run.
+- When asked to create a pull request or an issue, do not run `gh pr create` / `gh issue create` directly. Instead, write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output a `gh pr create --web --title "<title>" --body-file <path>` / `gh issue create --web --title "<title>" --body-file <path>` command for the user to run.
 
 # Code Editing Rules
 
