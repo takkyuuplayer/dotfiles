@@ -11,6 +11,12 @@
 
 - When asked to create a pull request, do not run `gh pr create` directly. Instead, write the PR body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output a `gh pr create --web --title "<title>" --body-file <path>` command for the user to run.
 
+# GitHub Rules
+
+- When creating something on GitHub as an agent, add a signature line so readers can tell an agent wrote it. Use your agent name and the actual model name powering the current session, in the form `🤖 <agent> (<model>)` (e.g., `🤖 Claude (<model>)`, `🤖 Codex (<model>)`).
+- For comments (issue comments, pull request comments, review comments), put the signature on the first line, followed by a blank line, before the body.
+- For issues and pull requests, put the signature on the last line of the body, after a blank line.
+
 # Code Editing Rules
 
 - When editing source code, do not add comments that simply restate what is already obvious from the code itself.
