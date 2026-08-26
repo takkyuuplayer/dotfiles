@@ -15,6 +15,8 @@ brew "gh"
 brew "ghq"
 # Distributed revision control system
 brew "git"
+# Prevents you from committing sensitive information to a git repo
+brew "git-secrets"
 # Audit git repos for secrets
 brew "gitleaks"
 # GNU implementation of the famous stream editor
@@ -27,6 +29,8 @@ brew "grep"
 brew "herdr"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
