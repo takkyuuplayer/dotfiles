@@ -4,3 +4,4 @@
 # Claude Code stages every file write in a scratch directory beside the
 # target (write temp -> fsync -> rename), which puts it inside the repo.
 **/.claude/.cc-writes/
+AGENTS.override.md

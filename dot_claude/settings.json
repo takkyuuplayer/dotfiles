@@ -20,10 +20,10 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
-    "enableWeakerNetworkIsolation": true,
     "network": {
       "allowLocalBinding": true
-    }
+    },
+    "enableWeakerNetworkIsolation": true
   },
   "effortLevel": "high",
   "fastMode": false,
@@ -32,5 +32,10 @@
       "$defaults",
       "Reading and writing files within the current working directory is allowed, EXCEPT files under .git/, .claude/settings*.json, and any hook/script that executes automatically (e.g. .git/hooks/*, .claude/hooks/*) — those still require confirmation"
     ]
+  },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
   }
 }
