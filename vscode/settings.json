@@ -1,33 +1,33 @@
 {
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[dockercompose]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[ruby]": {
-    "editor.defaultFormatter": "Shopify.ruby-lsp"
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "chat.viewSessions.orientation": "stacked",
   "claudeCode.preferredLocation": "panel",
@@ -38,20 +38,20 @@
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "files.exclude": {
-    "**/node_modules": true
+    "**/node_modules": true,
   },
   "git.autofetch": true,
   "git.blame.statusBarItem.enabled": false,
   "git.openRepositoryInParentFolders": "never",
   "json.schemaDownload.trustedDomains": {
-    "https://raw.githubusercontent.com/": true
+    "https://raw.githubusercontent.com/": true,
   },
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
       "after": ["<Esc>"],
-      "before": ["C-]"]
-    }
+      "before": ["C-]"],
+    },
   ],
   "yaml.disableSchemaDetection": [
     "**/.github/workflows/*.yml",
@@ -59,10 +59,13 @@
     "**/.gitea/workflows/*.yml",
     "**/.gitea/workflows/*.yaml",
     "**/.forgejo/workflows/*.yml",
-    "**/.forgejo/workflows/*.yaml"
+    "**/.forgejo/workflows/*.yaml",
   ],
   "yaml.schemas": {
     "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.{yml,yaml}",
-    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}"
-  }
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}",
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+  },
 }
