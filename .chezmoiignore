@@ -1,5 +1,6 @@
 Brewfile
 Makefile
+agent-overrides
 .config/agents/skills
 gh-extensions
 gitignore

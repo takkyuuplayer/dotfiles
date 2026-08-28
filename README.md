@@ -19,6 +19,18 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 $ make link
 ```
 
+### Repository-specific agent overrides
+
+`agent-overrides/` contains optional, reusable instructions that chezmoi does not apply automatically.
+Copy an override into a repository only when it is needed:
+
+```bash
+$ cp "$(chezmoi source-path)/agent-overrides/Learning.md" /path/to/repository/AGENTS.override.md
+```
+
+Add repository-specific instructions to the copied `AGENTS.override.md`. If an improvement is useful
+across multiple repositories, apply it to `agent-overrides/Learning.md` as well.
+
 ## gitignore
 
 `dot_config/git/ignore` is generated — do not edit it directly. Its sources are the manifests
