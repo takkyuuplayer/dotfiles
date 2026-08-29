@@ -1,4 +1,6 @@
+AGENTS.md
 Brewfile
+CLAUDE.md
 Makefile
 agent-overrides
 .config/agents/skills
