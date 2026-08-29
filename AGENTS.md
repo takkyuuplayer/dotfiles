@@ -1,7 +1,7 @@
-# Git での作業方法
+# Git Workflow
 
-このリポジトリは、専用の worktree を必須とするグローバルルールを上書きする。
+This repository overrides the global rule that requires a dedicated worktree.
 
-- 同時に複数の作業は行わないため、Git worktree は使用しない。
-- 通常の開発作業は、ベースリポジトリで専用ブランチを作成して進める。
-- ブランチの作成や切り替えの前に、未コミットの変更がないか確認する。
+- Do not use a Git worktree; only one task is worked on at a time.
+- Do regular development work on a dedicated branch created in the base repository.
+- Check for uncommitted changes before creating or switching branches.
