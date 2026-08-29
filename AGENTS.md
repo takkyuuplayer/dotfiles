@@ -1,8 +1,7 @@
-# Git Commit Rules
+# Git での作業方法
 
-This repository overrides the global rule that requires a dedicated worktree.
+このリポジトリは、専用の worktree を必須とするグローバルルールを上書きする。
 
-- Do not create a Git worktree. Work in the main worktree.
-- Do not commit directly to the base branch (`main`). Create a dedicated branch from the up-to-date
-  `origin/main` and commit there.
-- A pull request is not required. The branch may be merged or fast-forwarded into `main` locally.
+- 同時に複数の作業は行わないため、Git worktree は使用しない。
+- 通常の開発作業は、ベースリポジトリで専用ブランチを作成して進める。
+- ブランチの作成や切り替えの前に、未コミットの変更がないか確認する。
