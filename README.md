@@ -25,11 +25,11 @@ $ make link
 Copy an override into a repository only when it is needed:
 
 ```bash
-$ cp "$(chezmoi source-path)/agent-overrides/Learning.md" /path/to/repository/AGENTS.override.md
+$ cp "$(chezmoi source-path)/agent-overrides/Onboarding.md" /path/to/repository/AGENTS.override.md
 ```
 
 Add repository-specific instructions to the copied `AGENTS.override.md`. If an improvement is useful
-across multiple repositories, apply it to `agent-overrides/Learning.md` as well.
+across multiple repositories, apply it to `agent-overrides/Onboarding.md` as well.
 
 ## gitignore
 
