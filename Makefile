@@ -1,4 +1,4 @@
-.PHONY: link gh git/ignore mise vscode vscode/dump vscode/extensions brew brew/dump
+.PHONY: link gh git/ignore mise skills skills/update vscode vscode/dump vscode/extensions brew brew/dump
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -27,6 +27,13 @@ mise:
 	mise up -y
 	mise prune -y
 	mise reshim
+
+skills:
+	npx --yes skills add helpfeel/cosense-cli --skill '*' --global --yes --agent codex
+	npx --yes skills add mattpocock/skills --skill grilling --global --yes --agent claude-code --agent codex
+
+skills/update:
+	npx --yes skills update --global --yes
 
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets

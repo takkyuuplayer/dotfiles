@@ -19,6 +19,25 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 $ make link
 ```
 
+### Third-party skills
+
+Skills maintained outside this repository are listed in the `skills` target of the `Makefile` and
+installed globally with the [`skills`](https://github.com/vercel-labs/skills) CLI, which takes any
+Git repository, URL or local path as a source:
+
+```bash
+$ make skills        # install every source listed in the skills target
+$ make skills/update # update the installed skills
+```
+
+Add a skill by appending an `npx skills add` line, choosing its `--agent` targets.
+[skills.sh](https://www.skills.sh/) indexes what is out there.
+
+Claude Code takes a source through `dot_claude/settings.json` (`enabledPlugins` /
+`extraKnownMarketplaces`) instead whenever that source ships a plugin covering only the wanted
+skill, so that the same skill is not registered twice under two update paths. Otherwise the skill is
+installed on its own with `--skill <name>`.
+
 ### Repository-specific agent overrides
 
 `agent-overrides/` contains optional, reusable instructions that chezmoi does not apply automatically.

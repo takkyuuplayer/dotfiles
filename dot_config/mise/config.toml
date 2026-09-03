@@ -1,2 +1,6 @@
 [settings]
 minimum_release_age = "7d"
+
+[tools]
+node = "lts"
+"npm:@helpfeel/cosense-cli" = "latest"
