@@ -13,7 +13,7 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 
 ## Coding agents
 
-`dot_config/agents/` is the single source shared by Claude Code and Codex. `AGENTS.md` is symlinked to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` by chezmoi; `skills/*` are linked into every directory an agent scans for user-level skills — `~/.claude/skills` for Claude Code and `~/.agents/skills` for Codex — with:
+`dot_agents/` is the single source shared by Claude Code and Codex. `AGENTS.md` lands on `~/.agents/AGENTS.md` and is symlinked from `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` by chezmoi; `skills/*` are linked into every directory an agent scans for user-level skills — `~/.claude/skills` for Claude Code and `~/.agents/skills` for Codex, which chezmoi leaves to `make link` so that a skill stays a single symlinked directory:
 
 ```bash
 $ make link

@@ -2,7 +2,7 @@
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-AGENT_SKILLS=$(wildcard $(DIR)dot_config/agents/skills/*)
+AGENT_SKILLS=$(wildcard $(DIR)dot_agents/skills/*)
 # Claude Code reads only ~/.claude/skills; Codex reads ~/.agents/skills.
 AGENT_SKILL_DIRS=$(HOME)/.claude/skills $(HOME)/.agents/skills
 
