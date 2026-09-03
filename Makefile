@@ -28,17 +28,17 @@ mise:
 	mise prune -y
 	mise reshim
 
-AGENT_SKILL_AGENTS=codex
-SKILLS_ADD_FLAGS=--skill '*' --global --yes $(addprefix --agent ,$(AGENT_SKILL_AGENTS))
+# Skills published on https://www.skills.sh/.
+# Claude Code takes a source that ships a plugin through dot_claude/settings.json instead,
+# so that the same skill is not registered twice under two update paths.
+SKILLS_ADD_FLAGS=--skill '*' --global --yes
 
+# cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
 skills:
-	@while read -r line; do \
-		case "$$line" in ''|\#*) continue;; esac; \
-		npx --yes skills add $$line $(SKILLS_ADD_FLAGS) || exit 1; \
-	done < $(DIR)agent-skills.txt
+	npx --yes skills add helpfeel/cosense-cli $(SKILLS_ADD_FLAGS) --agent codex
 
 skills/update:
-	npx --yes skills update --yes
+	npx --yes skills update --global --yes
 
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets

@@ -21,21 +21,20 @@ $ make link
 
 ### Skills from skills.sh
 
-`agent-skills.txt` lists skills published on [skills.sh](https://www.skills.sh/). They are installed
-globally for Codex with the [`skills`](https://github.com/vercel-labs/skills) CLI:
+Skills published on [skills.sh](https://www.skills.sh/) are listed in the `skills` target of the
+`Makefile` and installed globally with the [`skills`](https://github.com/vercel-labs/skills) CLI:
 
 ```bash
-$ make skills        # install every source listed in agent-skills.txt
+$ make skills        # install every source listed in the skills target
 $ make skills/update # update the installed skills
 ```
 
-Add a skill by appending its `<owner>/<repo>` to `agent-skills.txt` and running `make skills`. Some
-skills need a companion CLI installed separately; note it as a comment next to the entry.
+Add a skill by appending an `npx skills add` line, choosing its `--agent` targets. Some skills need
+a companion CLI installed separately; note it as a comment next to the line.
 
-Claude Code is deliberately not a default target. A source that also ships a Claude Code plugin is
-declared in `dot_claude/settings.json` (`enabledPlugins` / `extraKnownMarketplaces`) instead, so that
-the same skill is not registered twice under two update paths. For a source without a plugin, append
-`--agent claude-code` to its line.
+A source that also ships a Claude Code plugin is declared in `dot_claude/settings.json`
+(`enabledPlugins` / `extraKnownMarketplaces`) instead of being targeted with `--agent claude-code`,
+so that the same skill is not registered twice under two update paths.
 
 ### Repository-specific agent overrides
 
