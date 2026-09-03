@@ -29,13 +29,12 @@ $ make skills        # install every source listed in the skills target
 $ make skills/update # update the installed skills
 ```
 
-Add a skill by appending an `npx skills add` line, choosing its `--agent` targets. Some skills need
-a companion CLI installed separately; note it as a comment next to the line.
+Add a skill by appending an `npx skills add` line, choosing its `--agent` targets.
 
-A source that ships a Claude Code plugin covering only what is wanted is declared in
-`dot_claude/settings.json` (`enabledPlugins` / `extraKnownMarketplaces`) instead of being targeted
-with `--agent claude-code`, so that the same skill is not registered twice under two update paths.
-A plugin that bundles far more than the wanted skill is skipped in favour of `--skill <name>`.
+Claude Code takes a source through `dot_claude/settings.json` (`enabledPlugins` /
+`extraKnownMarketplaces`) instead whenever that source ships a plugin covering only the wanted
+skill, so that the same skill is not registered twice under two update paths. Otherwise the skill is
+installed on its own with `--skill <name>`.
 
 ### Repository-specific agent overrides
 

@@ -28,16 +28,12 @@ mise:
 	mise prune -y
 	mise reshim
 
-# Skills published on https://www.skills.sh/.
-# A source that ships a Claude Code plugin covering only what is wanted goes through
-# dot_claude/settings.json instead, so that the same skill is not registered twice under two
-# update paths. mattpocock/skills does ship one, but it bundles far more than grilling.
-SKILLS_ADD_FLAGS=--global --yes
-
-# cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
+# Skills published on https://www.skills.sh/ -- see README "Skills from skills.sh".
 skills:
-	npx --yes skills add helpfeel/cosense-cli --skill '*' $(SKILLS_ADD_FLAGS) --agent codex
-	npx --yes skills add mattpocock/skills --skill grilling $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
+# cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
+	npx --yes skills add helpfeel/cosense-cli --skill '*' --global --yes --agent codex
+# mattpocock/skills ships a Claude Code plugin too, but it bundles far more than grilling.
+	npx --yes skills add mattpocock/skills --skill grilling --global --yes --agent claude-code --agent codex
 
 skills/update:
 	npx --yes skills update --global --yes
