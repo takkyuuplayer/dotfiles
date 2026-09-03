@@ -13,30 +13,32 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 
 ## Coding agents
 
-`dot_agents/` is the single source shared by Claude Code and Codex. `AGENTS.md` lands on `~/.agents/AGENTS.md` and is symlinked from `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` by chezmoi; `skills/*` are linked into every directory an agent scans for user-level skills — `~/.claude/skills` for Claude Code and `~/.agents/skills` for Codex, which chezmoi leaves to `make link` so that a skill stays a single symlinked directory:
+`dot_agents/` is the single source shared by Claude Code and Codex, third-party skills included.
+`AGENTS.md` lands on `~/.agents/AGENTS.md` and is symlinked from `~/.claude/CLAUDE.md` and
+`~/.codex/AGENTS.md` by chezmoi. `skills/` is left to `make link`, which links it into every
+directory an agent scans for user-level skills:
 
 ```bash
 $ make link
 ```
 
+- `~/.agents/skills` : the directory itself, since Codex reads that path and the
+  [`skills`](https://github.com/vercel-labs/skills) CLI writes into it
+- `~/.claude/skills/<skill>` : one link per skill, the only user-level location Claude Code reads
+
 ### Third-party skills
 
-Skills maintained outside this repository are listed in the `skills` target of the `Makefile` and
-installed globally with the [`skills`](https://github.com/vercel-labs/skills) CLI, which takes any
-Git repository, URL or local path as a source:
+Skills maintained outside this repository live under `dot_agents/skills/` like the handwritten ones,
+because `~/.agents/skills` is this repository. Install one with the `skills` CLI, which takes any Git
+repository, URL or local path as a source, then commit what it wrote:
 
 ```bash
-$ make skills        # install every source listed in the skills target
-$ make skills/update # update the installed skills
+$ npx --yes skills add mattpocock/skills --skill grilling --global --yes
+$ make skills/update # update every skill recorded in dot_skill-lock.json
 ```
 
-Add a skill by appending an `npx skills add` line, choosing its `--agent` targets.
+Run `make link` afterwards so that a newly added skill also reaches `~/.claude/skills`.
 [skills.sh](https://www.skills.sh/) indexes what is out there.
-
-Claude Code takes a source through `dot_claude/settings.json` (`enabledPlugins` /
-`extraKnownMarketplaces`) instead whenever that source ships a plugin covering only the wanted
-skill, so that the same skill is not registered twice under two update paths. Otherwise the skill is
-installed on its own with `--skill <name>`.
 
 ### Repository-specific agent overrides
 

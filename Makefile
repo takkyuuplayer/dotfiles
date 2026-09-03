@@ -1,17 +1,17 @@
-.PHONY: link gh git/ignore mise skills skills/update vscode vscode/dump vscode/extensions brew brew/dump
+.PHONY: link gh git/ignore mise skills/update vscode vscode/dump vscode/extensions brew brew/dump
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-AGENT_SKILLS=$(wildcard $(DIR)dot_agents/skills/*)
-# Claude Code reads only ~/.claude/skills; Codex reads ~/.agents/skills.
-AGENT_SKILL_DIRS=$(HOME)/.claude/skills $(HOME)/.agents/skills
+AGENT_SKILLS=$(DIR)dot_agents/skills
 
+# ~/.agents/skills is linked as a whole directory, so that the skills CLI writes
+# into this repository. Claude Code reads no shared location and needs one link
+# per skill instead.
 link:
 	chezmoi apply --mode symlink
-	@for dir in $(AGENT_SKILL_DIRS); do \
-		mkdir -p $$dir; \
-		ln -sfn $(AGENT_SKILLS) $$dir/; \
-	done
+	@mkdir -p $(HOME)/.agents $(HOME)/.claude/skills
+	@ln -sfn $(AGENT_SKILLS) $(HOME)/.agents/skills
+	@ln -sfn $(wildcard $(AGENT_SKILLS)/*) $(HOME)/.claude/skills/
 
 GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
 
@@ -28,10 +28,6 @@ mise:
 	mise up -y
 	mise prune -y
 	mise reshim
-
-skills:
-	npx --yes skills add helpfeel/cosense-cli --skill '*' --global --yes --agent codex
-	npx --yes skills add mattpocock/skills --skill grilling --global --yes --agent claude-code --agent codex
 
 skills/update:
 	npx --yes skills update --global --yes
