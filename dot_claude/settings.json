@@ -13,16 +13,7 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "cosense-cli@cosense-cli": true
-  },
-  "extraKnownMarketplaces": {
-    "cosense-cli": {
-      "source": {
-        "source": "github",
-        "repo": "helpfeel/cosense-cli"
-      }
-    }
+    "skill-creator@claude-plugins-official": true
   },
   "language": "japanese",
   "sandbox": {

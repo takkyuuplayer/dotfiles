@@ -2,8 +2,7 @@ AGENTS.md
 Brewfile
 CLAUDE.md
 Makefile
-agent-overrides
-.config/agents/skills
+.agents/skills
 gh-extensions
 gitignore
 README.md
