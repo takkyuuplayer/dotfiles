@@ -13,7 +13,16 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "cosense-cli@cosense-cli": true
+  },
+  "extraKnownMarketplaces": {
+    "cosense-cli": {
+      "source": {
+        "source": "github",
+        "repo": "helpfeel/cosense-cli"
+      }
+    }
   },
   "language": "japanese",
   "sandbox": {
@@ -26,16 +35,16 @@
     "enableWeakerNetworkIsolation": true
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
   "fastMode": false,
   "autoMode": {
     "allow": [
       "$defaults",
       "Reading and writing files within the current working directory is allowed, EXCEPT files under .git/, .claude/settings*.json, and any hook/script that executes automatically (e.g. .git/hooks/*, .claude/hooks/*) — those still require confirmation"
     ]
-  },
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "medium"
-    }
   }
 }
