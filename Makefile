@@ -28,7 +28,7 @@ mise:
 	mise prune -y
 	mise reshim
 
-# Skills published on https://www.skills.sh/ -- see README "Skills from skills.sh".
+# Third-party agent skills -- see README "Third-party skills".
 skills:
 # cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
 	npx --yes skills add helpfeel/cosense-cli --skill '*' --global --yes --agent codex
