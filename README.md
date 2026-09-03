@@ -22,7 +22,7 @@ $ make link
 ### Skills from skills.sh
 
 `agent-skills.txt` lists skills published on [skills.sh](https://www.skills.sh/). They are installed
-globally for Claude Code and Codex with the [`skills`](https://github.com/vercel-labs/skills) CLI:
+globally for Codex with the [`skills`](https://github.com/vercel-labs/skills) CLI:
 
 ```bash
 $ make skills        # install every source listed in agent-skills.txt
@@ -31,6 +31,11 @@ $ make skills/update # update the installed skills
 
 Add a skill by appending its `<owner>/<repo>` to `agent-skills.txt` and running `make skills`. Some
 skills need a companion CLI installed separately; note it as a comment next to the entry.
+
+Claude Code is deliberately not a default target. A source that also ships a Claude Code plugin is
+declared in `dot_claude/settings.json` (`enabledPlugins` / `extraKnownMarketplaces`) instead, so that
+the same skill is not registered twice under two update paths. For a source without a plugin, append
+`--agent claude-code` to its line.
 
 ### Repository-specific agent overrides
 

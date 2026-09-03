@@ -28,7 +28,7 @@ mise:
 	mise prune -y
 	mise reshim
 
-AGENT_SKILL_AGENTS=claude-code codex
+AGENT_SKILL_AGENTS=codex
 SKILLS_ADD_FLAGS=--skill '*' --global --yes $(addprefix --agent ,$(AGENT_SKILL_AGENTS))
 
 skills:

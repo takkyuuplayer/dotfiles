@@ -1,7 +1,10 @@
 # Skills published on https://www.skills.sh/, installed with the `skills` CLI.
 # One source per line: <owner>/<repo>, optionally followed by extra `skills add` flags.
 # Install with `make skills`, update with `make skills/update`.
+#
+# Claude Code is not a default target: a source that also ships a Claude Code plugin belongs in
+# `dot_claude/settings.json` instead. Add `--agent claude-code` to a line that has no plugin.
 
-# Read, investigate and edit Cosense pages.
+# Read, investigate and edit Cosense pages. Installed for Claude Code as a plugin.
 # The skill also needs the `cosense` CLI: npm install -g @helpfeel/cosense-cli
 helpfeel/cosense-cli
