@@ -37,7 +37,6 @@ SKILLS_ADD_FLAGS=--global --yes
 # cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
 skills:
 	npx --yes skills add helpfeel/cosense-cli --skill '*' $(SKILLS_ADD_FLAGS) --agent codex
-	npx --yes skills add vercel-labs/skills --skill find-skills $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
 	npx --yes skills add mattpocock/skills --skill grilling $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
 
 skills/update:
