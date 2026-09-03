@@ -31,14 +31,14 @@ mise:
 # Skills published on https://www.skills.sh/.
 # A source that ships a Claude Code plugin covering only what is wanted goes through
 # dot_claude/settings.json instead, so that the same skill is not registered twice under two
-# update paths. mattpocock/skills does ship one, but it bundles far more than grill-me.
+# update paths. mattpocock/skills does ship one, but it bundles far more than grilling.
 SKILLS_ADD_FLAGS=--global --yes
 
 # cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
 skills:
 	npx --yes skills add helpfeel/cosense-cli --skill '*' $(SKILLS_ADD_FLAGS) --agent codex
 	npx --yes skills add vercel-labs/skills --skill find-skills $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
-	npx --yes skills add mattpocock/skills --skill grill-me $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
+	npx --yes skills add mattpocock/skills --skill grilling $(SKILLS_ADD_FLAGS) --agent claude-code --agent codex
 
 skills/update:
 	npx --yes skills update --global --yes
