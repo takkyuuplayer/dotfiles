@@ -28,11 +28,8 @@ mise:
 	mise prune -y
 	mise reshim
 
-# Third-party agent skills -- see README "Third-party skills".
 skills:
-# cosense also needs its CLI: npm install -g @helpfeel/cosense-cli
 	npx --yes skills add helpfeel/cosense-cli --skill '*' --global --yes --agent codex
-# mattpocock/skills ships a Claude Code plugin too, but it bundles far more than grilling.
 	npx --yes skills add mattpocock/skills --skill grilling --global --yes --agent claude-code --agent codex
 
 skills/update:
