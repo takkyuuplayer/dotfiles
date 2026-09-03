@@ -19,6 +19,19 @@ $ chezmoi init --apply --mode symlink --verbose takkyuuplayer
 $ make link
 ```
 
+### Skills from skills.sh
+
+`agent-skills.txt` lists skills published on [skills.sh](https://www.skills.sh/). They are installed
+globally for Claude Code and Codex with the [`skills`](https://github.com/vercel-labs/skills) CLI:
+
+```bash
+$ make skills        # install every source listed in agent-skills.txt
+$ make skills/update # update the installed skills
+```
+
+Add a skill by appending its `<owner>/<repo>` to `agent-skills.txt` and running `make skills`. Some
+skills need a companion CLI installed separately; note it as a comment next to the entry.
+
 ### Repository-specific agent overrides
 
 `agent-overrides/` contains optional, reusable instructions that chezmoi does not apply automatically.

@@ -1,4 +1,4 @@
-.PHONY: link gh git/ignore mise vscode vscode/dump vscode/extensions brew brew/dump
+.PHONY: link gh git/ignore mise skills skills/update vscode vscode/dump vscode/extensions brew brew/dump
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -27,6 +27,18 @@ mise:
 	mise up -y
 	mise prune -y
 	mise reshim
+
+AGENT_SKILL_AGENTS=claude-code codex
+SKILLS_ADD_FLAGS=--skill '*' --global --yes $(addprefix --agent ,$(AGENT_SKILL_AGENTS))
+
+skills:
+	@while read -r line; do \
+		case "$$line" in ''|\#*) continue;; esac; \
+		npx --yes skills add $$line $(SKILLS_ADD_FLAGS) || exit 1; \
+	done < $(DIR)agent-skills.txt
+
+skills/update:
+	npx --yes skills update --yes
 
 VSCODE_CONFIG_DIR=${HOME}/Library/Application\ Support/Code/User
 VSCODE_CONFIG_FILES=settings.json keybindings.json snippets

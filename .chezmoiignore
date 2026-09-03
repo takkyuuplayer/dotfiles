@@ -3,6 +3,7 @@ Brewfile
 CLAUDE.md
 Makefile
 agent-overrides
+agent-skills.txt
 .config/agents/skills
 gh-extensions
 gitignore

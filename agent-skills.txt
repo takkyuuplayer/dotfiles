@@ -1,0 +1,7 @@
+# Skills published on https://www.skills.sh/, installed with the `skills` CLI.
+# One source per line: <owner>/<repo>, optionally followed by extra `skills add` flags.
+# Install with `make skills`, update with `make skills/update`.
+
+# Read, investigate and edit Cosense pages.
+# The skill also needs the `cosense` CLI: npm install -g @helpfeel/cosense-cli
+helpfeel/cosense-cli
