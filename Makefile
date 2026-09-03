@@ -3,13 +3,14 @@
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
 AGENT_SKILLS=$(wildcard $(DIR)dot_config/agents/skills/*)
-AGENT_HOMES=$(HOME)/.claude $(HOME)/.codex
+# Claude Code reads only ~/.claude/skills; Codex reads ~/.agents/skills.
+AGENT_SKILL_DIRS=$(HOME)/.claude/skills $(HOME)/.agents/skills
 
 link:
 	chezmoi apply --mode symlink
-	@for home in $(AGENT_HOMES); do \
-		mkdir -p $$home/skills; \
-		ln -sfn $(AGENT_SKILLS) $$home/skills/; \
+	@for dir in $(AGENT_SKILL_DIRS); do \
+		mkdir -p $$dir; \
+		ln -sfn $(AGENT_SKILLS) $$dir/; \
 	done
 
 GH_EXTENSIONS=$(wildcard $(DIR)gh-extensions/gh-*)
