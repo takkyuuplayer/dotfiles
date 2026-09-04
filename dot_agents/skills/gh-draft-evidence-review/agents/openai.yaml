@@ -1,4 +1,4 @@
 interface:
-  display_name: "Draft PR Evidence Review"
-  short_description: "Add evidence-backed comments to a pending PR review"
-  default_prompt: "Use $gh-draft-evidence-review to add source-backed comments to this PR as a pending review."
+  display_name: "GitHub Evidence Comments"
+  short_description: "Draft context-backed GitHub comments"
+  default_prompt: "Use $gh-draft-evidence-review to draft GitHub comments from source evidence or session context."
