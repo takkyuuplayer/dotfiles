@@ -1,4 +1,0 @@
-interface:
-  display_name: "GitHub Evidence Comments"
-  short_description: "Draft context-backed GitHub comments"
-  default_prompt: "Use $gh-draft-evidence-review to draft GitHub comments from source evidence or session context."
