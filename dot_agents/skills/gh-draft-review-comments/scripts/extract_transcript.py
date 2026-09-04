@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Claude Code のセッション transcript (jsonl) から人間が読める会話ログを抽出する。
 
-GitHub のコメントに <details> で会話ログを添付する用途を想定しているため、
+GitHub の Files changed review comment の判断背景材料として使うことを想定しているため、
 思考ブロック・ツール呼び出し・ツール結果・system-reminder といった
 読み手にとってノイズになる要素は既定で落とす。
 """

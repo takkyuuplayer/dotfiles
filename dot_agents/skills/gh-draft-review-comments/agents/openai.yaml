@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Review Comments"
+  short_description: "Draft Files changed review comments"
+  default_prompt: "Use $gh-draft-review-comments to draft context-backed Files changed review comments for this PR."
