@@ -1,7 +1,7 @@
 # Git Commit Rules
 
 - Always commit immediately after editing files. Do not wait for the user to ask.
-- Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`. Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `perf`, `build`.
+- Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`.
 - Never commit directly to main/master, and never commit in the main worktree. Always create a dedicated worktree with a new branch, based on the up-to-date remote default branch rather than the possibly stale local one: `git fetch origin <default-branch>`, then `git worktree add <path> -b <branch> origin/<default-branch>`.
 - When you have edited files in the commit — not when you only write the commit message — also include:
   - a `Co-Authored-By` trailer with your agent name and the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`, `Co-Authored-By: Codex <model> <noreply@openai.com>`);
