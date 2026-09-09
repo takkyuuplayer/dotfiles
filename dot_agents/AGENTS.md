@@ -19,3 +19,4 @@
 # Code Editing Rules
 
 - When editing source code, do not add comments that simply restate what is already obvious from the code itself.
+- Name identifiers in code for ESL (English as a Second Language) readers: prefer plain, widely known words over idioms, rare vocabulary, or wordplay, as long as accuracy is not lost.
