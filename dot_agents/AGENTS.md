@@ -1,24 +1,28 @@
 # Git Commit Rules
 
-- Always commit immediately after editing files. Do not wait for the user to ask.
+- Commit each logical change as soon as it is complete and the necessary checks pass. Do not wait for the user to ask.
 - Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`.
-- Never commit directly to main/master, and never commit in the main worktree. Always create a dedicated worktree with a new branch, based on the up-to-date remote default branch rather than the possibly stale local one: `git fetch origin <default-branch>`, then `git worktree add <path> -b <branch> origin/<default-branch>`.
+- Never commit directly to main/master. Use a dedicated worktree unless explicit repository-specific rules require a different workflow.
+- For new work, create a new branch based on the up-to-date remote default branch: `git fetch origin <default-branch>`, then `git worktree add <path> -b <branch> origin/<default-branch>` when using a worktree. Continue related work in its existing branch and working directory.
 - When you have edited files in the commit — not when you only write the commit message — also include:
   - a `Co-Authored-By` trailer with your agent name and the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`, `Co-Authored-By: Codex <model> <noreply@openai.com>`);
   - a `Prompt:` section listing every user prompt that led to the changes, in chronological order, not just the most recent one;
-  - a `Context:` section, when the user had an IDE file open or a selection, preferring GitHub permalink format (`https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<start>-L<end>`) and falling back to `<path>#L<start>-L<end>` without a GitHub remote.
+  - a `Context:` section listing the files and selected ranges actually used to make decisions about the change, when applicable, preferring GitHub permalink format (`https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<start>-L<end>`) and falling back to `<path>#L<start>-L<end>` without a GitHub remote.
 
 # GitHub Rules
 
 - Keep issues, pull requests, and comments as concise as possible. Do not write what is already evident from the diff or the commit history; explain only the why and the context that cannot be read from the code.
 - When writing a pull request body, omit primary-source evidence and decision context that can be added to specific changed lines as review comments using [gh-draft-review-comments](skills/gh-draft-review-comments/SKILL.md). Keep only the context needed to understand the pull request as a whole in the body.
 - Sign anything you post on GitHub with `🤖 <agent> (<model>)` — your agent name and the actual model name powering the current session — so readers can tell an agent wrote it.
-- When asked to create a pull request or an issue, do not run `gh pr create` / `gh issue create` directly. Instead, write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output one of these commands for the user to run. Always pass `-R <owner>/<repo>`, and `--head` / `--base` for a pull request, so that the command works from any directory instead of only the worktree that has the head branch checked out. Push the head branch first.
-  - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>" --body-file <path>`
-  - `gh issue create -R <owner>/<repo> --web --title "<title>" --body-file <path>`
-- For a pull request with a long body, or after `cannot open in browser: maximum URL length exceeded`, omit both `--body` and `--body-file` from the browser command. Keep the body in the temp file and output these two commands for the user to run, then tell them to paste the clipboard into the browser's body field:
+- The user reviews and submits pull requests and issues in the browser. Do not create them directly through the CLI, an API, or another tool. Prepare them using this workflow:
+  1. Write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`). For a pull request, also prepare candidate inline review comments and their supporting sources before handing over the browser command, then push the head branch.
+  2. Output `pbcopy` and the appropriate browser command below for the user to run. Always omit both `--body` and `--body-file` to avoid `cannot open in browser: maximum URL length exceeded`. Keep the explicit repository, base, and head arguments so the commands work from any directory. Tell the user to paste the clipboard into the body field, review it, and submit.
+  3. After the user reports that the pull request has been created, identify it and check the comment candidates against its current HEAD and diff. Use [gh-draft-review-comments](skills/gh-draft-review-comments/SKILL.md) to create a pending review for applicable comments as part of the pull request task, without requiring a separate request. The user submits the review.
+
+  Commands to output:
   - `pbcopy < "<path>"`
   - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>"`
+  - `gh issue create -R <owner>/<repo> --web --title "<title>"`
 
 # Code Editing Rules
 
