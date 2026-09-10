@@ -15,6 +15,9 @@
 - When asked to create a pull request or an issue, do not run `gh pr create` / `gh issue create` directly. Instead, write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output one of these commands for the user to run. Always pass `-R <owner>/<repo>`, and `--head` / `--base` for a pull request, so that the command works from any directory instead of only the worktree that has the head branch checked out. Push the head branch first.
   - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>" --body-file <path>`
   - `gh issue create -R <owner>/<repo> --web --title "<title>" --body-file <path>`
+- For a pull request with a long body, or after `cannot open in browser: maximum URL length exceeded`, omit both `--body` and `--body-file` from the browser command. Keep the body in the temp file and output these two commands for the user to run, then tell them to paste the clipboard into the browser's body field:
+  - `pbcopy < "<path>"`
+  - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>"`
 
 # Code Editing Rules
 
