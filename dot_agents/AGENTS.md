@@ -11,6 +11,7 @@
 # GitHub Rules
 
 - Keep issues, pull requests, and comments as concise as possible. Do not write what is already evident from the diff or the commit history; explain only the why and the context that cannot be read from the code.
+- When writing a pull request body, omit primary-source evidence and decision context that can be added to specific changed lines as review comments using [gh-draft-review-comments](skills/gh-draft-review-comments/SKILL.md). Keep only the context needed to understand the pull request as a whole in the body.
 - Sign anything you post on GitHub with `🤖 <agent> (<model>)` — your agent name and the actual model name powering the current session — so readers can tell an agent wrote it.
 - When asked to create a pull request or an issue, do not run `gh pr create` / `gh issue create` directly. Instead, write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`), then output one of these commands for the user to run. Always pass `-R <owner>/<repo>`, and `--head` / `--base` for a pull request, so that the command works from any directory instead of only the worktree that has the head branch checked out. Push the head branch first.
   - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>" --body-file <path>`
