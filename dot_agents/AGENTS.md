@@ -4,10 +4,12 @@
 - Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`.
 - Never commit directly to main/master. Use a dedicated worktree unless explicit repository-specific rules require a different workflow.
 - For new work, create a new branch based on the up-to-date remote default branch: `git fetch origin <default-branch>`, then `git worktree add <path> -b <branch> origin/<default-branch>` when using a worktree. Continue related work in its existing branch and working directory.
-- When you have edited files in the commit — not when you only write the commit message — also include:
-  - a `Co-Authored-By` trailer with your agent name and the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`, `Co-Authored-By: Codex <model> <noreply@openai.com>`);
-  - a `Prompt:` section listing every user prompt that led to the changes, in chronological order, not just the most recent one;
-  - a `Context:` section listing the files and selected ranges actually used to make decisions about the change, when applicable, preferring GitHub permalink format (`https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<start>-L<end>`) and falling back to `<path>#L<start>-L<end>` without a GitHub remote.
+- When you have edited files in the commit — not when you only write the commit message — include a `Co-Authored-By` trailer with your agent name and the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`, `Co-Authored-By: Codex <model> <noreply@openai.com>`).
+- Explain why the change was made.
+- When collaboration materially shaped the change, briefly describe the relevant request, AI proposal, and user decision. Make the explanation understandable without the conversation.
+- Link to the original conversation or saved transcript when available.
+- Cite sources next to the decisions they support, when needed.
+- Do not require Prompt or Context sections, reproduce every prompt, or list every referenced file. Do not invent missing history.
 
 # GitHub Rules
 
