@@ -18,13 +18,12 @@
 - Sign anything you post on GitHub with `🤖 <agent> (<model>)` — your agent name and the actual model name powering the current session — so readers can tell an agent wrote it.
 - The user reviews and submits pull requests and issues in the browser. Do not create them directly through the CLI, an API, or another tool. Prepare them using this workflow:
   1. Write the body to a temp file outside the working tree (your session's scratch directory, or `$TMPDIR`). For a pull request, also prepare candidate inline review comments and their supporting sources before handing over the browser command, then push the head branch.
-  2. Output `pbcopy` and the appropriate browser command below for the user to run. Always omit both `--body` and `--body-file` to avoid `cannot open in browser: maximum URL length exceeded`. Keep the explicit repository, base, and head arguments so the commands work from any directory. Tell the user to paste the clipboard into the body field, review it, and submit.
+  2. Output one single-line command that chains `pbcopy` with the appropriate browser command for the user to run. Do not split them into separate lines: copying the second line would replace the body in the clipboard. Always omit both `--body` and `--body-file` to avoid `cannot open in browser: maximum URL length exceeded`. Keep the explicit repository, base, and head arguments so the command works from any directory. Tell the user to paste the clipboard into the body field, review it, and submit.
   3. After the user reports that the pull request has been created, identify it and check the comment candidates against its current HEAD and diff. Use [gh-draft-review-comments](skills/gh-draft-review-comments/SKILL.md) to create a pending review for applicable comments as part of the pull request task, without requiring a separate request. The user submits the review.
 
-  Commands to output:
-  - `pbcopy < "<path>"`
-  - `gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>"`
-  - `gh issue create -R <owner>/<repo> --web --title "<title>"`
+  Command to output, one of:
+  - `pbcopy < "<path>" && gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>"`
+  - `pbcopy < "<path>" && gh issue create -R <owner>/<repo> --web --title "<title>"`
 
 # Code Editing Rules
 
