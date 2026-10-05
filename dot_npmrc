@@ -1,0 +1,8 @@
+allow-git=none
+audit=true
+engine-strict=true
+fund=false
+ignore-scripts=true
+min-release-age=7
+save-exact=true
+strict-peer-deps=true
