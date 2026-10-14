@@ -21,6 +21,7 @@
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
     "network": {
+      "allowUnixSockets": ["~/.docker/run/docker.sock"],
       "allowLocalBinding": true
     },
     "enableWeakerNetworkIsolation": true
@@ -32,6 +33,8 @@
     }
   },
   "fastMode": false,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
   "autoMode": {
     "allow": [
       "$defaults",
