@@ -24,6 +24,7 @@
   Command to output, one of:
   - `pbcopy < "<path>" && gh pr create -R <owner>/<repo> --base <base> --head <branch> --web --title "<title>"`
   - `pbcopy < "<path>" && gh issue create -R <owner>/<repo> --web --title "<title>"`
+- When adding review comments and the user already has a pending review on the pull request, add the comments to that pending review (for example, with the GraphQL `addPullRequestReviewThread` mutation) instead of stopping. Check first that the pending review's commit matches the current PR HEAD. Never submit the review.
 
 # Code Editing Rules
 

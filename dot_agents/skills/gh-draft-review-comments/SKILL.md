@@ -33,7 +33,7 @@ PR 全体へ機械的にコメントを付けない。次のような、コー�
 2. PR 本文、commit、diff、周辺コード、テストを読み、根拠が必要な判断点を絞る。コメント対象行は現在の unified diff に実在することを確認する。
 3. 根拠の種類を決める。公式仕様・API docs・ソース permalink などは [一次情報](#一次情報) として扱う。このセッションでの調査や合意は [セッション文脈](#セッション文脈) として扱う。同じコメントに両方を入れてよいが、ラベルを分ける。
 4. コメント本文と配置先を組み立て、投稿前に全件を見直す。本文には `🤖 <agent> (<model>)` の署名を必ず含め、位置はそのコメントが読みやすい形に合わせて決める。セッション文脈を details に入れる場合は、漏えいチェックを必ず通す。
-5. ユーザーが pending review の作成を依頼している場合だけ、後述のスクリプトで一括作成する。結果の `state` が `PENDING` であることを確認し、件数と PR URL を報告する。
+5. ユーザーが pending review の作成を依頼している場合だけ、後述のスクリプトで一括作成する。既存の pending review があれば、スクリプトはそこへ追記する。結果の `state` が `PENDING` であることを確認し、件数と PR URL を報告する。
 
 PR の当たりを付けるとき:
 
@@ -156,7 +156,7 @@ python3 <skill-dir>/scripts/create_pending_review.py \
 
 - input に review を submit できる `event` や review 本文が含まれていないこと
 - JSON の `commit_id` が現在の PR HEAD と一致すること
-- 現在のユーザーによる pending review がまだ存在しないこと
+- 現在のユーザーによる pending review が既にある場合、その review の `commit_id` も現在の PR HEAD と一致すること
 - コメントが `path`、`line`、`side`、`body` を持つこと
 
-既存の pending review がある場合は、新規 review を作らずユーザーへ報告する。POST の成否が不明な場合も自動で再試行せず、pending review の有無を一度確認して結果を報告する。レビューの submit は常にユーザーが GitHub 上で行う。
+既存の pending review がある場合は、新規 review を作らず、GraphQL の `addPullRequestReviewThread` でその review にコメントを追記する（GitHub では 1 人が持てる pending review は 1 つだけのため）。追記の途中で失敗した場合は、何件目まで追加できたかを報告し、自動で再試行しない。POST の成否が不明な場合も自動で再試行せず、pending review の有無を一度確認して結果を報告する。レビューの submit は常にユーザーが GitHub 上で行う。
