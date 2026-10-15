@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create an evidence-comment review on GitHub without submitting it."""
+"""Create or extend a pending evidence-comment review on GitHub without submitting it."""
 
 from __future__ import annotations
 
@@ -163,6 +163,83 @@ def create_review(
     )
 
 
+ADD_THREAD_MUTATION = """
+mutation($reviewId: ID!, $path: String!, $line: Int!, $side: DiffSide!,
+         $startLine: Int, $startSide: DiffSide, $body: String!) {
+  addPullRequestReviewThread(input: {
+    pullRequestReviewId: $reviewId, path: $path, line: $line, side: $side,
+    startLine: $startLine, startSide: $startSide, body: $body
+  }) {
+    thread { id }
+  }
+}
+"""
+
+
+def add_review_thread(
+    review_node_id: str, comment: dict[str, Any]
+) -> subprocess.CompletedProcess[str]:
+    args = [
+        "api",
+        "graphql",
+        "-f",
+        f"query={ADD_THREAD_MUTATION}",
+        "-f",
+        f"reviewId={review_node_id}",
+        "-f",
+        f"path={comment['path']}",
+        "-F",
+        f"line={comment['line']}",
+        "-f",
+        f"side={comment['side']}",
+        "-f",
+        f"body={comment['body']}",
+    ]
+    if "start_line" in comment:
+        args += [
+            "-F",
+            f"startLine={comment['start_line']}",
+            "-f",
+            f"startSide={comment['start_side']}",
+        ]
+    return run_gh(*args)
+
+
+def append_to_review(review: dict[str, Any], payload: dict[str, Any]) -> int:
+    review_id = review.get("id", "unknown")
+    if review.get("commit_id") != payload["commit_id"]:
+        raise DraftReviewError(
+            f"pending review {review_id} is on commit {review.get('commit_id')}, "
+            "not the current PR HEAD; no comments were added"
+        )
+    node_id = review.get("node_id")
+    if not isinstance(node_id, str) or not node_id:
+        raise DraftReviewError(f"could not determine node ID of pending review {review_id}")
+
+    for index, comment in enumerate(payload["comments"]):
+        result = add_review_thread(node_id, comment)
+        if result.returncode != 0:
+            detail = result.stderr.strip() or result.stdout.strip()
+            raise DraftReviewError(
+                f"added {index} of {len(payload['comments'])} comments to pending "
+                f"review {review_id}, then comments[{index}] failed; "
+                f"do not retry automatically: {detail}"
+            )
+
+    print(
+        json.dumps(
+            {
+                "id": review_id,
+                "state": "PENDING",
+                "html_url": review.get("html_url"),
+                "comments": len(payload["comments"]),
+                "appended_to_existing": True,
+            }
+        )
+    )
+    return 0
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Create a GitHub pull request review in PENDING state."
@@ -203,11 +280,7 @@ def main() -> int:
 
         existing = pending_reviews(args.repo, args.pr, login)
         if existing:
-            review_id = existing[0].get("id", "unknown")
-            raise DraftReviewError(
-                f"pending review {review_id} already exists for {login}; "
-                "no new review was created"
-            )
+            return append_to_review(existing[0], payload)
 
         result = create_review(args.repo, args.pr, payload)
         if result.returncode != 0:
