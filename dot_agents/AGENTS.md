@@ -31,3 +31,7 @@
 - Follow [t-wada's principle](https://x.com/t_wada/status/904916106153828352): express **How** in code, **What** in tests, **Why** in commit messages, and **Why not** in code comments. Use comments to explain why an alternative was not chosen when that reason is not obvious from the code.
 - When editing source code, do not add comments that simply restate what is already obvious from the code itself.
 - Name identifiers in code for ESL (English as a Second Language) readers: prefer plain, widely known words over idioms, rare vocabulary, or wordplay, as long as accuracy is not lost.
+
+# Process Rules
+
+- Start long-running processes (dev servers, watchers, `tail`) with your tool's managed background feature (e.g., the Bash tool's `run_in_background`), not with `&` or `nohup`. Stop them with the matching tool (e.g., `TaskStop`) when you are done. In a sandbox, each command may run in its own sandbox, so a later command cannot `kill` or even list a process detached by an earlier one.
