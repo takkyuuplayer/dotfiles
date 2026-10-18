@@ -60,6 +60,7 @@ setopt correct          # command correction
 setopt list_packed      # compact ls
 setopt nolistbeep       # no beep sound
 setopt noautoremoveslash        # no omit directory/
+PROMPT_EOL_MARK=""      # hide the "%" mark printed after output without a trailing newline
 
 ###################################################
 # aliases and functions
