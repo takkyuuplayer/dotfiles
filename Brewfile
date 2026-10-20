@@ -15,8 +15,6 @@ brew "gh"
 brew "ghq"
 # Distributed revision control system
 brew "git"
-# Prevents you from committing sensitive information to a git repo
-brew "git-secrets"
 # Audit git repos for secrets
 brew "gitleaks"
 # GNU implementation of the famous stream editor
