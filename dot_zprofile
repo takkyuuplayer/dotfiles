@@ -4,6 +4,10 @@ if [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if [ -d /opt/homebrew/opt/curl/bin ]; then
+  path=(/opt/homebrew/opt/curl/bin "${path[@]}")
+fi
+
 if [ -d "$HOME/.docker/bin" ]; then
   path+=("$HOME/.docker/bin")
 fi
