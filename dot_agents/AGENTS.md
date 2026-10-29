@@ -2,8 +2,8 @@
 
 - Commit each logical change as soon as it is complete and the necessary checks pass. Do not wait for the user to ask.
 - Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `<type>(<scope>): <description>`.
-- Never commit directly to main/master. Use a dedicated worktree unless explicit repository-specific rules require a different workflow.
-- For new work, create a new branch based on the up-to-date remote default branch: `git fetch origin <default-branch>`, then `git worktree add <path> -b <branch> origin/<default-branch>` when using a worktree. Continue related work in its existing branch and working directory.
+- Never commit directly to main/master. Work on a dedicated branch.
+- For new work, check for uncommitted changes, then create a new branch based on the up-to-date remote default branch: `git fetch origin <default-branch>`, then `git switch --no-track -c <branch> origin/<default-branch>`. Continue related work in its existing branch.
 - When you have edited files in the commit — not when you only write the commit message — include a `Co-Authored-By` trailer with your agent name and the actual model name powering the current session (e.g., `Co-Authored-By: Claude <model> <noreply@anthropic.com>`, `Co-Authored-By: Codex <model> <noreply@openai.com>`).
 - Explain why the change was made.
 - When collaboration materially shaped the change, briefly describe the relevant request, AI proposal, and user decision. Make the explanation understandable without the conversation.
