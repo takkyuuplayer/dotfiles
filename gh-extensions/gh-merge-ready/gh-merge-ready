@@ -89,36 +89,33 @@ while IFS= read -r pr; do
   # A PR with no checks must wait a while, because CI may not have registered
   # its checks yet right after a push.
   # gh pr checks is not used: it exits 1 for both failing and no checks.
-  if ! result=$(gh pr view "$pr" --json headRefOid,commits,statusCheckRollup --jq '
-    .statusCheckRollup as $checks
-    | (if $checks == [] then
-        (if (.commits[-1].committedDate | fromdateiso8601) < now - 600
-          then "ready" else "new" end)
-      elif all($checks[];
-        if .__typename == "CheckRun" then
-          .status == "COMPLETED" and (.conclusion | IN("SUCCESS", "NEUTRAL", "SKIPPED"))
-        else
-          .state == "SUCCESS"
-        end)
-      then "ready"
-      else "not-passing"
-      end) + " " + .headRefOid'); then
+  if ! result=$(gh api graphql -F url="$pr" -f query='
+    query($url: URI!) {
+      resource(url: $url) {
+        ... on PullRequest {
+          commits(last: 1) {
+            nodes { commit { oid committedDate statusCheckRollup { state } } }
+          }
+        }
+      }
+    }' --jq '
+    .data.resource.commits.nodes[0].commit
+    | .oid + " " + (
+      if .statusCheckRollup.state == "SUCCESS" then "ready"
+      elif .statusCheckRollup != null then "checks not passing"
+      elif (.committedDate | fromdateiso8601) < now - 600 then "ready"
+      else "no checks yet"
+      end)'); then
     echo "skip (cannot read PR): $pr" >&2
     status=1
     continue
   fi
-  read -r checks sha <<<"$result"
+  read -r sha reason <<<"$result"
 
-  case "$checks" in
-    new)
-      echo "skip (no checks yet): $pr" >&2
-      continue
-      ;;
-    not-passing)
-      echo "skip (checks not passing): $pr" >&2
-      continue
-      ;;
-  esac
+  if [ "$reason" != ready ]; then
+    echo "skip ($reason): $pr" >&2
+    continue
+  fi
 
   if [ "$dry_run" = true ]; then
     echo "dry-run: would merge $pr ($sha)"
