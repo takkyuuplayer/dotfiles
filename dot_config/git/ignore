@@ -225,6 +225,9 @@ http-client.private.env.json
 # Github Copilot persisted session migrations, see: https://github.com/microsoft/copilot-intellij-feedback/issues/712#issuecomment-3322062215
 .idea/**/copilot.data.migration.*.xml
 
+# Kubernetes Plugin
+.idea/kubernetes/configs/kubeconfig_*
+
 ### Global/Agents
 # AI agents and assistants
 #
@@ -233,7 +236,7 @@ http-client.private.env.json
 # shared with a team, so only uncomment them if they are local-only in your
 # project.
 
-# GEMINI.md
+# PLAN.md
 # WARP.md
 # CRUSH.md
 # QWEN.md
@@ -252,13 +255,20 @@ http-client.private.env.json
 # Claude Code
 .claude/*.local.json
 .claude/**/*.log
+.claude/worktrees/
 CLAUDE.local.md
 # .claude/
 
 # Gemini CLI
+# GEMINI.md
 gemini-debug.log
 .gemini-clipboard/
 # .gemini/
+
+# Mistral Vibe
+# .vibe/
+# .vibe/config.toml
+# .vibe/hooks.toml
 
 # Cursor AI
 # .cursorrules
@@ -284,6 +294,11 @@ gemini-debug.log
 # .tabnineignore
 # .tabnine/
 
+# Agent tool output written into the project
+.playwright-mcp/
+.remember/
+.superpowers/
+
 # GitHub Copilot
 # .github/copilot-instructions.md
 
@@ -302,8 +317,14 @@ gemini-debug.log
 .mise.local.toml
 mise.*.local.toml
 mise.local.toml
-.mise/*.local.toml
-mise/*.local.toml
+**/.mise/*.local.toml
+**/mise/*.local.toml
+**/mise/conf.d/*.local.toml
+
+# https://mise.jdx.dev/dev-tools/mise-lock.html#local-lockfiles
+# https://mise.jdx.dev/dev-tools/mise-lock.html#environment-specific-lockfiles
+mise.local.lock
+mise.*.local.lock
 
 # https://mise.jdx.dev/configuration.html#tool-versions
 #.tool-versions
@@ -353,6 +374,7 @@ terraform.rc
 # Optional: ignore plan files saved before destroying Terraform configuration
 # Uncomment the line below if you want to ignore planout files.
 # planout
+
 ### direnv ###
 .direnv
 .envrc
@@ -364,7 +386,4 @@ terraform.rc
 # Patterns that no upstream template covers. Emitted verbatim, so `!`
 # negations of the sections above work here.
 
-# Claude Code stages every file write in a scratch directory beside the
-# target (write temp -> fsync -> rename), which puts it inside the repo.
-**/.claude/.cc-writes/
 AGENTS.override.md

@@ -6,19 +6,19 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/helpfeel/cosense-cli.git",
       "skillPath": "skills/cosense/SKILL.md",
-      "skillFolderHash": "bded07e3d405ae58ffaa34b35ceeac1c04537990",
+      "skillFolderHash": "f8ca26b79c7799934a6d436af2b3cf42ff5c6d08",
       "installedAt": "2026-09-03T01:01:45.966Z",
-      "updatedAt": "2026-09-03T02:33:46.708Z"
+      "updatedAt": "2026-11-16T15:00:00.577Z"
     },
     "grilling": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/mattpocock/skills.git",
       "skillPath": "skills/productivity/grilling/SKILL.md",
-      "skillFolderHash": "f0732035b8b1b60ae39454e4191caef32fa91903",
+      "skillFolderHash": "f551b6e0d219fdda0b6abf277f8f915b3127d1e9",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-09-03T01:59:37.034Z",
-      "updatedAt": "2026-09-03T01:59:37.034Z"
+      "updatedAt": "2026-11-16T15:00:00.622Z"
     }
   },
   "dismissed": {
