@@ -75,4 +75,4 @@ $ make git/ignore
 $ make gh
 ```
 
-- `gh merge-ready` : squash-merges merge-ready Dependabot PRs. See `gh merge-ready --help`.
+- `gh merge-ready` : squash-merges Dependabot PRs whose checks have passed or that have no checks. See `gh merge-ready --help`.
