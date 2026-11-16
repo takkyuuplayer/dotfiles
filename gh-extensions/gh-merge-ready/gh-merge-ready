@@ -6,8 +6,9 @@ usage() {
 Usage: gh merge-ready [options]
 
 Squash-merge every open, non-draft PR whose checks have all passed. PRs with
-failing, pending, or no checks are skipped. Only Dependabot PRs in the
-authenticated user's repositories are considered unless told otherwise.
+failing or pending checks are skipped. PRs with no checks are merged once their
+head commit is older than 10 minutes. Only Dependabot PRs in the authenticated
+user's repositories are considered unless told otherwise.
 
 Options:
   -o, --owner <owner>      Repository owner to search (default: authenticated user)
@@ -82,20 +83,42 @@ status=0
 while IFS= read -r pr; do
   [ -n "$pr" ] || continue
 
-  # Read the head commit before the checks gate: if the branch is pushed to in
-  # between, the checks below cover the new head and --match-head-commit aborts
-  # the merge instead of merging an unverified commit.
-  if ! sha=$(gh pr view "$pr" --json headRefOid --jq '.headRefOid'); then
-    echo "skip (cannot resolve head commit): $pr" >&2
+  # Read the head commit together with its checks: if the branch is pushed to
+  # afterwards, --match-head-commit aborts the merge instead of merging an
+  # unverified commit.
+  # A PR with no checks must wait a while, because CI may not have registered
+  # its checks yet right after a push.
+  # gh pr checks is not used: it exits 1 for both failing and no checks.
+  if ! result=$(gh pr view "$pr" --json headRefOid,commits,statusCheckRollup --jq '
+    .statusCheckRollup as $checks
+    | (if $checks == [] then
+        (if (.commits[-1].committedDate | fromdateiso8601) < now - 600
+          then "ready" else "new" end)
+      elif all($checks[];
+        if .__typename == "CheckRun" then
+          .status == "COMPLETED" and (.conclusion | IN("SUCCESS", "NEUTRAL", "SKIPPED"))
+        else
+          .state == "SUCCESS"
+        end)
+      then "ready"
+      else "not-passing"
+      end) + " " + .headRefOid'); then
+    echo "skip (cannot read PR): $pr" >&2
     status=1
     continue
   fi
+  read -r checks sha <<<"$result"
 
-  # gh pr checks exits non-zero for failing, still running, and no checks.
-  if ! gh pr checks "$pr" >/dev/null 2>&1; then
-    echo "skip (checks not passing): $pr" >&2
-    continue
-  fi
+  case "$checks" in
+    new)
+      echo "skip (no checks yet): $pr" >&2
+      continue
+      ;;
+    not-passing)
+      echo "skip (checks not passing): $pr" >&2
+      continue
+      ;;
+  esac
 
   if [ "$dry_run" = true ]; then
     echo "dry-run: would merge $pr ($sha)"
