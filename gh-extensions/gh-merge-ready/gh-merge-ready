@@ -26,7 +26,7 @@ die() {
 }
 
 owner=""
-repo_args=()
+repos=()
 author="app/dependabot"
 dry_run=false
 
@@ -39,7 +39,7 @@ while [ $# -gt 0 ]; do
       ;;
     -R | --repo)
       [ $# -ge 2 ] && [ -n "$2" ] || die "missing value for $1"
-      repo_args+=(--repo "$2")
+      repos+=("$2")
       shift 2
       ;;
     -a | --author)
@@ -63,54 +63,54 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-# gh omits the author qualifier for an empty value, so no filter is needed here.
-search_args=(--state open --archived=false --draft=false --limit 1000 --author "$author")
+search="is:pr is:open archived:false draft:false"
+[ -z "$author" ] || search+=" author:$author"
 
-if [ ${#repo_args[@]} -gt 0 ]; then
+if [ ${#repos[@]} -gt 0 ]; then
   [ -z "$owner" ] || die "--repo and --owner are mutually exclusive"
-  search_args+=("${repo_args[@]}")
+  for repo in "${repos[@]}"; do
+    search+=" repo:$repo"
+  done
 else
   [ -n "$owner" ] || owner=$(gh api user --jq '.login')
-  search_args+=(--owner "$owner")
+  search+=" user:$owner"
 fi
 
-prs=$(gh search prs "${search_args[@]}" --json url --jq '.[].url')
-
-status=0
-
-# Fed by a here-string rather than a pipe so failures below set $status in this
-# shell instead of in a subshell.
-while IFS= read -r pr; do
-  [ -n "$pr" ] || continue
-
-  # Read the head commit together with its checks: if the branch is pushed to
-  # afterwards, --match-head-commit aborts the merge instead of merging an
-  # unverified commit.
-  # A PR with no checks must wait a while, because CI may not have registered
-  # its checks yet right after a push.
-  # gh pr checks is not used: it exits 1 for both failing and no checks.
-  if ! result=$(gh api graphql -F url="$pr" -f query='
-    query($url: URI!) {
-      resource(url: $url) {
+# Read each PR's head commit together with its checks in one search: if the
+# branch is pushed to afterwards, --match-head-commit aborts the merge instead
+# of merging an unverified commit.
+# A PR with no checks must wait a while, because CI may not have registered its
+# checks yet right after a push.
+# gh pr checks is not used: it exits 1 for both failing and no checks.
+prs=$(gh api graphql --paginate -F search="$search" -f query='
+  query($search: String!, $endCursor: String) {
+    search(query: $search, type: ISSUE, first: 100, after: $endCursor) {
+      pageInfo { hasNextPage endCursor }
+      nodes {
         ... on PullRequest {
+          url
           commits(last: 1) {
             nodes { commit { oid committedDate statusCheckRollup { state } } }
           }
         }
       }
-    }' --jq '
-    .data.resource.commits.nodes[0].commit
+    }
+  }' --jq '
+  .data.search.nodes[]
+  | .url + " " + (.commits.nodes[0].commit
     | .oid + " " + (
       if .statusCheckRollup.state == "SUCCESS" then "ready"
       elif .statusCheckRollup != null then "checks not passing"
       elif (.committedDate | fromdateiso8601) < now - 600 then "ready"
       else "no checks yet"
-      end)'); then
-    echo "skip (cannot read PR): $pr" >&2
-    status=1
-    continue
-  fi
-  read -r sha reason <<<"$result"
+      end))')
+
+status=0
+
+# Fed by a here-string rather than a pipe so failures below set $status in this
+# shell instead of in a subshell.
+while read -r pr sha reason; do
+  [ -n "$pr" ] || continue
 
   if [ "$reason" != ready ]; then
     echo "skip ($reason): $pr" >&2
