@@ -3,5 +3,6 @@ Makefile
 .agents/skills
 gh-extensions
 gitignore
+mac
 README.md
 vscode
