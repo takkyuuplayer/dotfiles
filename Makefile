@@ -1,4 +1,4 @@
-.PHONY: link gh git/ignore mise skills/update vscode vscode/dump vscode/extensions brew brew/dump
+.PHONY: link gh git/ignore mac mise skills/update vscode vscode/dump vscode/extensions brew brew/dump
 
 DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -23,6 +23,9 @@ gh:
 
 git/ignore:
 	@$(DIR)gitignore/generate
+
+mac:
+	@$(DIR)mac/setup
 
 mise:
 	mise up -y

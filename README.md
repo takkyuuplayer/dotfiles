@@ -76,3 +76,14 @@ $ make gh
 ```
 
 - `gh merge-ready` : squash-merges Dependabot PRs whose checks have passed or that have no checks. See `gh merge-ready --help`.
+
+## macOS security
+
+`make mac` applies basic security settings in case the Mac is lost or left unattended:
+the firewall and locking the screen when idle (`MAC_IDLE_LOCK_MINUTES`, 3 by default).
+FileVault and Find My Mac cannot be turned on by a script, so it only checks them and
+opens System Settings when they are off. It exits non-zero while any item is not satisfied.
+
+```bash
+$ make mac
+```

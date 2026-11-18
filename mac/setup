@@ -1,0 +1,65 @@
+#!/bin/sh
+# Apply the basic security settings for a Mac in case it is lost or left
+# unattended, and check the ones that macOS does not let a script turn on.
+set -u
+
+idle_lock_minutes=${MAC_IDLE_LOCK_MINUTES:-3}
+failed=0
+
+ok() { printf '\033[32m[ok]\033[0m %s\n' "$1"; }
+ng() { printf '\033[31m[ng]\033[0m %s\n' "$1"; failed=1; }
+
+open_settings() {
+	open "x-apple.systempreferences:$1" 2>/dev/null || true
+}
+
+# --- Firewall ---------------------------------------------------------------
+fw=/usr/libexec/ApplicationFirewall/socketfilterfw
+if "$fw" --getglobalstate | grep -q 'enabled'; then
+	ok 'Firewall is on'
+else
+	sudo "$fw" --setglobalstate on >/dev/null && ok 'Firewall turned on' || ng 'Could not turn on the firewall'
+fi
+
+# --- Lock when idle ---------------------------------------------------------
+idle_seconds=$((idle_lock_minutes * 60))
+current=$(defaults -currentHost read com.apple.screensaver idleTime 2>/dev/null || echo 0)
+if [ "$current" -gt 0 ] && [ "$current" -le "$idle_seconds" ]; then
+	ok "Screen saver starts after $((current / 60)) min idle"
+else
+	defaults -currentHost write com.apple.screensaver idleTime -int "$idle_seconds"
+	ok "Screen saver now starts after $idle_lock_minutes min idle"
+fi
+
+if sysadminctl -screenLock status 2>&1 | grep -q 'immediate'; then
+	ok 'Password is required immediately after the screen saver starts'
+else
+	# sysadminctl asks for the login password itself ("-" reads it from the
+	# terminal), so the password never appears in the command line.
+	sysadminctl -screenLock immediate -password - &&
+		ok 'Password is now required immediately' ||
+		ng 'Could not set the screen lock delay to immediate'
+fi
+
+# --- FileVault --------------------------------------------------------------
+# Not enabled from here: turning it on shows a recovery key that must be kept
+# somewhere safe, and the settings screen guides that step better.
+if fdesetup status 2>/dev/null | grep -q 'FileVault is On'; then
+	ok 'FileVault is on'
+else
+	ng 'FileVault is off: turn it on in System Settings > Privacy & Security'
+	open_settings 'com.apple.settings.PrivacySecurity.extension?FileVault'
+fi
+
+# --- Find My Mac ------------------------------------------------------------
+# There is no command to turn it on; it needs an Apple Account sign-in.
+# Not checked with the fmm-mobileme-token-FMM NVRAM variable, which recent
+# macOS no longer writes even when Find My Mac is on.
+if [ "$(defaults read /Library/Preferences/com.apple.FindMyMac FMMEnabled 2>/dev/null)" = 1 ]; then
+	ok 'Find My Mac is on'
+else
+	ng 'Find My Mac is off: turn it on in System Settings > Apple Account > iCloud'
+	open_settings 'com.apple.systempreferences.AppleIDSettings:icloud'
+fi
+
+exit "$failed"
